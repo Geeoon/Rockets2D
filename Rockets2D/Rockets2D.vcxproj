@@ -144,7 +144,24 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\classes\scene\Button.cpp" />
+    <ClCompile Include="src\classes\scene\Scene.cpp" />
+    <ClCompile Include="src\classes\game\Planet.cpp" />
     <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\classes\scene\UIManager.cpp" />
+    <ClCompile Include="src\classes\scene\UIElementManager.cpp" />
+    <ClCompile Include="src\classes\scene\UIString.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\classes\scene\Button.h" />
+    <ClInclude Include="src\classes\scene\Scene.h" />
+    <ClInclude Include="src\classes\game\Planet.h" />
+    <ClInclude Include="src\classes\scene\UIManager.h" />
+    <ClInclude Include="src\classes\scene\UIElementManager.h" />
+    <ClInclude Include="src\classes\scene\UIString.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="fonts\SourceCodePro.ttf" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
