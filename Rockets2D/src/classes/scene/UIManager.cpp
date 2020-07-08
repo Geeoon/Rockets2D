@@ -8,9 +8,13 @@ UIManager::UIManager() {
 		//check for if there is an error creating the gameTexture or the uiTexture
 	}
 	font.loadFromFile("fonts/SourceCodePro.ttf");
-	startMenu = std::make_unique<UIElementManager>(&uiTexture, &window, &font);
+	hoverB.loadFromFile("sounds/ui/hover.wav");
+	clickB.loadFromFile("sounds/ui/click.wav");
+	hover.setBuffer(hoverB);
+	click.setBuffer(clickB);
+	startMenu = std::make_unique<UIElementManager>(&uiTexture, &window, &font, &hover, &click);
 	startMenu->addUIString("Rockets2D", gameTexture.getSize().x / 2, 25, 50, UIString::UIString_alignment::center);
-
+	startMenu->addButton("Start", 25, 75, 30, play);
 	startMenu->setActive(true);
 }
 

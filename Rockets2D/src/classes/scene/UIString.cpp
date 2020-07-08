@@ -7,6 +7,7 @@ UIString::UIString(std::string v, int xP, int yP, sf::RenderTexture* t, sf::Font
 	y = yP;
 	font = f;
 	size = s;
+	color = sf::Color(0, 255, 65);
 	reset();
 }
 
@@ -16,28 +17,33 @@ void UIString::draw() {
 
 void UIString::setVal(std::string v) {
 	value = v;
+	reset();
 }
 
 void UIString::setPos(int xP, int yP) {
 	x = xP;
 	y = yP;
+	reset();
 }
 
 void UIString::setFont(sf::Font* f) {
 	font = f; //calling this function could cause a memory leak in some cases.
+	reset();
 }
 
 void UIString::setSize(int s) {
 	size = s;
+	reset();
 }
 
 void UIString::setColor(sf::Color c) {
 	color = c;
+	reset();
 }
 
 void UIString::reset() {
 	text.setFont(*font);
-	text.setFillColor(sf::Color::White);
+	text.setFillColor(color);
 	text.setString(value);
 	text.setCharacterSize(30);
 	text.setPosition(x, y);

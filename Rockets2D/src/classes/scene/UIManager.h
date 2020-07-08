@@ -1,5 +1,6 @@
 #pragma once
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 #include <iostream>
 #include "UIElementManager.h"
 
@@ -17,7 +18,14 @@ private:
 	sf::ContextSettings videoSettings;
 	std::unique_ptr<UIElementManager> startMenu;
 	sf::Font font;
+	sf::SoundBuffer hoverB;
+	sf::SoundBuffer clickB;
+	sf::Sound hover;
+	sf::Sound click;
 	void updateUI();
 	void pollEvent();
+	static void play() {
+		//std::cout << "play";
+	}
 };
 

@@ -60,4 +60,11 @@
   <ItemGroup>
     <Font Include="fonts\SourceCodePro.ttf" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="credits.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="sounds\ui\click.aif" />
+    <None Include="sounds\ui\hover.aif" />
+  </ItemGroup>
 </Project>
