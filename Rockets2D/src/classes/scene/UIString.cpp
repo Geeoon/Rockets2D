@@ -42,3 +42,22 @@ void UIString::reset() {
 	text.setCharacterSize(30);
 	text.setPosition(x, y);
 }
+
+void UIString::setAlignment(UIString_alignment a) {
+	switch (a) {
+	case UIString_alignment::left:
+		text.setOrigin(0, 0);
+		break;
+
+	case UIString_alignment::center:
+		text.setOrigin(text.getLocalBounds().width / 2, 0);
+		break;
+
+	case UIString_alignment::right:
+		text.setOrigin(text.getLocalBounds().width, 0);
+		break;
+
+	default:
+		break;
+	}
+}

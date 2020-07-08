@@ -10,6 +10,7 @@ public:
 	void update();
 	void setActive(bool a);
 	void addUIString(std::string v, int xP, int yP, int s);
+	void addUIString(std::string v, int xP, int yP, int s, UIString::UIString_alignment a);
 	void addButton();
 private:
 	bool active = false;

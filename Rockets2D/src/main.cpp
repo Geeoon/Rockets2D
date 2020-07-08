@@ -7,6 +7,5 @@
 int main() {
 	Scene scene;
 	scene.start();
-	std::cout << "Hello world.";
 	return 0;
 }

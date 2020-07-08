@@ -8,6 +8,5 @@ public:
 	void start();
 
 private:
-	bool isQuit = false;
 	UIManager ui;
 };

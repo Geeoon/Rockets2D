@@ -4,7 +4,7 @@ Scene::Scene() {
 }
 
 void Scene::start() {
-	while (!isQuit) {
+	while (ui.isOpen()) {
 		ui.update();
 	}
 }
