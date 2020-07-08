@@ -6,7 +6,7 @@
 class UIElementManager
 {
 public:
-	UIElementManager(sf::RenderTexture* t, sf::RenderWindow* w, sf::Font& f);
+	UIElementManager(sf::RenderTexture* t, sf::RenderWindow* w, sf::Font* f);
 	void update();
 	void setActive(bool a);
 	void addUIString(std::string v, int xP, int yP, int s);
@@ -15,7 +15,7 @@ private:
 	bool active = false;
 	std::vector<Button> buttons;
 	std::vector<UIString> strings;
-	sf::Font font;
+	sf::Font* font;
 	sf::RenderTexture* texture;
 	sf::RenderWindow* window;
 };

@@ -1,6 +1,6 @@
 #include "UIElementManager.h"
 
-UIElementManager::UIElementManager(sf::RenderTexture* t, sf::RenderWindow* w, sf::Font& f) {
+UIElementManager::UIElementManager(sf::RenderTexture* t, sf::RenderWindow* w, sf::Font* f) {
 	texture = t;
 	window = w;
 	font = f;
@@ -9,7 +9,7 @@ UIElementManager::UIElementManager(sf::RenderTexture* t, sf::RenderWindow* w, sf
 void UIElementManager::update() {
 	if (active) {
 		for (UIString& string : strings) {
-			string.update();
+			string.draw();
 		}
 	}
 }

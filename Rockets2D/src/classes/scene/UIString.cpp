@@ -1,17 +1,16 @@
 #include "UIString.h"
 
-UIString::UIString(std::string v, int xP, int yP, sf::RenderTexture* t, sf::Font& f, int s) {
+UIString::UIString(std::string v, int xP, int yP, sf::RenderTexture* t, sf::Font* f, int s) {
 	texture = t;
 	value = v;
 	x = xP;
 	y = yP;
 	font = f;
 	size = s;
+	reset();
 }
 
-void UIString::update() {
-	sf::Text text(value, font, size);
-	text.setFillColor(sf::Color::White);
+void UIString::draw() {
 	texture->draw(text);
 }
 
@@ -24,8 +23,8 @@ void UIString::setPos(int xP, int yP) {
 	y = yP;
 }
 
-void UIString::setFont(sf::Font& f) {
-	font = f;
+void UIString::setFont(sf::Font* f) {
+	font = f; //calling this function could cause a memory leak in some cases.
 }
 
 void UIString::setSize(int s) {
@@ -34,4 +33,12 @@ void UIString::setSize(int s) {
 
 void UIString::setColor(sf::Color c) {
 	color = c;
+}
+
+void UIString::reset() {
+	text.setFont(*font);
+	text.setFillColor(sf::Color::White);
+	text.setString(value);
+	text.setCharacterSize(30);
+	text.setPosition(x, y);
 }
