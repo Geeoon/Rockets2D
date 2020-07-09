@@ -1,6 +1,6 @@
 #include "Button.h"
 
-Button::Button(sf::RenderTexture* t, sf::RenderWindow* w, void(*m)(), int s, std::string v, sf::Font* f, int xP, int yP, sf::Sound* ho, sf::Sound* cl) {
+Button::Button(sf::RenderTexture* t, sf::RenderWindow* w, const std::function<void()>& m, int s, std::string v, sf::Font* f, int xP, int yP, sf::Sound* ho, sf::Sound* cl) {
 	texture = t;
 	window = w;
 	onClick = m;

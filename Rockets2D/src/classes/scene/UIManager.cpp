@@ -14,7 +14,7 @@ UIManager::UIManager() {
 	click.setBuffer(clickB);
 	startMenu = std::make_unique<UIElementManager>(&uiTexture, &window, &font, &hover, &click);
 	startMenu->addUIString("Rockets2D", gameTexture.getSize().x / 2, 25, 50, UIString::UIString_alignment::center);
-	startMenu->addButton("Start", 25, 75, 30, play);
+	startMenu->addButton("Start", 25, 75, 30, [&] {play(); });
 	startMenu->setActive(true);
 }
 
@@ -48,4 +48,16 @@ void UIManager::pollEvent() {
 			window.close();
 		}
 	}
+}
+
+void UIManager::play() {
+	startMenu->setActive(false);
+}
+
+void UIManager::credits() {
+
+}
+
+void UIManager::quit() {
+
 }

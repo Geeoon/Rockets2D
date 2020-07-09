@@ -167,8 +167,8 @@
     <Text Include="credits.txt" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="sounds\ui\click.aif" />
-    <None Include="sounds\ui\hover.aif" />
+    <Media Include="sounds\ui\click.wav" />
+    <Media Include="sounds\ui\hover.wav" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

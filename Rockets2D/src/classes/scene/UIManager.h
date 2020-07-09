@@ -11,6 +11,9 @@ public:
 	void update();
 	sf::RenderTexture* getGameTexture();
 	bool isOpen();
+	void play();
+	void credits();
+	void quit();
 private:
 	sf::RenderWindow window; //for texture and ui elements to be rendered together
 	sf::RenderTexture uiTexture; //for the UI itself
@@ -24,8 +27,5 @@ private:
 	sf::Sound click;
 	void updateUI();
 	void pollEvent();
-	static void play() {
-		//std::cout << "play";
-	}
 };
 

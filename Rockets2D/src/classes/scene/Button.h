@@ -2,11 +2,12 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
 #include <iostream>
+#include <functional>
 
 class Button
 {
 public:
-	Button(sf::RenderTexture* t, sf::RenderWindow* w, void(*m)(), int s, std::string v, sf::Font* f, int xP, int yP, sf::Sound* ho, sf::Sound* cl);
+	Button(sf::RenderTexture* t, sf::RenderWindow* w, const std::function<void()>& m, int s, std::string v, sf::Font* f, int xP, int yP, sf::Sound* ho, sf::Sound* cl);
 	void update();
 private:
 	bool hasChanged = true; //this bool tells whether the color has changed; it is used to functions aren't ran when they dont' need to be.
@@ -14,7 +15,7 @@ private:
 	int buttonPadding = 0;
 	int x = 0;
 	int y = 0;
-	void(*onClick)();
+	std::function<void()>(onClick);
 	void reset();
 	std::string value;
 	sf::RectangleShape button;

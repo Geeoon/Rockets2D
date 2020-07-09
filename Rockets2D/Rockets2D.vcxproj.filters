@@ -64,7 +64,11 @@
     <Text Include="credits.txt" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="sounds\ui\click.aif" />
-    <None Include="sounds\ui\hover.aif" />
+    <Media Include="sounds\ui\click.wav">
+      <Filter>Resource Files</Filter>
+    </Media>
+    <Media Include="sounds\ui\hover.wav">
+      <Filter>Resource Files</Filter>
+    </Media>
   </ItemGroup>
 </Project>

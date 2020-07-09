@@ -2,6 +2,7 @@
 #include <SFML/Audio.hpp>
 #include <SFML/Graphics.hpp>
 #include <vector>
+#include <functional>
 #include "UIString.h"
 #include "Button.h"
 
@@ -13,7 +14,7 @@ public:
 	void setActive(bool a);
 	void addUIString(std::string v, int xP, int yP, int s);
 	void addUIString(std::string v, int xP, int yP, int s, UIString::UIString_alignment a);
-	void addButton(std::string v, int xP, int yP, int s, void(*m)());
+	void addButton(std::string v, int xP, int yP, int s, const std::function<void()>& m);
 private:
 	bool active = false;
 	std::vector<Button> buttons;
