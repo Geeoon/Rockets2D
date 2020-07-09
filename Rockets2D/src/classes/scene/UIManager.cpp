@@ -14,12 +14,13 @@ UIManager::UIManager() {
 	hover.setBuffer(hoverB);
 	click.setBuffer(clickB);
 	unClick.setBuffer(unClickB);
-	startMenu = std::make_unique<UIElementManager>(&uiTexture, &window, &font, &hover, &click, &unClick);
-	startMenu->addUIString("Rockets2D", gameTexture.getSize().x / 2, 25, 50, UIString::UIString_alignment::center);
-	startMenu->addButton("Start", 25, 75, 20, [&] {play(); });
-	startMenu->addButton("Credits", 25, 125, 20, [&] {credits(); });
-	startMenu->addButton("Quit", 25, 175, 20, [&] {quit(); });
-	startMenu->setActive(true);
+	mainMenu = std::make_unique<UIElementManagerGroup>(&uiTexture, &window, &font, &hover, &click, &unClick);
+	mainMenu->addPage();
+	mainMenu->addUIString(0, "Rockets2D", gameTexture.getSize().x / 2, 25, 50, UIString::UIString_alignment::center);
+	mainMenu->addButton(0, "Start", 25, 75, 20, [&] {play(); });
+	mainMenu->addButton(0, "Credits", 25, 125, 20, [&] {credits(); });
+	mainMenu->addButton(0, "Quit", 25, 175, 20, [&] {quit(); });
+	mainMenu->setActive(true);
 }
 
 void UIManager::update() {
@@ -41,7 +42,7 @@ bool UIManager::isOpen() {
 
 void UIManager::updateUI() {
 	uiTexture.clear(sf::Color::Black);
-	startMenu->update();
+	mainMenu->update();
 	uiTexture.display();
 }
 
@@ -55,7 +56,7 @@ void UIManager::pollEvent() {
 }
 
 void UIManager::play() {
-	startMenu->setActive(false);
+	mainMenu->setActive(false);
 }
 
 void UIManager::credits() {

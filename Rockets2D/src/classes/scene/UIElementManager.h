@@ -15,6 +15,7 @@ public:
 	void addUIString(std::string v, int xP, int yP, int s);
 	void addUIString(std::string v, int xP, int yP, int s, UIString::UIString_alignment a);
 	void addButton(std::string v, int xP, int yP, int s, const std::function<void()>& m);
+	UIString& getLastString();
 private:
 	bool active = false;
 	std::vector<Button> buttons;

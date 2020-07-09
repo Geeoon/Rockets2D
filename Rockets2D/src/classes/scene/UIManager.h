@@ -2,7 +2,7 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
 #include <iostream>
-#include "UIElementManager.h"
+#include "UIElementManagerGroup.h"
 
 class UIManager
 {
@@ -19,7 +19,7 @@ private:
 	sf::RenderTexture uiTexture; //for the UI itself
 	sf::RenderTexture gameTexture; //for the scene itself only.
 	sf::ContextSettings videoSettings;
-	std::unique_ptr<UIElementManager> startMenu;
+	std::unique_ptr<UIElementManagerGroup> mainMenu;
 	sf::Font font;
 	sf::SoundBuffer hoverB;
 	sf::SoundBuffer clickB;

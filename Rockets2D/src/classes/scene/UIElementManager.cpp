@@ -38,3 +38,7 @@ void UIElementManager::addUIString(std::string v, int xP, int yP, int s, UIStrin
 void UIElementManager::addButton(std::string v, int xP, int yP, int s, const std::function<void()>& m) {
 	buttons.push_back(Button(texture, window, m, s, v, font, xP, yP, hover, click, unClick));
 }
+
+UIString& UIElementManager::getLastString() {
+	return strings.back();
+}
