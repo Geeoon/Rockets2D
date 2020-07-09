@@ -9,7 +9,7 @@
 class UIElementManager
 {
 public:
-	UIElementManager(sf::RenderTexture* t, sf::RenderWindow* w, sf::Font* f, sf::Sound* ho, sf::Sound* cl);
+	UIElementManager(sf::RenderTexture* t, sf::RenderWindow* w, sf::Font* f, sf::Sound* ho, sf::Sound* cl, sf::Sound* uCl);
 	void update();
 	void setActive(bool a);
 	void addUIString(std::string v, int xP, int yP, int s);
@@ -24,5 +24,6 @@ private:
 	sf::RenderWindow* window;
 	sf::Sound* click;
 	sf::Sound* hover;
+	sf::Sound* unClick;
 };
 

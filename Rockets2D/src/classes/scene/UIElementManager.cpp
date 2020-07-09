@@ -1,11 +1,12 @@
 #include "UIElementManager.h"
 
-UIElementManager::UIElementManager(sf::RenderTexture* t, sf::RenderWindow* w, sf::Font* f, sf::Sound* ho, sf::Sound* cl) {
+UIElementManager::UIElementManager(sf::RenderTexture* t, sf::RenderWindow* w, sf::Font* f, sf::Sound* ho, sf::Sound* cl, sf::Sound* uCl) {
 	texture = t;
 	window = w;
 	font = f;
 	hover = ho;
 	click = cl;
+	unClick = uCl;
 }
 
 void UIElementManager::update() {
@@ -35,5 +36,5 @@ void UIElementManager::addUIString(std::string v, int xP, int yP, int s, UIStrin
 }
 
 void UIElementManager::addButton(std::string v, int xP, int yP, int s, const std::function<void()>& m) {
-	buttons.push_back(Button(texture, window, m, s, v, font, xP, yP, hover, click));
+	buttons.push_back(Button(texture, window, m, s, v, font, xP, yP, hover, click, unClick));
 }

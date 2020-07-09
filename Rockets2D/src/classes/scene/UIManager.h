@@ -23,8 +23,10 @@ private:
 	sf::Font font;
 	sf::SoundBuffer hoverB;
 	sf::SoundBuffer clickB;
+	sf::SoundBuffer unClickB;
 	sf::Sound hover;
 	sf::Sound click;
+	sf::Sound unClick;
 	void updateUI();
 	void pollEvent();
 };

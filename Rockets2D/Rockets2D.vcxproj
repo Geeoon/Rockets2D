@@ -151,6 +151,7 @@
     <ClCompile Include="src\classes\scene\UIManager.cpp" />
     <ClCompile Include="src\classes\scene\UIElementManager.cpp" />
     <ClCompile Include="src\classes\scene\UIString.cpp" />
+    <ClCompile Include="src\classes\scene\UIElementManagerGroup.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\classes\scene\Button.h" />
@@ -159,6 +160,7 @@
     <ClInclude Include="src\classes\scene\UIManager.h" />
     <ClInclude Include="src\classes\scene\UIElementManager.h" />
     <ClInclude Include="src\classes\scene\UIString.h" />
+    <ClInclude Include="src\classes\scene\UIElementManagerGroup.h" />
   </ItemGroup>
   <ItemGroup>
     <Font Include="fonts\SourceCodePro.ttf" />
@@ -169,6 +171,7 @@
   <ItemGroup>
     <Media Include="sounds\ui\click.wav" />
     <Media Include="sounds\ui\hover.wav" />
+    <Media Include="sounds\ui\unClick.wav" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

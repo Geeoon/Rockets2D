@@ -7,10 +7,11 @@
 class Button
 {
 public:
-	Button(sf::RenderTexture* t, sf::RenderWindow* w, const std::function<void()>& m, int s, std::string v, sf::Font* f, int xP, int yP, sf::Sound* ho, sf::Sound* cl);
+	Button(sf::RenderTexture* t, sf::RenderWindow* w, const std::function<void()>& m, int s, std::string v, sf::Font* f, int xP, int yP, sf::Sound* ho, sf::Sound* cl, sf::Sound* uCl);
 	void update();
 private:
 	bool hasChanged = true; //this bool tells whether the color has changed; it is used to functions aren't ran when they dont' need to be.
+	bool beingPressed = false;
 	int textSize = 0;
 	int buttonPadding = 0;
 	int x = 0;
@@ -28,5 +29,6 @@ private:
 	sf::Text text;
 	sf::Sound* hover;
 	sf::Sound* click;
+	sf::Sound* unClick;
 };
 

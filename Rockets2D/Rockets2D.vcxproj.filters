@@ -36,6 +36,9 @@
     <ClCompile Include="src\classes\scene\UIString.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\classes\scene\UIElementManagerGroup.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\classes\game\Planet.h">
@@ -56,6 +59,9 @@
     <ClInclude Include="src\classes\scene\UIString.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\classes\scene\UIElementManagerGroup.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Font Include="fonts\SourceCodePro.ttf" />
@@ -68,6 +74,9 @@
       <Filter>Resource Files</Filter>
     </Media>
     <Media Include="sounds\ui\hover.wav">
+      <Filter>Resource Files</Filter>
+    </Media>
+    <Media Include="sounds\ui\unClick.wav">
       <Filter>Resource Files</Filter>
     </Media>
   </ItemGroup>

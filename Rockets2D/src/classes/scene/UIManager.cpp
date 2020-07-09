@@ -10,11 +10,15 @@ UIManager::UIManager() {
 	font.loadFromFile("fonts/SourceCodePro.ttf");
 	hoverB.loadFromFile("sounds/ui/hover.wav");
 	clickB.loadFromFile("sounds/ui/click.wav");
+	unClickB.loadFromFile("sounds/ui/unClick.wav");
 	hover.setBuffer(hoverB);
 	click.setBuffer(clickB);
-	startMenu = std::make_unique<UIElementManager>(&uiTexture, &window, &font, &hover, &click);
+	unClick.setBuffer(unClickB);
+	startMenu = std::make_unique<UIElementManager>(&uiTexture, &window, &font, &hover, &click, &unClick);
 	startMenu->addUIString("Rockets2D", gameTexture.getSize().x / 2, 25, 50, UIString::UIString_alignment::center);
-	startMenu->addButton("Start", 25, 75, 30, [&] {play(); });
+	startMenu->addButton("Start", 25, 75, 20, [&] {play(); });
+	startMenu->addButton("Credits", 25, 125, 20, [&] {credits(); });
+	startMenu->addButton("Quit", 25, 175, 20, [&] {quit(); });
 	startMenu->setActive(true);
 }
 
@@ -59,5 +63,5 @@ void UIManager::credits() {
 }
 
 void UIManager::quit() {
-
+	window.close();
 }
