@@ -35,6 +35,12 @@ void UIElementManager::addUIString(std::string v, int xP, int yP, int s, UIStrin
 	strings.back().setAlignment(a);
 }
 
+void UIElementManager::addUIString(std::string v, int xP, int yP, int s, UIString::UIString_alignment a, UIString::UIString_alignment a2) {
+	strings.push_back(UIString(v, xP, yP, texture, font, s));
+	strings.back().setAlignment(a);
+	strings.back().setAlignment(a2);
+}
+
 void UIElementManager::addButton(std::string v, int xP, int yP, int s, const std::function<void()>& m) {
 	buttons.push_back(Button(texture, window, m, s, v, font, xP, yP, hover, click, unClick));
 }

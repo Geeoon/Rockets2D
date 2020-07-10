@@ -6,7 +6,7 @@
 class UIString
 {
 public:
-	enum class UIString_alignment {left, center, right};
+	enum class UIString_alignment {left, center, right, top, bottom};
 	UIString(std::string v, int xP, int yP, sf::RenderTexture* t, sf::Font* f, int s);
 	void draw();
 	void setVal(std::string v);

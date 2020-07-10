@@ -11,15 +11,13 @@ public:
 	void update();
 	sf::RenderTexture* getGameTexture();
 	bool isOpen();
-	void play();
-	void credits();
-	void quit();
 private:
 	sf::RenderWindow window; //for texture and ui elements to be rendered together
 	sf::RenderTexture uiTexture; //for the UI itself
 	sf::RenderTexture gameTexture; //for the scene itself only.
 	sf::ContextSettings videoSettings;
 	std::unique_ptr<UIElementManagerGroup> mainMenu;
+	std::unique_ptr<UIElementManagerGroup> gameUI;
 	sf::Font font;
 	sf::SoundBuffer hoverB;
 	sf::SoundBuffer clickB;
@@ -29,5 +27,9 @@ private:
 	sf::Sound unClick;
 	void updateUI();
 	void pollEvent();
+	void play();
+	void controls();
+	void credits();
+	void quit();
 };
 

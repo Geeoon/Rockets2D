@@ -144,9 +144,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\classes\game\Game.cpp" />
+    <ClCompile Include="src\classes\game\ObjectManager.cpp" />
+    <ClCompile Include="src\classes\game\Object.cpp" />
     <ClCompile Include="src\classes\scene\Button.cpp" />
     <ClCompile Include="src\classes\scene\Scene.cpp" />
-    <ClCompile Include="src\classes\game\Planet.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\classes\scene\UIManager.cpp" />
     <ClCompile Include="src\classes\scene\UIElementManager.cpp" />
@@ -154,9 +156,11 @@
     <ClCompile Include="src\classes\scene\UIElementManagerGroup.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\classes\game\Game.h" />
+    <ClInclude Include="src\classes\game\ObjectManager.h" />
+    <ClInclude Include="src\classes\game\Object.h" />
     <ClInclude Include="src\classes\scene\Button.h" />
     <ClInclude Include="src\classes\scene\Scene.h" />
-    <ClInclude Include="src\classes\game\Planet.h" />
     <ClInclude Include="src\classes\scene\UIManager.h" />
     <ClInclude Include="src\classes\scene\UIElementManager.h" />
     <ClInclude Include="src\classes\scene\UIString.h" />

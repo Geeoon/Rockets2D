@@ -45,22 +45,30 @@ void UIString::reset() {
 	text.setFont(*font);
 	text.setFillColor(color);
 	text.setString(value);
-	text.setCharacterSize(30);
+	text.setCharacterSize(size);
 	text.setPosition(x, y);
 }
 
 void UIString::setAlignment(UIString_alignment a) {
 	switch (a) {
 	case UIString_alignment::left:
-		text.setOrigin(0, 0);
+		text.setOrigin(0, text.getOrigin().y);
 		break;
 
 	case UIString_alignment::center:
-		text.setOrigin(text.getLocalBounds().width / 2, 0);
+		text.setOrigin(text.getLocalBounds().width / 2, text.getOrigin().y);
 		break;
 
 	case UIString_alignment::right:
-		text.setOrigin(text.getLocalBounds().width, 0);
+		text.setOrigin(text.getLocalBounds().width, text.getOrigin().y);
+		break;
+
+	case UIString_alignment::top:
+		text.setOrigin(text.getOrigin().x, 0);
+		break;
+
+	case UIString_alignment::bottom:
+		text.setOrigin(text.getOrigin().x, font->getLineSpacing(size));
 		break;
 
 	default:

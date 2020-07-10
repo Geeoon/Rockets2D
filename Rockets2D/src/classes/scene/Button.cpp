@@ -16,7 +16,19 @@ Button::Button(sf::RenderTexture* t, sf::RenderWindow* w, const std::function<vo
 	textColor = sf::Color(0, 255, 65);
 	backgroundColor = sf::Color(0, 255, 65, 0);
 	borderColor = sf::Color(0, 255, 65);
-	reset();
+
+	text.setCharacterSize(textSize);
+	text.setFont(*font);
+	text.setFillColor(textColor);
+	text.setPosition((float)x + font->getGlyph(65, textSize, false, 0).textureRect.width, (float)y);
+	text.setString(value);
+	text.setOrigin(0, 0);
+	button.setSize(sf::Vector2f(font->getGlyph(65, textSize, false, 0).textureRect.width * (text.getString().getSize() + 2), font->getLineSpacing(textSize) + 3));
+	button.setPosition((float)x, (float)y);
+	button.setOutlineThickness(2);
+	button.setOutlineColor(borderColor);
+	button.setFillColor(backgroundColor);
+	button.setOrigin(0, 0);
 }
 
 void Button::update() {
@@ -40,7 +52,7 @@ void Button::update() {
 			}
 		}
 	} else { //mouse not over button
-		if (borderColor != sf::Color(0, 255, 65) || textColor != sf::Color(0, 255, 65) || backgroundColor != sf::Color(0, 255, 65)) {
+		if (borderColor != sf::Color(0, 255, 65) || textColor != sf::Color(0, 255, 65) || backgroundColor != sf::Color(0, 255, 65, 0)) {
 			textColor = sf::Color(0, 255, 65);
 			backgroundColor = sf::Color(0, 255, 65, 0);
 			borderColor = sf::Color(0, 255, 65);
@@ -56,16 +68,7 @@ void Button::update() {
 }
 
 void Button::reset() {
-	text.setCharacterSize(textSize);
-	text.setFont(*font);
 	text.setFillColor(textColor);
-	text.setPosition((float)x + font->getGlyph(65, textSize, false, 0).textureRect.width, (float)y);
-	text.setString(value);
-	text.setOrigin(0, 0);
-	button.setSize(sf::Vector2f(font->getGlyph(65, textSize, false, 0).textureRect.width * (text.getString().getSize() + 2), font->getLineSpacing(textSize) + 3));
-	button.setPosition((float)x, (float)y);
-	button.setOutlineThickness(2);
 	button.setOutlineColor(borderColor);
 	button.setFillColor(backgroundColor);
-	button.setOrigin(0, 0);
 }

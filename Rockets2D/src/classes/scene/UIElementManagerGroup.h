@@ -15,6 +15,7 @@ public:
 	void addButton(int page, std::string v, int xP, int yP, int s, const std::function<void()>& m);
 	void addUIString(int page, std::string v, int xP, int yP, int s);
 	void addUIString(int page, std::string v, int xP, int yP, int s, UIString::UIString_alignment a);
+	void addUIString(int page, std::string v, int xP, int yP, int s, UIString::UIString_alignment a, UIString::UIString_alignment a2);
 	void setActive(bool active);
 	void update();
 	void setActivePage(int page);

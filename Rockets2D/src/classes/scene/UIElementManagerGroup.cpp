@@ -26,6 +26,12 @@ void UIElementManagerGroup::addUIString(int page, std::string v, int xP, int yP,
 	pages[page].getLastString().setAlignment(a);
 }
 
+void UIElementManagerGroup::addUIString(int page, std::string v, int xP, int yP, int s, UIString::UIString_alignment a, UIString::UIString_alignment a2) {
+	pages[page].addUIString(v, xP, yP, s);
+	pages[page].getLastString().setAlignment(a);
+	pages[page].getLastString().setAlignment(a2);
+}
+
 void UIElementManagerGroup::setActive(bool active) {
 	isActive = active;
 	for (int i = 0; i < pages.size(); i++) {
