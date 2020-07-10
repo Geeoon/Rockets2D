@@ -14,7 +14,7 @@ Button::Button(sf::RenderTexture* t, sf::RenderWindow* w, const std::function<vo
 	unClick = uCl;
 
 	textColor = sf::Color(0, 255, 65);
-	backgroundColor = sf::Color(0, 255, 65, 0);
+	backgroundColor = sf::Color::Black;
 	borderColor = sf::Color(0, 255, 65);
 
 	text.setCharacterSize(textSize);
@@ -52,9 +52,9 @@ void Button::update() {
 			}
 		}
 	} else { //mouse not over button
-		if (borderColor != sf::Color(0, 255, 65) || textColor != sf::Color(0, 255, 65) || backgroundColor != sf::Color(0, 255, 65, 0)) {
+		if (borderColor != sf::Color(0, 255, 65) || textColor != sf::Color(0, 255, 65) || backgroundColor != sf::Color::Black) {
 			textColor = sf::Color(0, 255, 65);
-			backgroundColor = sf::Color(0, 255, 65, 0);
+			backgroundColor = sf::Color::Black;
 			borderColor = sf::Color(0, 255, 65);
 			hasChanged = true;
 		}

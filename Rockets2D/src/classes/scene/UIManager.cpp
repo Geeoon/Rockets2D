@@ -38,15 +38,31 @@ UIManager::UIManager() {
 
 	gameUI = std::make_unique<UIElementManagerGroup>(&uiTexture, &window, &font, &hover, &click, &unClick);
 	gameUI->addPage(); //standard non-pause game
-	gameUI->addUIString(0, "Position: (x), (y) relative to [selected object]", 0, uiTexture.getSize().y, 15, UIString::UIString_alignment::left, UIString::UIString_alignment::bottom);
+	gameUI->addUIString(0, "Free Body Diagram", uiTexture.getSize().x - 10, uiTexture.getSize().y - 150, 15, UIString::UIString_alignment::right, UIString::UIString_alignment::bottom);
+	gameUI->addUIString(0, "Position: (x), (y) relative to [selected object]", 0, uiTexture.getSize().y - 40, 15, UIString::UIString_alignment::left, UIString::UIString_alignment::bottom);
+	gameUI->addUIString(0, "Velocity: m/s relative to [selected object]", 0, uiTexture.getSize().y - 20, 15, UIString::UIString_alignment::left, UIString::UIString_alignment::bottom);
+	gameUI->addUIString(0, "Acceleration: m/s^2 relative to [selected object]", 0, uiTexture.getSize().y, 15, UIString::UIString_alignment::left, UIString::UIString_alignment::bottom);
+	gameUI->addButton(0, "Pause", 5, 5, 15, [&] {gameUI->setActivePage(1); game->setPause(true); });
+	gameUI->addPage(); //pause menu
+	gameUI->addUIString(1, "Rockets2D", uiTexture.getSize().x / 2, 25, 30, UIString::UIString_alignment::center);
+	gameUI->addUIString(1, "Paused", uiTexture.getSize().x / 2, 75, 25, UIString::UIString_alignment::center);
+	gameUI->addButton(1, "Resume", 50, 150, 20, [&] {gameUI->setActivePage(0); game->setPause(false); });
+	gameUI->addButton(1, "Open Console", 50, 200, 20, [&] {});
+	gameUI->addButton(1, "Back to Main Menu", 50, 250, 20, [&] {quitGame(); });
+	gameUI->addButton(1, "Quit", 50, 300, 20, [&] {quit(); });
 	gameUI->setActive(false);
 }
 
+void UIManager::setGame(std::shared_ptr<Game> g) {
+	game = g;
+}
 void UIManager::update() {
+	window.clear(sf::Color::Black);
 	updateUI();
 	pollEvent();
-	window.clear(sf::Color::Black);
+	game->draw(); //draw onto the renderTexture
 	window.draw(sf::Sprite(gameTexture.getTexture())); //first the game,
+
 	window.draw(sf::Sprite(uiTexture.getTexture())); //then the ui; this keeps the UI always on top no matter what.
 	window.display();
 }
@@ -60,7 +76,7 @@ bool UIManager::isOpen() {
 }
 
 void UIManager::updateUI() {
-	uiTexture.clear(sf::Color::Black);
+	uiTexture.clear(sf::Color::Transparent);
 	mainMenu->update();
 	gameUI->update();
 	uiTexture.display();
@@ -78,6 +94,7 @@ void UIManager::pollEvent() {
 void UIManager::play() {
 	mainMenu->setActive(false);
 	gameUI->setActive(true);
+	game->start();
 }
 
 void UIManager::controls() {
@@ -90,4 +107,10 @@ void UIManager::credits() {
 
 void UIManager::quit() {
 	window.close();
+}
+
+void UIManager::quitGame() {
+	game->stop();
+	gameUI->setActive(false);
+	mainMenu->setActive(true);
 }

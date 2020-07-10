@@ -5,12 +5,12 @@
 class ObjectManager
 {
 public:
-	ObjectManager();
+	ObjectManager(sf::RenderTexture* t);
 	void update();
-	void addObject();
+	void draw();
+	void addObject(double xP, double yP, double m, double r);
 private:
 	std::vector<Object> objects;
 	sf::RenderTexture* texture;
-
 };
 

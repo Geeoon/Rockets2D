@@ -1,1 +1,39 @@
 #include "Game.h"
+
+Game::Game(sf::RenderTexture* t) {
+	texture = t;
+	objMan = std::make_unique<ObjectManager>(t);
+	objMan->addObject(0, 0, 50, 100);
+}
+
+void Game::start() {
+	hasStarted = true;
+	isPaused = false;
+}
+
+void Game::stop() {
+	hasStarted = false;
+}
+
+void Game::update() {
+	if (hasStarted && !isPaused) {
+		objMan->update();
+	}
+}
+
+void Game::setPause(bool p) {
+	isPaused = p;
+}
+
+void Game::draw() {
+	if (hasStarted) {
+		if (!isPaused) {
+			texture->clear(sf::Color::Transparent);
+			objMan->draw();
+			texture->display();
+		}
+	} else {
+		texture->clear();
+		texture->display();
+	}
+}
