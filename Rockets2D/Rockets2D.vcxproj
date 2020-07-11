@@ -144,6 +144,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\classes\game\FreeBody.cpp" />
     <ClCompile Include="src\classes\game\Game.cpp" />
     <ClCompile Include="src\classes\game\ObjectManager.cpp" />
     <ClCompile Include="src\classes\game\Object.cpp" />
@@ -154,8 +155,10 @@
     <ClCompile Include="src\classes\scene\UIElementManager.cpp" />
     <ClCompile Include="src\classes\scene\UIString.cpp" />
     <ClCompile Include="src\classes\scene\UIElementManagerGroup.cpp" />
+    <ClCompile Include="src\classes\game\Vector2.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\classes\game\FreeBody.h" />
     <ClInclude Include="src\classes\game\Game.h" />
     <ClInclude Include="src\classes\game\ObjectManager.h" />
     <ClInclude Include="src\classes\game\Object.h" />
@@ -165,6 +168,7 @@
     <ClInclude Include="src\classes\scene\UIElementManager.h" />
     <ClInclude Include="src\classes\scene\UIString.h" />
     <ClInclude Include="src\classes\scene\UIElementManagerGroup.h" />
+    <ClInclude Include="src\classes\game\Vector2.h" />
   </ItemGroup>
   <ItemGroup>
     <Font Include="fonts\SourceCodePro.ttf" />

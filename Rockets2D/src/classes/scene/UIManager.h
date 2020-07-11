@@ -28,6 +28,7 @@ private:
 	sf::Sound hover;
 	sf::Sound click;
 	sf::Sound unClick;
+	sf::View gameView;
 	void updateUI();
 	void pollEvent();
 	void play();

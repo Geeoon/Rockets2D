@@ -1,9 +1,8 @@
 #include "Object.h"
 
-Object::Object(sf::RenderTexture* t, double xP, double yP, double m, double r) {
+Object::Object(sf::RenderTexture* t, long double xP, long double yP, long double m, long double r) {
 	texture = t;
-	x = xP;
-	y = yP;
+	position = Vector2(xP, yP);
 	mass = m;
 	radius = r;
 	shape.setRadius(radius);
@@ -11,13 +10,25 @@ Object::Object(sf::RenderTexture* t, double xP, double yP, double m, double r) {
 	innerColor = sf::Color(0, 0, 0, 255);
 	shape.setFillColor(innerColor);
 	shape.setOutlineColor(borderColor);
-	shape.setOutlineThickness(5);
+	shape.setOutlineThickness(3);
+	clock.restart();
+	elapsedTime = clock.getElapsedTime();
+}
+
+void Object::applyForce(Vector2 v) {
+	body.addForce(v);
 }
 
 void Object::update() {
-
+	elapsedTime = clock.getElapsedTime();
+	clock.restart();
+	acceleration = Vector2(body.getNet().getX() / mass, body.getNet().getY() / mass);
+	velocity += Vector2(acceleration.getX() * elapsedTime.asSeconds(), acceleration.getY() * elapsedTime.asSeconds());
+	position += Vector2(velocity.getX() * elapsedTime.asSeconds(), velocity.getY() * elapsedTime.asSeconds());
+	body = FreeBody();
 }
 
 void Object::draw() {
+	shape.setPosition(position.getX(), -position.getY());
 	texture->draw(shape);
 }

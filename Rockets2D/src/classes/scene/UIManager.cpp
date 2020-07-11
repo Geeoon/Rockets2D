@@ -1,12 +1,14 @@
 #include "UIManager.h"
 
 UIManager::UIManager() {
-	videoSettings.antialiasingLevel = 0;
+	videoSettings.antialiasingLevel = 0;;
 	window.create(sf::VideoMode(800, 800), "Rockets2D", sf::Style::Close, videoSettings);
 	window.setFramerateLimit(300);
 	if (!(uiTexture.create(window.getSize().x, window.getSize().y, videoSettings) && gameTexture.create(window.getSize().x, window.getSize().y, videoSettings))) {
 		//check for if there is an error creating the gameTexture or the uiTexture
 	}
+	gameView = gameTexture.getView();
+	gameTexture.setView(gameView);
 	font.loadFromFile("fonts/SourceCodePro.ttf");
 	hoverB.loadFromFile("sounds/ui/hover.wav");
 	clickB.loadFromFile("sounds/ui/click.wav");
@@ -87,6 +89,9 @@ void UIManager::pollEvent() {
 	while (window.pollEvent(event)) {
 		if (event.type == sf::Event::Closed) {
 			window.close();
+		} else if  (event.type == sf::Event::MouseWheelScrolled) {
+			gameView.zoom(1 - event.mouseWheelScroll.delta / 10);
+			gameTexture.setView(gameView);
 		}
 	}
 }
