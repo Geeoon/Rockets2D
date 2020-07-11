@@ -15,9 +15,15 @@ void Game::stop() {
 	hasStarted = false;
 }
 
+void Game::quit() {
+	isQuit = true;
+}
+
 void Game::update() {
-	if (hasStarted && !isPaused) {
-		objMan->update();
+	while (!isQuit) {
+		if (hasStarted && !isPaused) {
+			objMan->update();
+		}
 	}
 }
 

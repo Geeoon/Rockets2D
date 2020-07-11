@@ -4,10 +4,12 @@ UIManager::UIManager() {
 	videoSettings.antialiasingLevel = 0;;
 	window.create(sf::VideoMode(800, 800), "Rockets2D", sf::Style::Close, videoSettings);
 	window.setFramerateLimit(300);
+	freeBodyTexture.create(150, 150);
 	if (!(uiTexture.create(window.getSize().x, window.getSize().y, videoSettings) && gameTexture.create(window.getSize().x, window.getSize().y, videoSettings))) {
 		//check for if there is an error creating the gameTexture or the uiTexture
 	}
 	gameView = gameTexture.getView();
+	gameView.setCenter(gameTexture.getSize().x / 2, gameTexture.getSize().y / 2);
 	gameTexture.setView(gameView);
 	font.loadFromFile("fonts/SourceCodePro.ttf");
 	hoverB.loadFromFile("sounds/ui/hover.wav");
@@ -58,6 +60,11 @@ UIManager::UIManager() {
 void UIManager::setGame(std::shared_ptr<Game> g) {
 	game = g;
 }
+
+void UIManager::setFreeBodyDiagram(FreeBody* f) {
+
+}
+
 void UIManager::update() {
 	window.clear(sf::Color::Black);
 	updateUI();
@@ -111,6 +118,8 @@ void UIManager::credits() {
 }
 
 void UIManager::quit() {
+	game->stop();
+	game->quit();
 	window.close();
 }
 

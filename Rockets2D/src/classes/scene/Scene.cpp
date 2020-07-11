@@ -6,9 +6,9 @@ Scene::Scene() {
 }
 
 void Scene::start() {
+	std::thread gameThread(&Game::update, game.get());
+	gameThread.detach();
 	while (ui.isOpen()) {
-		std::thread gameThread(&Game::update, game.get());
-		gameThread.detach();
 		ui.update();
 	}
 }

@@ -11,6 +11,7 @@ Object::Object(sf::RenderTexture* t, long double xP, long double yP, long double
 	shape.setFillColor(innerColor);
 	shape.setOutlineColor(borderColor);
 	shape.setOutlineThickness(3);
+	shape.setOrigin(shape.getLocalBounds().width / 2, shape.getLocalBounds().height / 2);
 	clock.restart();
 	elapsedTime = clock.getElapsedTime();
 }

@@ -4,7 +4,7 @@
 #include <iostream>
 #include "../game/Game.h"
 #include "UIElementManagerGroup.h"
-
+#include "../game/FreeBody.h"
 class UIManager
 {
 public:
@@ -13,11 +13,13 @@ public:
 	sf::RenderTexture* getGameTexture();
 	bool isOpen();
 	void setGame(std::shared_ptr<Game> g);
+	void setFreeBodyDiagram(FreeBody* f);
 private:
 	std::shared_ptr<Game> game;
 	sf::RenderWindow window; //for texture and ui elements to be rendered together
 	sf::RenderTexture uiTexture; //for the UI itself
 	sf::RenderTexture gameTexture; //for the scene itself only.
+	sf::RenderTexture freeBodyTexture;
 	sf::ContextSettings videoSettings;
 	std::unique_ptr<UIElementManagerGroup> mainMenu;
 	std::unique_ptr<UIElementManagerGroup> gameUI;
