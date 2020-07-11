@@ -33,3 +33,7 @@ void Object::draw() {
 	shape.setPosition(position.getX(), -position.getY());
 	texture->draw(shape);
 }
+
+FreeBody& Object::getFB() {
+	return body;
+}

@@ -10,6 +10,7 @@ UIManager::UIManager() {
 	}
 	gameView = gameTexture.getView();
 	gameView.setCenter(gameTexture.getSize().x / 2, gameTexture.getSize().y / 2);
+	gameView.move(-((signed)gameTexture.getSize().x / 2), -((signed)gameTexture.getSize().y / 2));
 	gameTexture.setView(gameView);
 	font.loadFromFile("fonts/SourceCodePro.ttf");
 	hoverB.loadFromFile("sounds/ui/hover.wav");
@@ -61,10 +62,6 @@ void UIManager::setGame(std::shared_ptr<Game> g) {
 	game = g;
 }
 
-void UIManager::setFreeBodyDiagram(FreeBody* f) {
-
-}
-
 void UIManager::update() {
 	window.clear(sf::Color::Black);
 	updateUI();
@@ -78,6 +75,10 @@ void UIManager::update() {
 
 sf::RenderTexture* UIManager::getGameTexture() {
 	return &gameTexture;
+}
+
+sf::RenderTexture* UIManager::getFBTexture() {
+	return &freeBodyTexture;
 }
 
 bool UIManager::isOpen() {
@@ -95,6 +96,7 @@ void UIManager::pollEvent() {
 	sf::Event event;
 	while (window.pollEvent(event)) {
 		if (event.type == sf::Event::Closed) {
+			quit();
 			window.close();
 		} else if  (event.type == sf::Event::MouseWheelScrolled) {
 			gameView.zoom(1 - event.mouseWheelScroll.delta / 10);

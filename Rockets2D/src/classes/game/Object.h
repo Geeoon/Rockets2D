@@ -10,6 +10,8 @@ public:
 	void applyForce(Vector2 v);
 	void update();
 	void draw();
+	FreeBody& getFB();
+
 private:
 	sf::Clock clock;
 	sf::Time elapsedTime;

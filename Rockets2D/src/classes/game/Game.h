@@ -16,7 +16,8 @@ private:
 	bool hasStarted = false;
 	bool isPaused = false;
 	bool isQuit = false;
-	sf::RenderTexture* texture;
+	sf::RenderTexture* texture = nullptr;
+	sf::RenderTexture* fbTexture = nullptr;
 	std::unique_ptr<ObjectManager> objMan;
 };
 

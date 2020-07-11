@@ -5,7 +5,7 @@ ObjectManager::ObjectManager(sf::RenderTexture* t) {
 }
 
 void ObjectManager::update() {
-	/*
+	/* applying forces
 	for (Object& obj1 : objects) {
 		for (Object& obj2 : objects) {
 			if (&obj1 != &obj2) {
@@ -15,8 +15,8 @@ void ObjectManager::update() {
 	}
 	*/
 
+	//updating
 	for (Object& obj : objects) {
-		obj.applyForce(Vector2(1, -1));
 		obj.update();
 	}
 }

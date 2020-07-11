@@ -4,22 +4,22 @@
 #include <iostream>
 #include "../game/Game.h"
 #include "UIElementManagerGroup.h"
-#include "../game/FreeBody.h"
+
 class UIManager
 {
 public:
 	UIManager();
 	void update();
 	sf::RenderTexture* getGameTexture();
+	sf::RenderTexture* getFBTexture();
 	bool isOpen();
 	void setGame(std::shared_ptr<Game> g);
-	void setFreeBodyDiagram(FreeBody* f);
 private:
 	std::shared_ptr<Game> game;
 	sf::RenderWindow window; //for texture and ui elements to be rendered together
 	sf::RenderTexture uiTexture; //for the UI itself
 	sf::RenderTexture gameTexture; //for the scene itself only.
-	sf::RenderTexture freeBodyTexture;
+	sf::RenderTexture freeBodyTexture; //for the free body diagram
 	sf::ContextSettings videoSettings;
 	std::unique_ptr<UIElementManagerGroup> mainMenu;
 	std::unique_ptr<UIElementManagerGroup> gameUI;

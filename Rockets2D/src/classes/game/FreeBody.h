@@ -1,5 +1,6 @@
 #pragma once
 #include <vector>
+#include <SFML/Graphics.hpp>
 #include "Vector2.h"
 
 class FreeBody
