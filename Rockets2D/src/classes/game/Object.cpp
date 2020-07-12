@@ -7,7 +7,7 @@ Object::Object(sf::RenderTexture* t, long double xP, long double yP, long double
 	radius = r;
 	shape.setRadius(radius);
 	borderColor = sf::Color(0, 255, 65);
-	innerColor = sf::Color(0, 0, 255, 255);
+	innerColor = sf::Color(0, 0, 255, 0);
 	shape.setFillColor(innerColor);
 	shape.setOutlineColor(borderColor);
 	shape.setOutlineThickness(3);
@@ -31,6 +31,7 @@ void Object::update() {
 
 void Object::draw() {
 	shape.setPosition(position.getX(), -position.getY());
+	shape.setOutlineThickness(3 * texture->getView().getSize().x / texture->getSize().x);
 	texture->draw(shape);
 }
 

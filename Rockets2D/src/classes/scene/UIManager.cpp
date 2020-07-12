@@ -127,7 +127,6 @@ void UIManager::pollEvent() {
 				const sf::Vector2f deltaPos = lastPos - currentPos;
 				gameView.move(deltaPos * (gameView.getSize().x / (gameTexture.getSize().x)));
 				gameTexture.setView(gameView);
-				std::cout << deltaPos.x << "  " << deltaPos.y << std::endl;
 				lastPos = window.mapPixelToCoords(sf::Mouse::getPosition(window));
 			}
 			break;
