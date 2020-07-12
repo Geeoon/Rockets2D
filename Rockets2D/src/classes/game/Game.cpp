@@ -3,7 +3,7 @@
 Game::Game(sf::RenderTexture* t) {
 	texture = t;
 	objMan = std::make_unique<ObjectManager>(t);
-	objMan->addObject(0, 0, 50, 100);
+	objMan->addObject(0, 0, 5.973 * pow(10, 24), 6.371 * pow(10, 7));
 }
 
 void Game::start() {

@@ -15,7 +15,9 @@ public:
 	bool isOpen();
 	void setGame(std::shared_ptr<Game> g);
 private:
+	bool isPanning = false;
 	std::shared_ptr<Game> game;
+	sf::Vector2f lastPos;
 	sf::RenderWindow window; //for texture and ui elements to be rendered together
 	sf::RenderTexture uiTexture; //for the UI itself
 	sf::RenderTexture gameTexture; //for the scene itself only.

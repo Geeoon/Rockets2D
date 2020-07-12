@@ -95,12 +95,42 @@ void UIManager::updateUI() {
 void UIManager::pollEvent() {
 	sf::Event event;
 	while (window.pollEvent(event)) {
-		if (event.type == sf::Event::Closed) {
+
+		switch (event.type) {
+		case sf::Event::Closed:
 			quit();
 			window.close();
-		} else if  (event.type == sf::Event::MouseWheelScrolled) {
+			break;
+
+		case sf::Event::MouseWheelScrolled:
 			gameView.zoom(1 - event.mouseWheelScroll.delta / 10);
 			gameTexture.setView(gameView);
+			break;
+
+		case sf::Event::MouseButtonPressed:
+			if (event.mouseButton.button == sf::Mouse::Button::Middle) {
+				isPanning = true;
+				lastPos = window.mapPixelToCoords(sf::Mouse::getPosition(window));
+			}
+			break;
+
+		case sf::Event::MouseButtonReleased :
+			if (event.mouseButton.button == sf::Mouse::Button::Middle) {
+				isPanning = false;
+			
+			}
+			break;
+
+		case sf::Event::MouseMoved:
+			if (isPanning) {
+				const sf::Vector2f currentPos = window.mapPixelToCoords(sf::Mouse::getPosition(window));
+				const sf::Vector2f deltaPos = lastPos - currentPos;
+				gameView.move(deltaPos * (gameView.getSize().x / (gameTexture.getSize().x)));
+				gameTexture.setView(gameView);
+				std::cout << deltaPos.x << "  " << deltaPos.y << std::endl;
+				lastPos = window.mapPixelToCoords(sf::Mouse::getPosition(window));
+			}
+			break;
 		}
 	}
 }

@@ -30,3 +30,7 @@ void ObjectManager::draw() {
 void ObjectManager::addObject(double xP, double yP, double m, double r) {
 	objects.push_back(Object(texture, xP, yP, m, r));
 }
+
+void ObjectManager::addObject(Object& obj) {
+	objects.push_back(obj);
+}

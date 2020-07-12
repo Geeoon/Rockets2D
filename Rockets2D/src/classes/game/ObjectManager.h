@@ -9,6 +9,7 @@ public:
 	void update();
 	void draw();
 	void addObject(double xP, double yP, double m, double r);
+	void addObject(Object& obj);
 private:
 	std::vector<Object> objects;
 	sf::RenderTexture* texture;

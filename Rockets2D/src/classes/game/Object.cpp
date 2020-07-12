@@ -7,7 +7,7 @@ Object::Object(sf::RenderTexture* t, long double xP, long double yP, long double
 	radius = r;
 	shape.setRadius(radius);
 	borderColor = sf::Color(0, 255, 65);
-	innerColor = sf::Color(0, 0, 0, 255);
+	innerColor = sf::Color(0, 0, 255, 255);
 	shape.setFillColor(innerColor);
 	shape.setOutlineColor(borderColor);
 	shape.setOutlineThickness(3);
