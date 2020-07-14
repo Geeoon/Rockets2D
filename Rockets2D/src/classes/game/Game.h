@@ -1,6 +1,7 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include <math.h>
+#include "Player.h"
 #include "ObjectManager.h"
 
 class Game
@@ -21,5 +22,6 @@ private:
 	sf::RenderTexture* texture = nullptr;
 	sf::RenderTexture* fbTexture = nullptr;
 	std::unique_ptr<ObjectManager> objMan;
+	std::unique_ptr<Player> player;
 };
 

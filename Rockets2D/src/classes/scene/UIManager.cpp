@@ -1,7 +1,7 @@
 #include "UIManager.h"
 
 UIManager::UIManager() {
-	videoSettings.antialiasingLevel = 0;;
+	videoSettings.antialiasingLevel = 8;
 	window.create(sf::VideoMode(800, 800), "Rockets2D", sf::Style::Close, videoSettings);
 	window.setFramerateLimit(300);
 	freeBodyTexture.create(150, 150);
@@ -117,7 +117,6 @@ void UIManager::pollEvent() {
 		case sf::Event::MouseButtonReleased :
 			if (event.mouseButton.button == sf::Mouse::Button::Middle) {
 				isPanning = false;
-			
 			}
 			break;
 

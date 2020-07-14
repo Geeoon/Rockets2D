@@ -8,6 +8,7 @@ Object::Object(sf::RenderTexture* t, long double xP, long double yP, long double
 	shape.setRadius(radius);
 	borderColor = sf::Color(0, 255, 65);
 	innerColor = sf::Color(0, 0, 255, 0);
+	shape.setPointCount(500);
 	shape.setFillColor(innerColor);
 	shape.setOutlineColor(borderColor);
 	shape.setOutlineThickness(3);
@@ -18,6 +19,10 @@ Object::Object(sf::RenderTexture* t, long double xP, long double yP, long double
 
 void Object::applyForce(Vector2 v) {
 	body.addForce(v);
+}
+
+void Object::applyTorque() {
+
 }
 
 void Object::update() {
@@ -31,7 +36,8 @@ void Object::update() {
 
 void Object::draw() {
 	shape.setPosition(position.getX(), -position.getY());
-	shape.setOutlineThickness(3 * texture->getView().getSize().x / texture->getSize().x);
+	shape.setOutlineThickness((3 * texture->getView().getSize().x / texture->getSize().x < 1) ? 1 : (3 * texture->getView().getSize().x / texture->getSize().x));
+	shape.setRotation(orientation);
 	texture->draw(shape);
 }
 
