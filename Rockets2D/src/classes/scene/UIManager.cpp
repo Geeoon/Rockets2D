@@ -37,7 +37,7 @@ UIManager::UIManager() {
 	mainMenu->addPage(); //controls page 2
 	mainMenu->addUIString(2, "Rockets2D", uiTexture.getSize().x / 2, 25, 30, UIString::UIString_alignment::center);
 	mainMenu->addUIString(2, "Controls", uiTexture.getSize().x / 2, 60, 20, UIString::UIString_alignment::center);
-	mainMenu->addUIString(2, "No controls implimented yet.", 25, 100, 15);
+	mainMenu->addUIString(2, "Scroll wheel up: Zoom In\nScroll whell down: Zoom Out\nMiddle Mouse Button: Pan\nDirectional Keys: Move Screen", 25, 100, 15);
 	mainMenu->addButton(2, "<- Back", 25, 25, 20, [&] {mainMenu->setActivePage(0); });
 	mainMenu->setActive(true);
 
@@ -56,6 +56,7 @@ UIManager::UIManager() {
 	gameUI->addButton(1, "Back to Main Menu", 50, 250, 20, [&] {quitGame(); });
 	gameUI->addButton(1, "Quit", 50, 300, 20, [&] {quit(); });
 	gameUI->setActive(false);
+	clock.restart();
 }
 
 void UIManager::setGame(std::shared_ptr<Game> g) {
@@ -63,9 +64,11 @@ void UIManager::setGame(std::shared_ptr<Game> g) {
 }
 
 void UIManager::update() {
+	clock.restart();
 	window.clear(sf::Color::Black);
 	updateUI();
 	pollEvent();
+	manageControls();
 	game->draw(); //draw onto the renderTexture
 	window.draw(sf::Sprite(gameTexture.getTexture())); //first the game,
 
@@ -131,6 +134,27 @@ void UIManager::pollEvent() {
 			break;
 		}
 	}
+}
+
+void UIManager::manageControls() {
+	sf::Vector2f translationVector(0, 0);
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
+		translationVector += sf::Vector2f(moveSpeed, 0);
+	}
+
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
+		translationVector += sf::Vector2f(-moveSpeed, 0);
+	}
+
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
+		translationVector += sf::Vector2f(0, -moveSpeed);
+	}
+
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) {
+		translationVector += sf::Vector2f(0, moveSpeed);
+	}
+	gameView.move(translationVector * (gameView.getSize().x / (gameTexture.getSize().x)) * clock.getElapsedTime().asSeconds());
+	gameTexture.setView(gameView);
 }
 
 void UIManager::play() {

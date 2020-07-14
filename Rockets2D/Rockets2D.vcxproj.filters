@@ -54,6 +54,9 @@
     <ClCompile Include="src\classes\game\Player.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\classes\game\SpaceObject.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\classes\scene\UIManager.h">
@@ -90,6 +93,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\classes\game\Player.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\classes\game\SpaceObject.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

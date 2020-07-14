@@ -15,6 +15,8 @@ public:
 	bool isOpen();
 	void setGame(std::shared_ptr<Game> g);
 private:
+	const double moveSpeed = 5000;
+	sf::Clock clock;
 	bool isPanning = false;
 	std::shared_ptr<Game> game;
 	sf::Vector2f lastPos;
@@ -35,6 +37,7 @@ private:
 	sf::View gameView;
 	void updateUI();
 	void pollEvent();
+	void manageControls();
 	void play();
 	void controls();
 	void credits();

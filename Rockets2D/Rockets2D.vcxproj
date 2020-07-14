@@ -144,6 +144,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\classes\game\SpaceObject.cpp" />
     <ClCompile Include="src\classes\game\Player.cpp" />
     <ClCompile Include="src\classes\game\FreeBody.cpp" />
     <ClCompile Include="src\classes\game\Game.cpp" />
@@ -159,6 +160,7 @@
     <ClCompile Include="src\classes\game\Vector2.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\classes\game\SpaceObject.h" />
     <ClInclude Include="src\classes\game\Player.h" />
     <ClInclude Include="src\classes\game\FreeBody.h" />
     <ClInclude Include="src\classes\game\Game.h" />
