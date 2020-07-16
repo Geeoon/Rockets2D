@@ -31,7 +31,6 @@ void ObjectManager::addObject(std::shared_ptr<Object> obj) {
 
 void ObjectManager::calcNApplyGravity(std::shared_ptr<Object> obj1, std::shared_ptr<Object> obj2) {
 	Vector2 resultantForce21 = Vector2::constructFromPolar(-G * ((obj1->getMass() * obj2->getMass()) / powl((obj2->getPosition() - obj1->getPosition()).getMagnitude(), 2)), (obj1->getPosition() - obj2->getPosition()).getAngle());
-	obj1->applyForce(resultantForce21 * 1000000);
+	obj1->applyForce(resultantForce21);
 	obj2->applyForce(-resultantForce21);
-	std::cout << resultantForce21.getMagnitude() << std::endl;
 }
