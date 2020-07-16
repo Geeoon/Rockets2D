@@ -14,6 +14,7 @@ public:
 	FreeBody& getFB();
 	Vector2 getPosition();
 	long double getOrientation();
+	long double getMass();
 private:
 	sf::Clock clock;
 	sf::Time elapsedTime;

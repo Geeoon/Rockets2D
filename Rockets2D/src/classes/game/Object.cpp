@@ -43,3 +43,7 @@ Vector2 Object::getPosition() {
 long double Object::getOrientation() {
 	return orientation;
 }
+
+long double Object::getMass() {
+	return mass;
+}

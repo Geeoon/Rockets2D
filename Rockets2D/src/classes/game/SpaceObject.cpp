@@ -1,6 +1,7 @@
 #include "SpaceObject.h"
 
 SpaceObject::SpaceObject(sf::RenderTexture* t, Vector2 pos, long double m, long double r) {
+	//texture, position, mass, radius
 	texture = t;
 	radius = r;
 	obj = std::make_unique<Object>(pos, m);
@@ -15,6 +16,7 @@ SpaceObject::SpaceObject(sf::RenderTexture* t, Vector2 pos, long double m, long 
 }
 
 SpaceObject::SpaceObject(sf::RenderTexture* t, Vector2 pos, long double m, long double r, Vector2 vel) {
+	//texture, position, mass, radius, velocity
 	texture = t;
 	obj = std::make_unique<Object>(pos, m, vel);
 	radius = r;

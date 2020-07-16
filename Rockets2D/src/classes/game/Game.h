@@ -20,6 +20,7 @@ private:
 	bool isPaused = false;
 	bool isQuit = false;
 	std::unique_ptr<SpaceObject> testObject;
+	std::unique_ptr<SpaceObject> testObject2;
 	std::shared_ptr<Object> focus;
 	sf::RenderTexture* texture = nullptr;
 	sf::RenderTexture* fbTexture = nullptr;

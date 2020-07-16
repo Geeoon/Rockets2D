@@ -57,6 +57,7 @@ UIManager::UIManager() {
 	gameUI->addButton(1, "Quit", 50, 300, 20, [&] {quit(); });
 	gameUI->setActive(false);
 	clock.restart();
+	gameView.setSize(2.07544 * pow(10, 8), 2.07544 * pow(10, 8));
 }
 
 void UIManager::setGame(std::shared_ptr<Game> g) {
