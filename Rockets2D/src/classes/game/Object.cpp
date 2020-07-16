@@ -27,8 +27,8 @@ void Object::update() {
 	elapsedTime = clock.getElapsedTime();
 	clock.restart();
 	acceleration = Vector2(body.getNet().getX() / mass, body.getNet().getY() / mass);
-	velocity += Vector2(acceleration.getX() * elapsedTime.asSeconds(), acceleration.getY() * elapsedTime.asSeconds());
-	position += Vector2(velocity.getX() * elapsedTime.asSeconds(), velocity.getY() * elapsedTime.asSeconds());
+	velocity += Vector2(acceleration.getX() * elapsedTime.asSeconds() * timescale, acceleration.getY() * elapsedTime.asSeconds() * timescale);
+	position += Vector2(velocity.getX() * elapsedTime.asSeconds() * timescale, velocity.getY() * elapsedTime.asSeconds() * timescale);
 	body = FreeBody();
 }
 

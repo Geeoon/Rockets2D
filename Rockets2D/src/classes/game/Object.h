@@ -22,6 +22,7 @@ private:
 	Vector2 position = Vector2(0, 0);
 	Vector2 velocity = Vector2(0, 0);
 	Vector2 acceleration = Vector2(0, 0);
+	const long double timescale = 10000;
 	long double angularVelocity = 0; //radians/second
 	long double mass = 0; //kg
 	long double orientation = 0; //radians
