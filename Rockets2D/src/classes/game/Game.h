@@ -1,6 +1,7 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include <math.h>
+#include "SpaceObject.h"
 #include "Player.h"
 #include "ObjectManager.h"
 
@@ -18,6 +19,7 @@ private:
 	bool hasStarted = false;
 	bool isPaused = false;
 	bool isQuit = false;
+	std::unique_ptr<SpaceObject> testObject;
 	std::shared_ptr<Object> focus;
 	sf::RenderTexture* texture = nullptr;
 	sf::RenderTexture* fbTexture = nullptr;

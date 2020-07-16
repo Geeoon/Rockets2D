@@ -9,8 +9,8 @@ UIManager::UIManager() {
 		//check for if there is an error creating the gameTexture or the uiTexture
 	}
 	gameView = gameTexture.getView();
-	gameView.setCenter(gameTexture.getSize().x / 2, gameTexture.getSize().y / 2);
-	gameView.move(-((signed)gameTexture.getSize().x / 2), -((signed)gameTexture.getSize().y / 2));
+	gameView.setCenter((float)gameTexture.getSize().x / 2, (float)gameTexture.getSize().y / 2);
+	gameView.move(-((float)gameTexture.getSize().x / 2), -((float)gameTexture.getSize().y / 2));
 	gameTexture.setView(gameView);
 	font.loadFromFile("fonts/SourceCodePro.ttf");
 	hoverB.loadFromFile("sounds/ui/hover.wav");
@@ -139,19 +139,19 @@ void UIManager::pollEvent() {
 void UIManager::manageControls() {
 	sf::Vector2f translationVector(0, 0);
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
-		translationVector += sf::Vector2f(moveSpeed, 0);
+		translationVector += sf::Vector2f((float)moveSpeed, 0);
 	}
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
-		translationVector += sf::Vector2f(-moveSpeed, 0);
+		translationVector += sf::Vector2f(-(float)moveSpeed, 0);
 	}
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
-		translationVector += sf::Vector2f(0, -moveSpeed);
+		translationVector += sf::Vector2f(0, -(float)moveSpeed);
 	}
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) {
-		translationVector += sf::Vector2f(0, moveSpeed);
+		translationVector += sf::Vector2f(0, (float)moveSpeed);
 	}
 	gameView.move(translationVector * (gameView.getSize().x / (gameTexture.getSize().x)) * clock.getElapsedTime().asSeconds());
 	gameTexture.setView(gameView);

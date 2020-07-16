@@ -1,18 +1,16 @@
 #include "Object.h"
 
-Object::Object(sf::RenderTexture* t, long double xP, long double yP, long double m, long double r) {
-	texture = t;
-	position = Vector2(xP, yP);
+Object::Object(Vector2 pos, long double m) {
+	position = pos;
 	mass = m;
-	radius = r;
-	shape.setRadius(radius);
-	borderColor = sf::Color(0, 255, 65);
-	innerColor = sf::Color(0, 0, 255, 0);
-	shape.setPointCount(500);
-	shape.setFillColor(innerColor);
-	shape.setOutlineColor(borderColor);
-	shape.setOutlineThickness(3);
-	shape.setOrigin(shape.getLocalBounds().width / 2, shape.getLocalBounds().height / 2);
+	clock.restart();
+	elapsedTime = clock.getElapsedTime();
+}
+
+Object::Object(Vector2 pos, long double m, Vector2 vel) {
+	position = pos;
+	mass = m;
+	velocity = vel;
 	clock.restart();
 	elapsedTime = clock.getElapsedTime();
 }
@@ -34,13 +32,14 @@ void Object::update() {
 	body = FreeBody();
 }
 
-void Object::draw() {
-	shape.setPosition(position.getX(), -position.getY());
-	shape.setOutlineThickness((3 * texture->getView().getSize().x / texture->getSize().x < 1) ? 1 : (3 * texture->getView().getSize().x / texture->getSize().x));
-	shape.setRotation(orientation);
-	texture->draw(shape);
-}
-
 FreeBody& Object::getFB() {
 	return body;
+}
+
+Vector2 Object::getPosition() {
+	return position;
+}
+
+long double Object::getOrientation() {
+	return orientation;
 }

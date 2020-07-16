@@ -3,7 +3,8 @@
 Game::Game(sf::RenderTexture* t) {
 	texture = t;
 	objMan = std::make_unique<ObjectManager>(t);
-	objMan->addObject(0, 0, 5.973 * pow(10, 24), 6.371 * pow(10, 7));
+	testObject = std::make_unique<SpaceObject>(texture, Vector2(0, 0), 5.973 * pow(10, 24), 6.371 * pow(10, 7));
+	objMan->addObject(testObject->getObject());
 	player = std::make_unique<Player>(t);
 }
 
@@ -25,6 +26,7 @@ void Game::update() {
 		if (hasStarted && !isPaused) {
 			player->update();
 			objMan->update();
+			testObject->update();
 		}
 	}
 }
@@ -37,7 +39,7 @@ void Game::draw() {
 	if (hasStarted) {
 		if (!isPaused) {
 			texture->clear(sf::Color::Transparent);
-			objMan->draw();
+			testObject->draw();
 			texture->display();
 			player->draw();
 		}

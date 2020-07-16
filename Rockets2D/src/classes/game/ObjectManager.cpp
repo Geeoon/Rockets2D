@@ -16,21 +16,19 @@ void ObjectManager::update() {
 	*/
 
 	//updating
-	for (Object& obj : objects) {
-		obj.update();
+	for (std::shared_ptr<Object> obj : objects) {
+		obj->update();
 	}
 }
 
-void ObjectManager::draw() {
-	for (Object& obj : objects) {
-		obj.draw();
-	}
+void ObjectManager::addObject(Vector2 pos, double m) {
+	objects.push_back(std::make_shared<Object>(pos, m));
 }
 
-void ObjectManager::addObject(double xP, double yP, double m, double r) {
-	objects.push_back(Object(texture, xP, yP, m, r));
+void ObjectManager::addObject(Vector2 pos, double m, Vector2 vel) {
+	objects.push_back(std::make_shared<Object>(pos, m, vel));
 }
 
-void ObjectManager::addObject(Object& obj) {
+void ObjectManager::addObject(std::shared_ptr<Object> obj) {
 	objects.push_back(obj);
 }

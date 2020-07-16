@@ -7,11 +7,11 @@ class ObjectManager
 public:
 	ObjectManager(sf::RenderTexture* t);
 	void update();
-	void draw();
-	void addObject(double xP, double yP, double m, double r);
-	void addObject(Object& obj);
+	void addObject(Vector2 pos, double m);
+	void addObject(Vector2 pos, double m, Vector2 vel);
+	void addObject(std::shared_ptr<Object> obj);
 private:
-	std::vector<Object> objects;
+	std::vector<std::shared_ptr<Object>> objects;
 	sf::RenderTexture* texture;
 };
 
