@@ -57,6 +57,30 @@
     <ClCompile Include="src\classes\game\SpaceObject.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\classes\game\Rocket.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\classes\game\rocketParts\Engine.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\classes\game\rocketParts\FuelTank.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\classes\game\rocketParts\OxidizerTank.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\classes\game\rocketParts\ControlModule.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\classes\game\rocketParts\Coupler.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\classes\game\rocketParts\NoseCone.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\classes\game\rocketParts\Parachute.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\classes\scene\UIManager.h">
@@ -96,6 +120,30 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\classes\game\SpaceObject.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\classes\game\Rocket.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\classes\game\rocketParts\Engine.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\classes\game\rocketParts\FuelTank.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\classes\game\rocketParts\OxidizerTank.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\classes\game\rocketParts\ControlModule.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\classes\game\rocketParts\Coupler.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\classes\game\rocketParts\NoseCone.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\classes\game\rocketParts\Parachute.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

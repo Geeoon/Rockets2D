@@ -144,6 +144,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\classes\game\rocketParts\Parachute.cpp" />
+    <ClCompile Include="src\classes\game\rocketParts\NoseCone.cpp" />
+    <ClCompile Include="src\classes\game\rocketParts\Coupler.cpp" />
+    <ClCompile Include="src\classes\game\rocketParts\ControlModule.cpp" />
+    <ClCompile Include="src\classes\game\rocketParts\OxidizerTank.cpp" />
+    <ClCompile Include="src\classes\game\rocketParts\FuelTank.cpp" />
+    <ClCompile Include="src\classes\game\rocketParts\Engine.cpp" />
+    <ClCompile Include="src\classes\game\Rocket.cpp" />
     <ClCompile Include="src\classes\game\SpaceObject.cpp" />
     <ClCompile Include="src\classes\game\Player.cpp" />
     <ClCompile Include="src\classes\game\FreeBody.cpp" />
@@ -160,6 +168,14 @@
     <ClCompile Include="src\classes\game\Vector2.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\classes\game\rocketParts\Parachute.h" />
+    <ClInclude Include="src\classes\game\rocketParts\NoseCone.h" />
+    <ClInclude Include="src\classes\game\rocketParts\Coupler.h" />
+    <ClInclude Include="src\classes\game\rocketParts\ControlModule.h" />
+    <ClInclude Include="src\classes\game\rocketParts\OxidizerTank.h" />
+    <ClInclude Include="src\classes\game\rocketParts\FuelTank.h" />
+    <ClInclude Include="src\classes\game\rocketParts\Engine.h" />
+    <ClInclude Include="src\classes\game\Rocket.h" />
     <ClInclude Include="src\classes\game\SpaceObject.h" />
     <ClInclude Include="src\classes\game\Player.h" />
     <ClInclude Include="src\classes\game\FreeBody.h" />

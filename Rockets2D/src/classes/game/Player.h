@@ -11,4 +11,5 @@ public:
 private:
 	void manageControls();
 	sf::RenderTexture* texture = nullptr;
+	sf::RectangleShape playerRocket;
 };

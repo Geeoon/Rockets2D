@@ -14,6 +14,7 @@ public:
 
 private:
 	long double radius;
+	bool collidable = true;
 	std::shared_ptr<Object> obj;
 	sf::RenderTexture* texture;
 	sf::CircleShape shape;
