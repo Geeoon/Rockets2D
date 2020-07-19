@@ -24,7 +24,7 @@ void Object::applyForce(Vector2 v) {
 }
 
 void Object::applyForceRel(Vector2 v) {
-	body.addForce(Vector2::constructFromPolar(v.getMagnitude(), v.getAngle() + orientation));
+	body.addForce(Vector2::constructFromPolar(v.getMagnitude(), v.getAngle() - orientation));
 }
 
 void Object::applyTorque(long double t) {
