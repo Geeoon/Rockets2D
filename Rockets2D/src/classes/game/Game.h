@@ -21,10 +21,10 @@ private:
 	bool isQuit = false;
 	std::unique_ptr<SpaceObject> testObject;
 	std::unique_ptr<SpaceObject> testObject2;
+	std::unique_ptr<Player> player;
 	std::shared_ptr<Object> focus;
 	sf::RenderTexture* texture = nullptr;
 	sf::RenderTexture* fbTexture = nullptr;
 	std::unique_ptr<ObjectManager> objMan;
-	std::unique_ptr<Player> player;
 };
 

@@ -34,9 +34,9 @@ std::shared_ptr<Object> SpaceObject::getObject() {
 	return obj;
 }
 void SpaceObject::draw() {
-	shape.setPosition(obj->getPosition().getX(), -obj->getPosition().getY());
+	shape.setPosition((float)obj->getPosition().getX(), -(float)obj->getPosition().getY());
 	shape.setOutlineThickness((3 * texture->getView().getSize().x / texture->getSize().x < 1) ? 1 : (3 * texture->getView().getSize().x / texture->getSize().x));
-	shape.setRotation(obj->getOrientation());
+	shape.setRotation((float)obj->getOrientation());
 	texture->draw(shape);
 }
 

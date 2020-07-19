@@ -44,8 +44,8 @@ void Game::draw() {
 			texture->clear(sf::Color::Transparent);
 			testObject->draw();
 			testObject2->draw();
-			texture->display();
 			player->draw();
+			texture->display();
 		}
 	} else {
 		texture->clear();
