@@ -144,6 +144,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\classes\game\ObjectBasic.cpp" />
+    <ClCompile Include="src\classes\game\Rocket\RocketPartsManager.cpp" />
+    <ClCompile Include="src\classes\game\Rocket\RocketParts\RocketPart.cpp" />
     <ClCompile Include="src\classes\game\Rocket\RocketParts\Parachutes\Parachute.cpp" />
     <ClCompile Include="src\classes\game\Rocket\RocketParts\NoseCones\NoseCone.cpp" />
     <ClCompile Include="src\classes\game\Rocket\RocketParts\Couplers\Coupler.cpp" />
@@ -168,6 +171,9 @@
     <ClCompile Include="src\classes\game\Vector2.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\classes\game\ObjectBasic.h" />
+    <ClInclude Include="src\classes\game\Rocket\RocketPartsManager.h" />
+    <ClInclude Include="src\classes\game\Rocket\RocketParts\RocketPart.h" />
     <ClInclude Include="src\classes\game\Rocket\RocketParts\Parachutes\Parachute.h" />
     <ClInclude Include="src\classes\game\Rocket\RocketParts\NoseCones\NoseCone.h" />
     <ClInclude Include="src\classes\game\Rocket\RocketParts\Couplers\Coupler.h" />

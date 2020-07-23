@@ -6,8 +6,8 @@
 class SpaceObject
 {
 public:
-	SpaceObject(sf::RenderTexture* t, Vector2 pos, long double m, long double r);
-	SpaceObject(sf::RenderTexture* t, Vector2 pos, long double m, long double r, Vector2 vel);
+	SpaceObject(sf::RenderTexture* t, const Vector2& pos, long double m, long double r);
+	SpaceObject(sf::RenderTexture* t, const Vector2& pos, long double m, long double r, const Vector2& vel);
 	std::shared_ptr<Object> getObject();
 	void draw();
 	void update();

@@ -17,11 +17,11 @@ void ObjectManager::update() {
 	}
 }
 
-void ObjectManager::addObject(Vector2 pos, double m) {
+void ObjectManager::addObject(const Vector2& pos, double m) {
 	objects.push_back(std::make_shared<Object>(pos, m));
 }
 
-void ObjectManager::addObject(Vector2 pos, double m, Vector2 vel) {
+void ObjectManager::addObject(const Vector2& pos, double m, const Vector2& vel) {
 	objects.push_back(std::make_shared<Object>(pos, m, vel));
 }
 
