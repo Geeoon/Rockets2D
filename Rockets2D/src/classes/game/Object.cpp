@@ -23,7 +23,7 @@ void Object::applyForce(const Vector2& v) {
 	body.addForce(v);
 }
 
-void Object::applyForceRel(const Vector2& v) {
+void Object::applyForceRel(Vector2 v) {
 	body.addForce(Vector2::constructFromPolar(v.getMagnitude(), v.getAngle() - orientation));
 }
 

@@ -4,10 +4,6 @@ RocketPart::RocketPart(sf::RenderTexture* t, const Vector2& pos, long double m) 
 	texture = t;
 }
 
-void RocketPart::setPosition(const Vector2& pos) {
-	position = pos;
-}
-
-void RocketPart::setOrientation(long double ori) {
-	orientation = ori;
+void RocketPart::setThrottle(long double t) {
+	throttle = t;
 }

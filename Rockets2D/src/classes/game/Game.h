@@ -4,6 +4,7 @@
 #include "SpaceObject.h"
 #include "Player.h"
 #include "ObjectManager.h"
+#include "Rocket/RocketParts/Engines/Engine.h"
 
 class Game
 {
@@ -21,6 +22,7 @@ private:
 	bool isQuit = false;
 	std::unique_ptr<SpaceObject> testObject;
 	std::unique_ptr<SpaceObject> testObject2;
+	std::unique_ptr<Engine> testEngine;
 	std::unique_ptr<Player> player;
 	std::shared_ptr<Object> focus;
 	sf::RenderTexture* texture = nullptr;

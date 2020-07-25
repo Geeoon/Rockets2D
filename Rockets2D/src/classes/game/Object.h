@@ -11,7 +11,7 @@ public:
 	Object(const Vector2& pos, long double m, const Vector2& vel);
 	void setMomentofInertia(long double moment);
 	void applyForce(const Vector2& v);
-	void applyForceRel(const Vector2& v); //applies force relative to the object's orientation
+	void applyForceRel(Vector2 v); //applies force relative to the object's orientation
 	void applyTorque(long double t); //facing back (same direction as eyes are facing when looking at a monitor
 	void update();
 	FreeBody& getFB();
