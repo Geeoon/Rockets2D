@@ -31,7 +31,7 @@ void Game::update() {
 			objMan->update();
 			testObject->update();
 			testObject2->update();
-
+			std::cout << testEngine->update().getY() << std::endl;
 		}
 	}
 }
@@ -40,14 +40,14 @@ void Game::setPause(bool p) {
 	isPaused = p;
 }
 
-void Game::draw() {
+void Game::draw() { //this is called from another thread; don't rely on it for syncronous actions.
 	if (hasStarted) {
 		if (!isPaused) {
 			texture->clear(sf::Color::Transparent);
 			testObject->draw();
 			testObject2->draw();
-			testEngine->draw();
 			player->draw();
+			testEngine->draw();
 			texture->display();
 		}
 	} else {

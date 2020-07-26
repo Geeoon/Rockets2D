@@ -12,6 +12,7 @@ Player::Player(sf::RenderTexture* t) {
 	sprite.setOutlineColor(borderColor);
 	sprite.setOutlineThickness(3);
 	sprite.setOrigin(sprite.getLocalBounds().width / 2, sprite.getLocalBounds().height / 2);
+	sprite.setPosition(sf::Vector2f(0, 0));
 }
 
 void Player::update() {

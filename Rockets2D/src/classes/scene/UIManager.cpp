@@ -57,6 +57,7 @@ UIManager::UIManager() {
 	gameUI->addButton(1, "Quit", 50, 300, 20, [&] {quit(); });
 	gameUI->setActive(false);
 	clock.restart();
+	gameView.zoom(1);
 	//gameView.setSize(2.07544 * pow(10, 8), 2.07544 * pow(10, 8));
 }
 
