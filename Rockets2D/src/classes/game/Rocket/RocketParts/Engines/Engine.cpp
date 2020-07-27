@@ -4,7 +4,7 @@ Engine::Engine(sf::RenderTexture* t, const Vector2& pos, long double m) : Rocket
 	mass = 8390;//dry
 	thrust = 1;
 	throttle = 100;
-
+	gimbalAmount = 0.5;
 	nozzle.setPointCount(3);
 	nozzle.setPoint(0, sf::Vector2f(0, 0));
 	nozzle.setPoint(1, sf::Vector2f(-1.859, 4.229));
@@ -14,6 +14,16 @@ Engine::Engine(sf::RenderTexture* t, const Vector2& pos, long double m) : Rocket
 	nozzle.setOutlineThickness(0.3);
 	nozzle.setOrigin(sf::Vector2f(0, -0.97));
 	nozzle.setPosition(sf::Vector2f(0, 0));
+
+	flame.setPointCount(3);
+	flame.setPoint(0, sf::Vector2f(-1.859, 0));
+	flame.setPoint(1, sf::Vector2f(1.859, 0));
+	flame.setPoint(2, sf::Vector2f(0, 0));
+	flame.setFillColor(fillColor);
+	flame.setOutlineColor(borderColor);
+	flame.setOutlineThickness(0.3);
+	flame.setOrigin(sf::Vector2f(0, -5.5));
+	flame.setPosition(sf::Vector2f(0, 0));
 
 	throat.setFillColor(fillColor);
 	throat.setOutlineColor(borderColor);
@@ -36,12 +46,18 @@ Vector2 Engine::update() {
 }
 
 void Engine::draw() {
-	orientation += 0.05;
-	nozzle.setRotation(orientation + gimbalAmount);
-	throat.setRotation(orientation);
-	base.setRotation(orientation);
+	orientation -= 0.005;
+	flame.setPoint(2, sf::Vector2f(0, throttle / 5));
+	nozzle.setRotation((float)((orientation + gimbalAmount) * 180 / M_PI));
+	throat.setRotation((float)((orientation + gimbalAmount) * 180 / M_PI));
+	base.setRotation((float)(orientation * 180 / M_PI));
+	flame.setRotation((float)((orientation + gimbalAmount) * 180 / M_PI));
+	nozzle.setPosition(sf::Vector2f((float)(position.getX() + relativePosition.getX()), (float)(position.getY()+ relativePosition.getY())));
+	throat.setPosition(sf::Vector2f((float)(position.getX() + relativePosition.getX()), (float)(position.getY()+ relativePosition.getY())));
+	base.setPosition(sf::Vector2f((float)(position.getX() + relativePosition.getX()), (float)(position.getY()+ relativePosition.getY())));
+	flame.setPosition(sf::Vector2f((float)(position.getX() + relativePosition.getX()), (float)(position.getY()+ relativePosition.getY())));
 	texture->draw(nozzle);
 	texture->draw(throat);
 	texture->draw(base);
-	
+	texture->draw(flame);
 }

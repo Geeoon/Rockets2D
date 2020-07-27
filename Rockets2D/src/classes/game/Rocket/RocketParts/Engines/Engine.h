@@ -12,6 +12,7 @@ protected:
 	long double thrust; //thrust coefficient in vacuum
 	long double gimbalAmount = 0;
 	sf::ConvexShape nozzle;
+	sf::ConvexShape flame;
 	sf::RectangleShape throat;
 	sf::RectangleShape base;
 	sf::Color fillColor = sf::Color(0, 0, 0, 255);

@@ -2,9 +2,10 @@
 #include <iostream>
 #include <vector>
 #include "../Vector2.h"
+#include "../ObjectBasic.h"
 #include "RocketParts/RocketPart.h"
 
-class RocketPartsManager
+class RocketPartsManager : public ObjectBasic
 {
 public:
 	RocketPartsManager();

@@ -9,6 +9,7 @@ Game::Game(sf::RenderTexture* t) {
 	objMan->addObject(testObject->getObject());
 	objMan->addObject(testObject2->getObject());
 	player = std::make_unique<Player>(t);
+	rktMan = std::make_unique<RocketPartsManager>();
 }
 
 void Game::start() {
@@ -27,11 +28,10 @@ void Game::quit() {
 void Game::update() {
 	while (!isQuit) {
 		if (hasStarted && !isPaused) {
-			player->update();
+			//player->update();
 			objMan->update();
 			testObject->update();
 			testObject2->update();
-			std::cout << testEngine->update().getY() << std::endl;
 		}
 	}
 }
@@ -46,7 +46,7 @@ void Game::draw() { //this is called from another thread; don't rely on it for s
 			texture->clear(sf::Color::Transparent);
 			testObject->draw();
 			testObject2->draw();
-			player->draw();
+			//player->draw();
 			testEngine->draw();
 			texture->display();
 		}
