@@ -1,6 +1,6 @@
 #include "RocketPart.h"
 
-RocketPart::RocketPart(sf::RenderTexture* t, const Vector2& pos, long double m) : ObjectBasic(pos, m){
+RocketPart::RocketPart(sf::RenderTexture* t, const Vector2& pos) : ObjectBasic(pos, 0){
 	texture = t;
 }
 
@@ -21,5 +21,5 @@ Vector2 RocketPart::update() {
 }
 
 void RocketPart::draw() {
-
+	std::cout << "drawing generic part";
 }

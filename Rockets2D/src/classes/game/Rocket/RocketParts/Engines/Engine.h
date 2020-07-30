@@ -1,12 +1,13 @@
 #pragma once
 #include "../RocketPart.h"
+#include <iostream>
 
 class Engine : public RocketPart
 {
 public:
-	Engine(sf::RenderTexture* t, const Vector2& pos, long double m);
-	virtual Vector2 update();
-	virtual void draw();
+	Engine(sf::RenderTexture* t, const Vector2& pos);
+	Vector2 update();
+	void draw();
 
 protected:
 	long double thrust; //thrust coefficient in vacuum

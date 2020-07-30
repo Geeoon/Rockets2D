@@ -11,9 +11,9 @@ public:
 	RocketPartsManager();
 	void update();
 	void draw();
-	void addPart(const RocketPart& part);
+	void addPart(std::shared_ptr<RocketPart> part);
 
 private:
-	std::vector<RocketPart> parts;
+	std::vector<std::shared_ptr<RocketPart>> parts;
 };
 
