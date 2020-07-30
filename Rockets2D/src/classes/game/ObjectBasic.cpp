@@ -25,6 +25,6 @@ long double ObjectBasic::getMass() {
 	return mass;
 }
 
-const Vector2& ObjectBasic::getCenterOfMass() {
+Vector2 ObjectBasic::getCenterOfMass() {
 	return centerOfMass;
 }

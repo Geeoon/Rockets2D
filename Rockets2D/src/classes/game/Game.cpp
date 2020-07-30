@@ -9,7 +9,8 @@ Game::Game(sf::RenderTexture* t) {
 	objMan->addObject(testObject2->getObject());
 	player = std::make_unique<Player>(t);
 	rktMan = std::make_unique<RocketPartsManager>();
-	rktMan->addPart(std::make_shared<Engine>(texture, Vector2(0, 0)));
+	rktMan->addPart(std::make_shared<Engine>(texture, Vector2(50, 0)));
+	rktMan->addPart(std::make_shared<Engine>(texture, Vector2(-50, 0)));
 }
 
 void Game::start() {

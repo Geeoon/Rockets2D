@@ -12,7 +12,7 @@ public:
 	Vector2 getPosition();
 	void setCenterOfMass(const Vector2& com);
 	long double getMass();
-	const Vector2& getCenterOfMass();
+	Vector2 getCenterOfMass();
 protected:
 	Vector2 position = Vector2(0, 0);
 	Vector2 centerOfMass = Vector2(0, 0);

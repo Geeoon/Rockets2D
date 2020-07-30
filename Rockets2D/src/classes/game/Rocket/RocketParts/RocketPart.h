@@ -11,6 +11,7 @@ public:
 	void setThrottle(long double t);
 	virtual void setRelativePosition(Vector2 rPos);
 	virtual void setRelativeOrientation(long double rOri);
+	Vector2 getRelativePosition();
 	virtual Vector2 update();
 	virtual void draw();
 

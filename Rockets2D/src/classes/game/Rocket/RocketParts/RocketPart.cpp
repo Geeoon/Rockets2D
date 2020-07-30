@@ -16,6 +16,10 @@ void RocketPart::setRelativeOrientation(long double rOri) {
 	relativeOrientation = rOri;
 }
 
+Vector2 RocketPart::getRelativePosition() {
+	return relativePosition;
+}
+
 Vector2 RocketPart::update() {
 	return Vector2(0, 0);
 }

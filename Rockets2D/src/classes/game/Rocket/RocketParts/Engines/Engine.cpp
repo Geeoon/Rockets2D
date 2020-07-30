@@ -1,10 +1,10 @@
 #include "Engine.h"
 //this base rocket is based on the F-1 Engine
-Engine::Engine(sf::RenderTexture* t, const Vector2& pos) : RocketPart(t, pos) {//1 pixel = 1 meter for reference
+Engine::Engine(sf::RenderTexture* t, const Vector2& pos) : RocketPart(t, Vector2(0, 0)) {//1 pixel = 1 meter for reference
 	name = "F-1 Engine";
 	description = "A classic engine used in the Saturn V rocket.";
 	mass = 8390;//dry mass AKA mass at 0 throttle.
-
+	relativePosition = pos;
 	thrust = 1;
 	throttle = 100;
 	nozzle.setPointCount(3);
