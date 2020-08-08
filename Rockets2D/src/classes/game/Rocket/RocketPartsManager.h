@@ -9,7 +9,7 @@ class RocketPartsManager : public ObjectBasic
 {
 public:
 	RocketPartsManager();
-	void update();
+	Vector2 update();
 	void draw();
 	void addPart(std::shared_ptr<RocketPart> part);
 

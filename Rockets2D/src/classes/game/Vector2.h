@@ -1,4 +1,5 @@
 #pragma once
+#include <SFML/Graphics.hpp>
 #include "math.h"
 
 class Vector2
@@ -21,6 +22,7 @@ public:
 	Vector2 operator*(const long double right) const;
 	Vector2 operator/(const long double right) const;
 	Vector2 operator-() const;
+	sf::Vector2f toSF2f();
 private:
 	long double x, y;
 };

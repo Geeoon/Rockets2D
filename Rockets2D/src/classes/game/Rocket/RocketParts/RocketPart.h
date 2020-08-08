@@ -8,7 +8,9 @@ class RocketPart : public ObjectBasic
 {
 public:
 	RocketPart(sf::RenderTexture* t, const Vector2& pos);
+	RocketPart(sf::RenderTexture* t, const Vector2& pos, long double rOri);
 	void setThrottle(long double t);
+	void setOrientation(long double ori);
 	virtual void setRelativePosition(Vector2 rPos);
 	virtual void setRelativeOrientation(long double rOri);
 	Vector2 getRelativePosition();
@@ -22,5 +24,6 @@ protected:
 	long double throttle = 0;
 	Vector2 relativePosition = Vector2(0, 0);
 	long double relativeOrientation = 0;
+	Vector2 outputPosition = Vector2(0, 0);
 };
 

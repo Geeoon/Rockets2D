@@ -7,7 +7,7 @@ class ObjectBasic
 {
 public:
 	ObjectBasic(const Vector2& pos, long double m);
-	void setOrientation(long double ori);
+	virtual void setOrientation(long double ori);
 	void setPosition(const Vector2& pos);
 	Vector2 getPosition();
 	void setCenterOfMass(const Vector2& com);

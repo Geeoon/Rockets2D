@@ -62,3 +62,7 @@ Vector2 Vector2::operator/(const long double right) const {
 Vector2 Vector2::operator-() const {
 	return Vector2(-x, -y);
 }
+
+sf::Vector2f Vector2::toSF2f() {
+	return sf::Vector2f(x, y);
+}

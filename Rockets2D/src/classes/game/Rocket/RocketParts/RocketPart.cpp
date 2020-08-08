@@ -1,11 +1,20 @@
 #include "RocketPart.h"
 
-RocketPart::RocketPart(sf::RenderTexture* t, const Vector2& pos) : ObjectBasic(pos, 0){
+RocketPart::RocketPart(sf::RenderTexture* t, const Vector2& pos) : ObjectBasic(pos, 0) {
 	texture = t;
+}
+
+RocketPart::RocketPart(sf::RenderTexture* t, const Vector2& pos, long double rOri) : ObjectBasic(pos, 0) {
+	texture = t;
+	relativeOrientation = rOri;
 }
 
 void RocketPart::setThrottle(long double t) {
 	throttle = t;
+}
+
+void RocketPart::setOrientation(long double ori) {
+	orientation = ori;
 }
 
 void RocketPart::setRelativePosition(Vector2 rPos) {
