@@ -13,18 +13,20 @@ public:
 	void applyForce(const Vector2& v);
 	void applyForceRel(Vector2 v); //applies force relative to the object's orientation
 	void applyTorque(long double t); //facing back (same direction as eyes are facing when looking at a monitor
-	void update();
+	virtual void update();
 	FreeBody& getFB();
 	Vector2 getPosition();
 	long double getOrientation();
 	long double getMass();
-private:
+
+protected:
 	sf::Clock clock;
 	sf::Time elapsedTime;
 	FreeBody body = FreeBody();
 	Vector2 position = Vector2(0, 0);
 	Vector2 velocity = Vector2(0, 0);
 	Vector2 acceleration = Vector2(0, 0);
+	Vector2 centerOfMass = Vector2(0, 0);
 	long double momentOfInertia = 0;
 	long double timescale = 1;
 	long double angularVelocity = 0; //radians/second

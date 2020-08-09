@@ -5,8 +5,7 @@ Engine::Engine(sf::RenderTexture* t, const Vector2& rPos) : RocketPart(t, Vector
 	description = "A classic engine used in the Saturn V rocket.";
 	mass = 8390;//dry mass AKA mass at 0 throttle.
 	relativePosition = rPos;
-	thrust = 1;
-	throttle = 100;
+	throttle = 0;
 	nozzle.setPointCount(3);
 	nozzle.setPoint(0, sf::Vector2f(0, 0));
 	nozzle.setPoint(1, sf::Vector2f(-1.859, 4.229));
@@ -49,8 +48,7 @@ Engine::Engine(sf::RenderTexture* t, const Vector2& rPos, long double rOri) : Ro
 	mass = 8390;//dry mass AKA mass at 0 throttle.
 	relativePosition = rPos;
 	relativeOrientation = rOri;
-	thrust = 1;
-	throttle = 100;
+	throttle = 0;
 	nozzle.setPointCount(3);
 	nozzle.setPoint(0, sf::Vector2f(0, 0));
 	nozzle.setPoint(1, sf::Vector2f(-1.859, 4.229));
@@ -97,7 +95,7 @@ void Engine::draw() {
 	throat.setRotation((float)((orientation + relativeOrientation + gimbalAmount) * 180 / M_PI));
 	base.setRotation((float)((orientation + relativeOrientation) * 180 / M_PI));
 	flame.setRotation((float)((orientation + relativeOrientation + gimbalAmount) * 180 / M_PI));
-	outputPosition = Vector2((float)(position.getX() + relativePosition.getX() * cosl(orientation) - relativePosition.getY() * sinl(orientation)), (float)(position.getY() + relativePosition.getX() * sinl(orientation) + relativePosition.getY() * cosl(orientation)));
+	outputPosition = Vector2((float)(position.getX() + relativePosition.getX() * cosl(orientation) - relativePosition.getY() * sinl(orientation)), -(float)(position.getY() + relativePosition.getX() * sinl(orientation) + relativePosition.getY() * cosl(orientation)));
 
 	nozzle.setPosition(outputPosition.toSF2f());
 	throat.setPosition(outputPosition.toSF2f());

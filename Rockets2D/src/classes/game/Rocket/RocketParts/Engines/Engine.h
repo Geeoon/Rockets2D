@@ -11,7 +11,7 @@ public:
 	virtual void draw();
 
 protected:
-	long double thrust; //thrust coefficient in vacuum
+	long double thrust = 1; //thrust coefficient in vacuum
 	long double gimbalAmount = 0;
 	sf::ConvexShape nozzle;
 	sf::ConvexShape flame;

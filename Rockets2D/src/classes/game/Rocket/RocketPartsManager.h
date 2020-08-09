@@ -1,6 +1,7 @@
 #pragma once
 #include <iostream>
 #include <vector>
+#include "../ForcePosition.h"
 #include "../Vector2.h"
 #include "../ObjectBasic.h"
 #include "RocketParts/RocketPart.h"
@@ -9,11 +10,16 @@ class RocketPartsManager : public ObjectBasic
 {
 public:
 	RocketPartsManager();
-	Vector2 update();
+	ForcePosition update();
+	void setRelativePosition(const Vector2& relPos);
+	Vector2 getRelativePosition();
 	void draw();
 	void addPart(std::shared_ptr<RocketPart> part);
+	void setThrottle(long double t);
 
 private:
+	long double throttle = 0;
 	std::vector<std::shared_ptr<RocketPart>> parts;
+	Vector2 relativePosition = Vector2(0, 0);
 };
 

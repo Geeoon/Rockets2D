@@ -6,6 +6,7 @@
 #include "ObjectManager.h"
 #include "Rocket/RocketPartsManager.h"
 #include "Rocket/RocketParts/Engines/Engine.h"
+#include "Rocket/Rocket.h"
 
 class Game
 {
@@ -26,6 +27,7 @@ private:
 	std::unique_ptr<Engine> testEngine;
 	std::unique_ptr<Player> player;
 	std::unique_ptr<RocketPartsManager> rktMan;
+	std::unique_ptr<Rocket> rocket;
 	std::shared_ptr<Object> focus;
 	sf::RenderTexture* texture = nullptr;
 	sf::RenderTexture* fbTexture = nullptr;

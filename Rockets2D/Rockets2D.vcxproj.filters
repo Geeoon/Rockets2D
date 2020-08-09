@@ -164,6 +164,9 @@
     <ClInclude Include="src\classes\game\ObjectBasic.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\classes\game\ForcePosition.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Font Include="fonts\SourceCodePro.ttf" />
