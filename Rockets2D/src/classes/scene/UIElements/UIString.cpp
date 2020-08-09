@@ -1,17 +1,33 @@
 #include "UIString.h"
 
-UIString::UIString(std::string v, int xP, int yP, sf::RenderTexture* t, sf::Font* f, int s) {
-	texture = t;
+UIString::UIString(sf::RenderTexture* t, sf::RenderWindow* w, int xP, int yP, std::string v, sf::Font* f, int s) : UIElement(t, w, xP, yP) {
 	value = v;
-	x = xP;
-	y = yP;
 	font = f;
 	size = s;
 	color = sf::Color(0, 255, 65);
 	reset();
 }
 
-void UIString::draw() {
+UIString::UIString(sf::RenderTexture* t, sf::RenderWindow* w, int xP, int yP, std::string v, sf::Font* f, int s, UIString_alignment a) : UIElement(t, w, xP, yP) {
+	value = v;
+	font = f;
+	size = s;
+	color = sf::Color(0, 255, 65);
+	setAlignment(a);
+	reset();
+}
+
+UIString::UIString(sf::RenderTexture* t, sf::RenderWindow* w, int xP, int yP, std::string v, sf::Font* f, int s, UIString_alignment a, UIString_alignment a2) : UIElement(t, w, xP, yP) {
+	value = v;
+	font = f;
+	size = s;
+	color = sf::Color(0, 255, 65);
+	setAlignment(a);
+	setAlignment(a2);
+	reset();
+}
+
+void UIString::update() {
 	texture->draw(text);
 }
 

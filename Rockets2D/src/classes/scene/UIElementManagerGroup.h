@@ -4,8 +4,8 @@
 #include <iostream>
 #include <vector>
 #include "UIElementManager.h"
-#include "Button.h"
-#include "UIString.h"
+#include "UIElements/Button.h"
+#include "UIElements/UIString.h"
 
 class UIElementManagerGroup
 {

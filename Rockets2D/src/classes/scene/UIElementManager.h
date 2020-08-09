@@ -3,8 +3,9 @@
 #include <SFML/Graphics.hpp>
 #include <vector>
 #include <functional>
-#include "UIString.h"
-#include "Button.h"
+#include "UIElements/UIElement.h"
+#include "UIElements/UIString.h"
+#include "UIElements/Button.h"
 
 class UIElementManager
 {
@@ -16,9 +17,9 @@ public:
 	void addUIString(std::string v, int xP, int yP, int s, UIString::UIString_alignment a);
 	void addUIString(std::string v, int xP, int yP, int s, UIString::UIString_alignment a, UIString::UIString_alignment a2);
 	void addButton(std::string v, int xP, int yP, int s, const std::function<void()>& m);
-	UIString& getLastString();
 private:
 	bool active = false;
+	std::vector<std::shared_ptr<UIElement>> elements;
 	std::vector<Button> buttons;
 	std::vector<UIString> strings;
 	sf::Font* font;

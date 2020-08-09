@@ -11,8 +11,8 @@ UIElementManager::UIElementManager(sf::RenderTexture* t, sf::RenderWindow* w, sf
 
 void UIElementManager::update() {
 	if (active) {
-		for (UIString& string : strings) {
-			string.draw();
+		for (std::shared_ptr<UIElement> element : elements) {
+			element->update();
 		}
 
 		for (Button& button : buttons) {
@@ -26,25 +26,17 @@ void UIElementManager::setActive(bool a) {
 }
 
 void UIElementManager::addUIString(std::string v, int xP, int yP, int s) {
-	strings.push_back(UIString(v, xP, yP, texture, font, s));
-	strings.back().setAlignment(UIString::UIString_alignment::left);
+	elements.push_back(std::make_shared<UIString>(texture, window, xP, yP, v, font, s, UIString::UIString_alignment::left));
 }
 
 void UIElementManager::addUIString(std::string v, int xP, int yP, int s, UIString::UIString_alignment a) {
-	strings.push_back(UIString(v, xP, yP, texture, font, s));
-	strings.back().setAlignment(a);
+	elements.push_back(std::make_shared<UIString>(texture, window, xP, yP, v, font, s, a));
 }
 
 void UIElementManager::addUIString(std::string v, int xP, int yP, int s, UIString::UIString_alignment a, UIString::UIString_alignment a2) {
-	strings.push_back(UIString(v, xP, yP, texture, font, s));
-	strings.back().setAlignment(a);
-	strings.back().setAlignment(a2);
+	elements.push_back(std::make_shared<UIString>(texture, window, xP, yP, v, font, s, a, a2));
 }
 
 void UIElementManager::addButton(std::string v, int xP, int yP, int s, const std::function<void()>& m) {
 	buttons.push_back(Button(texture, window, m, s, v, font, xP, yP, hover, click, unClick));
-}
-
-UIString& UIElementManager::getLastString() {
-	return strings.back();
 }

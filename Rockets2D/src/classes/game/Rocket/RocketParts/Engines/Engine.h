@@ -7,8 +7,8 @@ class Engine : public RocketPart
 public:
 	Engine(sf::RenderTexture* t, const Vector2& rPos);
 	Engine(sf::RenderTexture* t, const Vector2& rPos, long double rOri);
-	virtual Vector2 update();
-	virtual void draw();
+	virtual Vector2 update() override;
+	virtual void draw() override;
 
 protected:
 	long double thrust = 1; //thrust coefficient in vacuum

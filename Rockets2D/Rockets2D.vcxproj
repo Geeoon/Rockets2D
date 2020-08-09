@@ -161,14 +161,17 @@
     <ClCompile Include="src\classes\game\Game.cpp" />
     <ClCompile Include="src\classes\game\ObjectManager.cpp" />
     <ClCompile Include="src\classes\game\Object.cpp" />
-    <ClCompile Include="src\classes\scene\Button.cpp" />
+    <ClCompile Include="src\classes\scene\UIElements\Button.cpp" />
     <ClCompile Include="src\classes\scene\Scene.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\classes\scene\UIManager.cpp" />
     <ClCompile Include="src\classes\scene\UIElementManager.cpp" />
-    <ClCompile Include="src\classes\scene\UIString.cpp" />
+    <ClCompile Include="src\classes\scene\UIElements\UIString.cpp" />
     <ClCompile Include="src\classes\scene\UIElementManagerGroup.cpp" />
     <ClCompile Include="src\classes\game\Vector2.cpp" />
+    <ClCompile Include="src\classes\scene\UIElements\UISlider.cpp" />
+    <ClCompile Include="src\classes\scene\UIElements\UIBackground.cpp" />
+    <ClCompile Include="src\classes\scene\UIElements\UIElement.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\classes\game\ForcePosition.h" />
@@ -189,13 +192,16 @@
     <ClInclude Include="src\classes\game\Game.h" />
     <ClInclude Include="src\classes\game\ObjectManager.h" />
     <ClInclude Include="src\classes\game\Object.h" />
-    <ClInclude Include="src\classes\scene\Button.h" />
+    <ClInclude Include="src\classes\scene\UIElements\Button.h" />
     <ClInclude Include="src\classes\scene\Scene.h" />
     <ClInclude Include="src\classes\scene\UIManager.h" />
     <ClInclude Include="src\classes\scene\UIElementManager.h" />
-    <ClInclude Include="src\classes\scene\UIString.h" />
+    <ClInclude Include="src\classes\scene\UIElements\UIString.h" />
     <ClInclude Include="src\classes\scene\UIElementManagerGroup.h" />
     <ClInclude Include="src\classes\game\Vector2.h" />
+    <ClInclude Include="src\classes\scene\UIElements\UISlider.h" />
+    <ClInclude Include="src\classes\scene\UIElements\UIBackground.h" />
+    <ClInclude Include="src\classes\scene\UIElements\UIElement.h" />
   </ItemGroup>
   <ItemGroup>
     <Font Include="fonts\SourceCodePro.ttf" />
