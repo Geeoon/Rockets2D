@@ -1,14 +1,10 @@
 #include "Button.h"
 
-Button::Button(sf::RenderTexture* t, sf::RenderWindow* w, const std::function<void()>& m, int s, std::string v, sf::Font* f, int xP, int yP, sf::Sound* ho, sf::Sound* cl, sf::Sound* uCl) {
-	texture = t;
-	window = w;
+Button::Button(sf::RenderTexture* t, sf::RenderWindow* w, int xP, int yP, const std::function<void()>& m, int s, std::string v, sf::Font* f, sf::Sound* ho, sf::Sound* cl, sf::Sound* uCl) : UIElement(t, w, xP, yP) {
 	onClick = m;
 	textSize = s;
 	value = v;
-	font = f;
-	x = xP;
-	y = yP;
+	font = f;;
 	hover = ho;
 	click = cl;
 	unClick = uCl;

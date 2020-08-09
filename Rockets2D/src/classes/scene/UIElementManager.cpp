@@ -14,10 +14,6 @@ void UIElementManager::update() {
 		for (std::shared_ptr<UIElement> element : elements) {
 			element->update();
 		}
-
-		for (Button& button : buttons) {
-			button.update();
-		}
 	}
 }
 
@@ -38,5 +34,5 @@ void UIElementManager::addUIString(std::string v, int xP, int yP, int s, UIStrin
 }
 
 void UIElementManager::addButton(std::string v, int xP, int yP, int s, const std::function<void()>& m) {
-	buttons.push_back(Button(texture, window, m, s, v, font, xP, yP, hover, click, unClick));
+	elements.push_back(std::make_shared<Button>(texture, window, xP, yP, m, s, v, font, hover, click, unClick));
 }
