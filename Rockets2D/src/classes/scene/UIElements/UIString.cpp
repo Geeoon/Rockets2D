@@ -1,4 +1,5 @@
 #include "UIString.h"
+#include <iostream>
 
 UIString::UIString(sf::RenderTexture* t, sf::RenderWindow* w, int xP, int yP, std::string v, sf::Font* f, int s) : UIElement(t, w, xP, yP) {
 	value = v;
@@ -13,8 +14,8 @@ UIString::UIString(sf::RenderTexture* t, sf::RenderWindow* w, int xP, int yP, st
 	font = f;
 	size = s;
 	color = sf::Color(0, 255, 65);
-	setAlignment(a);
 	reset();
+	setAlignment(a);
 }
 
 UIString::UIString(sf::RenderTexture* t, sf::RenderWindow* w, int xP, int yP, std::string v, sf::Font* f, int s, UIString_alignment a, UIString_alignment a2) : UIElement(t, w, xP, yP) {
@@ -22,9 +23,9 @@ UIString::UIString(sf::RenderTexture* t, sf::RenderWindow* w, int xP, int yP, st
 	font = f;
 	size = s;
 	color = sf::Color(0, 255, 65);
+	reset();
 	setAlignment(a);
 	setAlignment(a2);
-	reset();
 }
 
 void UIString::update() {
