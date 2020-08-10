@@ -88,6 +88,8 @@ void UIString::setAlignment(UIString_alignment a) {
 		text.setOrigin(text.getOrigin().x, font->getLineSpacing(size));
 		break;
 
+	case UIString_alignment::middle:
+		text.setOrigin(text.getOrigin().x, font->getLineSpacing(size) / 2);
 	default:
 		break;
 	}

@@ -18,15 +18,14 @@ public:
 	void update();
 	void setPause(bool p);
 	void draw();
+	Player* getPlayer();
 private:
 	bool hasStarted = false;
 	bool isPaused = false;
 	bool isQuit = false;
 	std::unique_ptr<SpaceObject> testObject;
 	std::unique_ptr<SpaceObject> testObject2;
-	std::unique_ptr<Engine> testEngine;
 	std::unique_ptr<Player> player;
-	std::unique_ptr<RocketPartsManager> rktMan;
 	std::unique_ptr<Rocket> rocket;
 	std::shared_ptr<Object> focus;
 	sf::RenderTexture* texture = nullptr;

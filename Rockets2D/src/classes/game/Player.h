@@ -1,5 +1,7 @@
 #pragma once
 #include <SFML/Graphics.hpp>
+#include "Rocket/RocketParts/Engines/Engine.h"
+#include "Rocket/Rocket.h"
 #include "Object.h"
 
 class Player
@@ -8,14 +10,13 @@ public:
 	Player(sf::RenderTexture* t);
 	void update();
 	void draw();
-	std::shared_ptr<Object> getObj();
+	long double* getThrottlePtr();
+	long double* getSteeringPtr();
 private:
-	//for testing only, delete soon
-	std::shared_ptr<Object> obj;
-	Vector2 dimentions = Vector2(100, 100);
-	sf::RectangleShape sprite;
-	//Delete above to comment
+	sf::Clock clock;
+	std::unique_ptr<Rocket> rocket;
+	long double throttle = 0;
+	long double steering = 0;
 	void manageControls();
 	sf::RenderTexture* texture = nullptr;
-	sf::RectangleShape playerRocket;
 };

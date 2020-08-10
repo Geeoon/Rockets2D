@@ -6,7 +6,7 @@
 class UIString : public UIElement
 {
 public:
-	enum class UIString_alignment {left, center, right, top, bottom};
+	enum class UIString_alignment {left, center, right, top, bottom, middle};
 	UIString(sf::RenderTexture* t, sf::RenderWindow* w, int xP, int yP, std::string v, sf::Font* f, int s);
 	UIString(sf::RenderTexture* t, sf::RenderWindow* w, int xP, int yP, std::string v, sf::Font* f, int s, UIString_alignment a);
 	UIString(sf::RenderTexture* t, sf::RenderWindow* w, int xP, int yP, std::string v, sf::Font* f, int s, UIString_alignment a, UIString_alignment a2);

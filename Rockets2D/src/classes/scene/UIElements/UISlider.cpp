@@ -18,11 +18,9 @@ UISlider::UISlider(sf::RenderTexture* t, sf::RenderWindow* w, int xP, int yP, in
 	bar.setSize(sf::Vector2f(sliderLength, 2));
 	bar.setOrigin(0, 0);
 	bar.setPosition(x, y);
-
 }
 
 void UISlider::update() {
-
 	if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
 		if (beingSlid == true) {
 			*outputValue = (long double)((texture->mapPixelToCoords(sf::Mouse::getPosition(*window)).x - (float)x) / (float)sliderLength) * 100.0f;

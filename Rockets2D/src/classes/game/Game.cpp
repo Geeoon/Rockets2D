@@ -5,15 +5,9 @@ Game::Game(sf::RenderTexture* t) {
 	objMan = std::make_unique<ObjectManager>(t);
 	testObject = std::make_unique<SpaceObject>(texture, Vector2(0, 0), 5.973L * pow(10, 24), 6.371L * pow(10, 7));
 	testObject2 = std::make_unique<SpaceObject>(texture, Vector2(5.971L * pow(10, 7) + 3.82L * pow(10, 8), 0), 7.64767309L * pow(10, 22), 1.7371 * pow(10, 7), Vector2(0, 950.0150896));
-	rocket = std::make_unique<Rocket>(t, Vector2(0, 0));
 	objMan->addObject(testObject->getObject());
 	objMan->addObject(testObject2->getObject());
 	player = std::make_unique<Player>(t);
-	rktMan = std::make_unique<RocketPartsManager>();
-	rktMan->addPart(std::make_shared<Engine>(texture, Vector2(50, 0), 0));
-	rktMan->addPart(std::make_shared<Engine>(texture, Vector2(-50, 0)));
-	rocket->addPartManager(*rktMan, Vector2(0, 0));
-	rocket->setThrottle(100);
 }
 
 void Game::start() {
@@ -32,11 +26,10 @@ void Game::quit() {
 void Game::update() {
 	while (!isQuit) {
 		if (hasStarted && !isPaused) {
-			//player->update();
+			player->update();
 			objMan->update();
 			testObject->update();
 			testObject2->update();
-			rocket->update();
 		}
 	}
 }
@@ -51,12 +44,15 @@ void Game::draw() { //this is called from another thread; don't rely on it for s
 			texture->clear(sf::Color::Transparent);
 			testObject->draw();
 			testObject2->draw();
-			//player->draw();
-			rocket->draw();
+			player->draw();
 			texture->display();
 		}
 	} else {
 		texture->clear();
 		texture->display();
 	}
+}
+
+Player* Game::getPlayer() {
+	return player.get();
 }
