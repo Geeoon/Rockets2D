@@ -8,7 +8,7 @@ UIBackground::UIBackground(sf::RenderTexture* t, sf::RenderWindow* w, int xP, in
 	sprite.setFillColor(backgroundColor);
 	sprite.setOutlineThickness(2);
 	sprite.setOutlineColor(outlineColor);
-	sprite.setSize(sf::Vector2f(width, height));
+	sprite.setSize(sf::Vector2f(width - sprite.getOutlineThickness() * 2, height - sprite.getOutlineThickness() * 2));
 	sprite.setOrigin(sf::Vector2f(sprite.getLocalBounds().width / 2, sprite.getLocalBounds().height / 2));
 	sprite.setPosition(x, y);
 }

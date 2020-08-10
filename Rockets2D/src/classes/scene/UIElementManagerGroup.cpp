@@ -29,6 +29,14 @@ void UIElementManagerGroup::addUIString(int page, std::string v, int xP, int yP,
 	pages[page].addUIString(v, xP, yP, s, a, a2);
 }
 
+void UIElementManagerGroup::addBackground(int page, int xP, int yP, int wid, int hei) {
+	pages[page].addBackground(xP, yP, wid, hei);
+}
+
+void UIElementManagerGroup::addSlider(int page, int xP, int yP, int len, long double* oVal) {
+	pages[page].addSlider(xP, yP, len, oVal);
+}
+
 void UIElementManagerGroup::setActive(bool active) {
 	isActive = active;
 	for (int i = 0; i < pages.size(); i++) {

@@ -36,3 +36,11 @@ void UIElementManager::addUIString(std::string v, int xP, int yP, int s, UIStrin
 void UIElementManager::addButton(std::string v, int xP, int yP, int s, const std::function<void()>& m) {
 	elements.push_back(std::make_shared<Button>(texture, window, xP, yP, m, s, v, font, hover, click, unClick));
 }
+
+void UIElementManager::addBackground(int xP, int yP, int wid, int hei) {
+	elements.insert(elements.begin(), std::make_shared<UIBackground>(texture, window, xP, yP, wid, hei)); //must be inserted at the beginning as elements are drawn in order of position in vector
+}
+
+void UIElementManager::addSlider(int xP, int yP, int len, long double* oVal) {
+	elements.push_back(std::make_shared<UISlider>(texture, window, xP, yP, len, oVal, click, unClick));
+}

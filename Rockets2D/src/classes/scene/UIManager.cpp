@@ -31,13 +31,23 @@ UIManager::UIManager() {
 	mainMenu->addPage(); //credits page 1
 	mainMenu->addUIString(1, "Rockets2D", uiTexture.getSize().x / 2, 25, 30, UIString::UIString_alignment::center);
 	mainMenu->addUIString(1, "Credits", uiTexture.getSize().x / 2, 60, 20, UIString::UIString_alignment::center);
-	mainMenu->addUIString(1, "Created by Geeoon Chung \nUI Sounds provided by Octave http://raisedbeaches.com/octave/ \nGraphics library provided by SFML https://www.sfml-dev.org/ \nPhysics engine provided by Box2D https://box2d.org/", 25, 100, 15);
+	mainMenu->addUIString(1, "\
+	Created by Geeoon Chung \n\
+	UI Sounds provided by Octave http://raisedbeaches.com/octave/ \n\
+	Graphics library provided by SFML https://www.sfml-dev.org/ \n\
+	Physics engine provided by Box2D https://box2d.org/\
+	", 25, 100, 15);
 	mainMenu->addButton(1, "<- Back", 25, 25, 20, [&] {mainMenu->setActivePage(0); });
 	
 	mainMenu->addPage(); //controls page 2
 	mainMenu->addUIString(2, "Rockets2D", uiTexture.getSize().x / 2, 25, 30, UIString::UIString_alignment::center);
 	mainMenu->addUIString(2, "Controls", uiTexture.getSize().x / 2, 60, 20, UIString::UIString_alignment::center);
-	mainMenu->addUIString(2, "Scroll wheel up: Zoom In\nScroll whell down: Zoom Out\nMiddle Mouse Button: Pan\nDirectional Keys: Move Screen", 25, 100, 15);
+	mainMenu->addUIString(2, "\
+	Scroll wheel up: Zoom In\n\
+	Scroll whell down: Zoom Out\n\
+	Middle Mouse Button: Pan\n\
+	Directional Keys: Move Screen\
+	", 25, 100, 15);
 	mainMenu->addButton(2, "<- Back", 25, 25, 20, [&] {mainMenu->setActivePage(0); });
 	mainMenu->setActive(true);
 
@@ -48,6 +58,9 @@ UIManager::UIManager() {
 	gameUI->addUIString(0, "Velocity: m/s relative to [selected object]", 0, uiTexture.getSize().y - 20, 15, UIString::UIString_alignment::left, UIString::UIString_alignment::bottom);
 	gameUI->addUIString(0, "Acceleration: m/s^2 relative to [selected object]", 0, uiTexture.getSize().y, 15, UIString::UIString_alignment::left, UIString::UIString_alignment::bottom);
 	gameUI->addButton(0, "Pause", 5, 5, 15, [&] {gameUI->setActivePage(1); game->setPause(true); });
+	gameUI->addSlider(0, 100, 100, 250, new long double);
+	gameUI->addBackground(0, uiTexture.getSize().x / 2, uiTexture.getSize().x - 80, uiTexture.getSize().x + 20, 200);
+
 	gameUI->addPage(); //pause menu
 	gameUI->addUIString(1, "Rockets2D", uiTexture.getSize().x / 2, 25, 30, UIString::UIString_alignment::center);
 	gameUI->addUIString(1, "Paused", uiTexture.getSize().x / 2, 75, 25, UIString::UIString_alignment::center);

@@ -26,7 +26,7 @@ void Rocket::update() {
 		applyForceRel(FP.force);
 		applyTorque(FP.force.getMagnitude() * FP.position.getMagnitude() * sinl(FP.force.getAngle() - FP.position.getAngle()));
 	}
-	std::cout << position.getY() << std::endl;
+	//std::cout << position.getY() << std::endl;
 	Object::update();
 }
 
