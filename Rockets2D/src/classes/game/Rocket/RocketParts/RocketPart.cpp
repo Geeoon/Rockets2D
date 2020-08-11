@@ -13,8 +13,16 @@ void RocketPart::setThrottle(long double t) {
 	throttle = t;
 }
 
+void RocketPart::setSteering(long double s) {
+	steering = s;
+}
+
 void RocketPart::setOrientation(long double ori) {
 	orientation = ori;
+}
+
+void RocketPart::setBurnRate(long double br) {
+	burnRate = br;
 }
 
 void RocketPart::setRelativePosition(Vector2 rPos) {

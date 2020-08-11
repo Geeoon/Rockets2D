@@ -10,6 +10,7 @@ ForcePosition RocketPartsManager::update() {
 	ForcePosition netForcePosition;
 	for (std::shared_ptr<RocketPart> part : parts) {
 		part->setThrottle(throttle);
+		part->setSteering(steering);
 		part->setPosition(position);
 		part->setOrientation(orientation);
 		Vector2 force = part->update();
@@ -19,7 +20,11 @@ ForcePosition RocketPartsManager::update() {
 		centerOfMass += (part->getCenterOfMass() + part->getRelativePosition()) * part->getMass();
 	}
 	centerOfMass = centerOfMass / mass;
-	netForcePosition.position = netForcePosition.position / netForcePosition.force.getMagnitude();
+	if (netForcePosition.force.getMagnitude() > 0) {
+		netForcePosition.position = netForcePosition.position / netForcePosition.force.getMagnitude();
+	} else {
+		netForcePosition.position = Vector2(0, 0);
+	}
 	return netForcePosition;
 }
 
@@ -44,4 +49,8 @@ void RocketPartsManager::addPart(std::shared_ptr<RocketPart> part) {
 
 void RocketPartsManager::setThrottle(long double t) {
 	throttle = t;
+}
+
+void RocketPartsManager::setSteering(long double s) {
+	steering = s;
 }

@@ -1,6 +1,7 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include "Rocket/RocketParts/Engines/Engine.h"
+#include "Rocket/RocketParts/Tanks/FuelTank.h"
 #include "Rocket/Rocket.h"
 #include "Object.h"
 

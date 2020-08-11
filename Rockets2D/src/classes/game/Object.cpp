@@ -28,7 +28,7 @@ void Object::applyForceRel(Vector2 v) {
 }
 
 void Object::applyTorque(long double t) {
-	torque = t; 
+	torque += t; 
 }
 
 void Object::update() {

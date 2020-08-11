@@ -15,9 +15,11 @@ public:
 	void draw();
 	void addPartManager(std::shared_ptr<RocketPartsManager> pM, const Vector2& relPos);
 	void setThrottle(long double t);
+	void setSteering(long double s);
 
 private:
 	long double throttle = 100;
+	long double steering = 0;
 	sf::RenderTexture* texture = nullptr;
 	std::vector<std::shared_ptr<RocketPartsManager>> partManagers;
 };

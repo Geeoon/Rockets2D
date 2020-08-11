@@ -4,9 +4,14 @@ Player::Player(sf::RenderTexture* t) {
 	texture = t;
 	rocket = std::make_unique<Rocket>(texture, Vector2(0, 0));
 	std::shared_ptr<RocketPartsManager>rktMan = std::make_shared<RocketPartsManager>();
-	rktMan->addPart(std::make_shared<Engine>(texture, Vector2(50, 0), 0));
-	rktMan->addPart(std::make_shared<Engine>(texture, Vector2(-50, 0)));
+	rktMan->addPart(std::make_shared<Engine>(texture, Vector2(0, 0), 0));
+	rktMan->addPart(std::make_shared<FuelTank>(texture, Vector2(0, 3.5)));
+	
+	/*std::shared_ptr<RocketPartsManager>rktMan2 = std::make_shared<RocketPartsManager>();
+	rktMan2->addPart(std::make_shared<Engine>(texture, Vector2(50, 0), 0));
+	rktMan2->addPart(std::make_shared<Engine>(texture, Vector2(-50, 0)));*/
 	rocket->addPartManager(rktMan, Vector2(0, 0));
+	//rocket->addPartManager(rktMan2, Vector2(0, 0));
 	clock.restart();
 }
 
@@ -57,4 +62,5 @@ void Player::manageControls() {
 		steering = 0;
 	}
 	rocket->setThrottle(throttle);
+	rocket->setSteering(steering);
 }
