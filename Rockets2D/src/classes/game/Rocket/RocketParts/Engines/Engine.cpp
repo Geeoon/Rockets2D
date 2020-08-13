@@ -47,16 +47,16 @@ Engine::Engine(sf::RenderTexture* t, const Vector2& rPos, long double rOri) : En
 }
 
 Vector2 Engine::update() {
-	gimbalAmount = ((long double)(steering / 50) * maxSteering);
+	gimbalAmount = -((long double)(steering / 50) * maxSteering);
 	return Vector2::constructFromPolar(thrust * throttle, orientation + relativeOrientation + gimbalAmount + 0.78539816339 * 2);
 }
 
 void Engine::draw() {
 	flame.setPoint(2, sf::Vector2f(0, throttle / 5));
-	nozzle.setRotation((float)((orientation + relativeOrientation + gimbalAmount) * 180 / M_PI));
-	throat.setRotation((float)((orientation + relativeOrientation + gimbalAmount) * 180 / M_PI));
+	nozzle.setRotation((float)((orientation + relativeOrientation - gimbalAmount) * 180 / M_PI));
+	throat.setRotation((float)((orientation + relativeOrientation - gimbalAmount) * 180 / M_PI));
 	base.setRotation((float)((orientation + relativeOrientation) * 180 / M_PI));
-	flame.setRotation((float)((orientation + relativeOrientation + gimbalAmount) * 180 / M_PI));
+	flame.setRotation((float)((orientation + relativeOrientation - gimbalAmount) * 180 / M_PI));
 	outputPosition = Vector2((float)(position.getX() + relativePosition.getX() * cosl(orientation) - relativePosition.getY() * sinl(orientation)), -(float)(position.getY() + relativePosition.getX() * sinl(orientation) + relativePosition.getY() * cosl(orientation)));
 
 	nozzle.setPosition(outputPosition.toSF2f());

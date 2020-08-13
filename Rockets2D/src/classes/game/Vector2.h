@@ -10,10 +10,10 @@ public:
 		return Vector2(mag * cosl(dir), mag * sinl(dir));
 	}
 	void normalize();
-	long double getX();
-	long double getY();
-	long double getMagnitude();
-	long double getAngle();
+	long double getX() const;
+	long double getY() const;
+	long double getMagnitude() const;
+	long double getAngle() const;
 	Vector2 operator+=(const Vector2& v);
 	Vector2 operator-=(const Vector2& v);
 	Vector2 operator*=(long double multiplier);
@@ -22,7 +22,7 @@ public:
 	Vector2 operator*(const long double right) const;
 	Vector2 operator/(const long double right) const;
 	Vector2 operator-() const;
-	sf::Vector2f toSF2f();
+	sf::Vector2f toSF2f() const;
 private:
 	long double x, y;
 };

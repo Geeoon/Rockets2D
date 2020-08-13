@@ -11,7 +11,7 @@ public:
 	void setPosition(const Vector2& pos);
 	Vector2 getPosition();
 	void setCenterOfMass(const Vector2& com);
-	long double getMass();
+	virtual long double getMass();
 	Vector2 getCenterOfMass();
 protected:
 	Vector2 position = Vector2(0, 0);

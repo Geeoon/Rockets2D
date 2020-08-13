@@ -8,6 +8,7 @@ public:
 	FuelTank(sf::RenderTexture* t, const Vector2& rPos, long double rOri);
 	virtual Vector2 update() override;
 	virtual void draw() override;
+	long double getMass() override;
 	
 public:
 	sf::Clock clock;

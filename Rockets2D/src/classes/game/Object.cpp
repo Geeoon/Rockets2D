@@ -34,7 +34,8 @@ void Object::applyTorque(long double t) {
 void Object::update() {
 	elapsedTime = clock.getElapsedTime();
 	clock.restart();
-	angularVelocity += momentOfInertia * torque * elapsedTime.asSeconds() * timescale;
+	angularAcceleration = torque / momentOfInertia;
+	angularVelocity += angularAcceleration * elapsedTime.asSeconds() * timescale;
 	orientation += angularVelocity * elapsedTime.asSeconds() * timescale;
 	acceleration = Vector2(body.getNet().getX() / mass, body.getNet().getY() / mass);
 	velocity += Vector2(acceleration.getX() * elapsedTime.asSeconds() * timescale, acceleration.getY() * elapsedTime.asSeconds() * timescale);

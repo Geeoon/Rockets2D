@@ -10,19 +10,19 @@ void Vector2::normalize() {
 	y = (*this / this->getMagnitude()).y;
 }
 
-long double Vector2::getX() {
+long double Vector2::getX() const {
 	return x;
 }
 
-long double Vector2::getY() {
+long double Vector2::getY() const {
 	return y;
 }
 
-long double Vector2::getMagnitude() {
+long double Vector2::getMagnitude() const {
 	return sqrt(x * x + y * y);
 }
 
-long double Vector2::getAngle() {
+long double Vector2::getAngle() const{
 	return atan2(y, x);
 }
 
@@ -63,6 +63,6 @@ Vector2 Vector2::operator-() const {
 	return Vector2(-x, -y);
 }
 
-sf::Vector2f Vector2::toSF2f() {
+sf::Vector2f Vector2::toSF2f() const {
 	return sf::Vector2f(x, y);
 }

@@ -17,19 +17,25 @@ Rocket::Rocket(sf::RenderTexture* t, const Vector2& pos, long double ori, const 
 void Rocket::update() {
 	mass = 0;
 	momentOfInertia = 0;
+	ForcePosition FP;
 	for (std::shared_ptr<RocketPartsManager> partManager : partManagers) {
 		partManager->setThrottle(throttle);
 		partManager->setSteering(steering);
 		partManager->setPosition(position);
-		ForcePosition FP;
-		FP = partManager->update();
+		partManager->setOrientation(orientation);
+		FP += partManager->update();
 		mass += partManager->getMass();
 		centerOfMass += (partManager->getCenterOfMass() + partManager->getRelativePosition()) * partManager->getMass();
-		applyForceRel(FP.force);
-		applyTorque(FP.force.getMagnitude() * FP.position.getMagnitude() * sinl(FP.force.getAngle() - FP.position.getAngle()));
+
 		momentOfInertia += partManager->getMass() * powl((partManager->getCenterOfMass() + partManager->getRelativePosition()).getMagnitude(), 2);
 	}
 	centerOfMass = centerOfMass / mass;
+	applyForceRel(FP.force);
+	if (FP.force.getMagnitude() > 0) {
+		std::cout << FP.force.getMagnitude() * (FP.position.getMagnitude() + centerOfMass.getMagnitude()) * sinl(FP.force.getAngle() - FP.position.getAngle()) << std::endl;
+		applyTorque(FP.force.getMagnitude() * (FP.position.getMagnitude() + centerOfMass.getMagnitude()) * sinl(FP.force.getAngle() - FP.position.getAngle()));
+	}
+
 	Object::update();
 }
 

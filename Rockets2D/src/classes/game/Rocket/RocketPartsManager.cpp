@@ -17,11 +17,14 @@ ForcePosition RocketPartsManager::update() {
 		netForcePosition.force += force;
 		netForcePosition.position += (part->getCenterOfMass() + part->getRelativePosition()) * force.getMagnitude();
 		mass += part->getMass();
+
 		centerOfMass += (part->getCenterOfMass() + part->getRelativePosition()) * part->getMass();
 	}
 	centerOfMass = centerOfMass / mass;
+
 	if (netForcePosition.force.getMagnitude() > 0) {
 		netForcePosition.position = netForcePosition.position / netForcePosition.force.getMagnitude();
+		
 	} else {
 		netForcePosition.position = Vector2(0, 0);
 	}

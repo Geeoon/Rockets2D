@@ -28,3 +28,7 @@ void FuelTank::draw() {
 	sprite.setPosition(outputPosition.toSF2f());
 	texture->draw(sprite);
 }
+
+long double FuelTank::getMass() {
+	return finalMass;
+}

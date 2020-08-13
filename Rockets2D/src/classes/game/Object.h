@@ -29,6 +29,7 @@ protected:
 	Vector2 centerOfMass = Vector2(0, 0);
 	long double momentOfInertia = 1;
 	long double timescale = 1;
+	long double angularAcceleration = 0; //radians / second ^ 2
 	long double angularVelocity = 0; //radians/second
 	long double mass = 0; //kg
 	long double orientation = 0; //radians
