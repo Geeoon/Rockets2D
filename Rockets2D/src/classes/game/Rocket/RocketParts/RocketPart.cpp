@@ -41,5 +41,5 @@ Vector2 RocketPart::update() {
 }
 
 void RocketPart::draw() {
-	outputPosition = Vector2((float)(position.getX() + relativePosition.getX() * cosl(orientation) - relativePosition.getY() * sinl(orientation)), -(float)(position.getY() + relativePosition.getX() * sinl(orientation) + relativePosition.getY() * cosl(orientation)));
+	outputPosition = Vector2((float)(position.getX() + relativePosition.getX() * cosl(orientation) - relativePosition.getY() * sinl(orientation)), (float)(position.getY() - (relativePosition.getX() * sinl(orientation) + relativePosition.getY() * cosl(orientation))));
 }

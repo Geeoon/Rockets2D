@@ -25,7 +25,7 @@ Vector2 FuelTank::update() {
 void FuelTank::draw() {
 	RocketPart::draw();
 	sprite.setRotation((float)((orientation + relativeOrientation) * 180 / M_PI));
-	sprite.setPosition(outputPosition.toDrawSF2f());
+	sprite.setPosition(outputPosition.toDrawSFV());
 	texture->draw(sprite);
 }
 

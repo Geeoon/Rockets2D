@@ -30,9 +30,10 @@ void Rocket::update() {
 		momentOfInertia += partManager->getMass() * powl((partManager->getCenterOfMass() + partManager->getRelativePosition()).getMagnitude(), 2);
 	}
 	centerOfMass = centerOfMass / mass;
-	applyForceRel(FP.force);
+	applyForce(FP.force);
 	if (FP.force.getMagnitude() > 0) {
-		applyTorque(FP.force.getMagnitude() * (FP.position.getMagnitude() + centerOfMass.getMagnitude()) * sinl(FP.force.getAngle() - FP.position.getAngle()));
+		applyTorque(FP.force.getMagnitude() * (FP.position + centerOfMass).getMagnitude() * sinl(((FP.position + centerOfMass).getAngle() + orientation) - FP.force.getAngle()));
+		std::cout << sinl(((FP.position + centerOfMass).getAngle() + orientation) - FP.force.getAngle()) << std::endl;
 	}
 
 	Object::update();

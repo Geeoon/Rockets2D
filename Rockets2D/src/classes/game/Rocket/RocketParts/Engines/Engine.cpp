@@ -59,10 +59,10 @@ void Engine::draw() {
 	base.setRotation((float)((orientation + relativeOrientation) * 180 / M_PI));
 	flame.setRotation((float)((orientation + relativeOrientation - gimbalAmount) * 180 / M_PI));
 
-	nozzle.setPosition(outputPosition.toDrawSF2f());
-	throat.setPosition(outputPosition.toDrawSF2f());
-	base.setPosition(outputPosition.toDrawSF2f());
-	flame.setPosition(outputPosition.toDrawSF2f());
+	nozzle.setPosition(outputPosition.toDrawSFV());
+	throat.setPosition(outputPosition.toDrawSFV());
+	base.setPosition(outputPosition.toDrawSFV());
+	flame.setPosition(outputPosition.toDrawSFV());
 	texture->draw(nozzle);
 	texture->draw(throat);
 	texture->draw(base);
