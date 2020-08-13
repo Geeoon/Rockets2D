@@ -52,17 +52,17 @@ Vector2 Engine::update() {
 }
 
 void Engine::draw() {
+	RocketPart::draw();
 	flame.setPoint(2, sf::Vector2f(0, throttle / 5));
 	nozzle.setRotation((float)((orientation + relativeOrientation - gimbalAmount) * 180 / M_PI));
 	throat.setRotation((float)((orientation + relativeOrientation - gimbalAmount) * 180 / M_PI));
 	base.setRotation((float)((orientation + relativeOrientation) * 180 / M_PI));
 	flame.setRotation((float)((orientation + relativeOrientation - gimbalAmount) * 180 / M_PI));
-	outputPosition = Vector2((float)(position.getX() + relativePosition.getX() * cosl(orientation) - relativePosition.getY() * sinl(orientation)), -(float)(position.getY() + relativePosition.getX() * sinl(orientation) + relativePosition.getY() * cosl(orientation)));
 
-	nozzle.setPosition(outputPosition.toSF2f());
-	throat.setPosition(outputPosition.toSF2f());
-	base.setPosition(outputPosition.toSF2f());
-	flame.setPosition(outputPosition.toSF2f());
+	nozzle.setPosition(outputPosition.toDrawSF2f());
+	throat.setPosition(outputPosition.toDrawSF2f());
+	base.setPosition(outputPosition.toDrawSF2f());
+	flame.setPosition(outputPosition.toDrawSF2f());
 	texture->draw(nozzle);
 	texture->draw(throat);
 	texture->draw(base);

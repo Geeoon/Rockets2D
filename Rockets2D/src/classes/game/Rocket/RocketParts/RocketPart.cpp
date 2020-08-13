@@ -4,8 +4,7 @@ RocketPart::RocketPart(sf::RenderTexture* t, const Vector2& pos) : ObjectBasic(p
 	texture = t;
 }
 
-RocketPart::RocketPart(sf::RenderTexture* t, const Vector2& pos, long double rOri) : ObjectBasic(pos, 0) {
-	texture = t;
+RocketPart::RocketPart(sf::RenderTexture* t, const Vector2& pos, long double rOri) : RocketPart(t, pos) {
 	relativeOrientation = rOri;
 }
 
@@ -42,5 +41,5 @@ Vector2 RocketPart::update() {
 }
 
 void RocketPart::draw() {
-	std::cout << "drawing generic part";
+	outputPosition = Vector2((float)(position.getX() + relativePosition.getX() * cosl(orientation) - relativePosition.getY() * sinl(orientation)), -(float)(position.getY() + relativePosition.getX() * sinl(orientation) + relativePosition.getY() * cosl(orientation)));
 }

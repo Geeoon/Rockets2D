@@ -23,6 +23,7 @@ public:
 	Vector2 operator/(const long double right) const;
 	Vector2 operator-() const;
 	sf::Vector2f toSF2f() const;
+	sf::Vector2f toDrawSF2f() const;
 private:
 	long double x, y;
 };

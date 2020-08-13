@@ -66,3 +66,7 @@ Vector2 Vector2::operator-() const {
 sf::Vector2f Vector2::toSF2f() const {
 	return sf::Vector2f(x, y);
 }
+
+sf::Vector2f Vector2::toDrawSF2f() const {
+	return sf::Vector2f(x, -y);
+}
