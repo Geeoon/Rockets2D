@@ -32,8 +32,7 @@ void Rocket::update() {
 	centerOfMass = centerOfMass / mass;
 	applyForce(FP.force);
 	if (FP.force.getMagnitude() > 0) {
-		applyTorque(FP.force.getMagnitude() * (FP.position + centerOfMass).getMagnitude() * sinl(((FP.position + centerOfMass).getAngle() + orientation) - FP.force.getAngle()));
-		std::cout << sinl(((FP.position + centerOfMass).getAngle() + orientation) - FP.force.getAngle()) << std::endl;
+		applyTorque(FP.force.getMagnitude() * (FP.position + centerOfMass).getMagnitude() * sinl(((FP.position + centerOfMass).getAngle() - orientation) - FP.force.getAngle()));
 	}
 
 	Object::update();
