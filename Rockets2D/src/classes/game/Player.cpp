@@ -4,8 +4,9 @@ Player::Player(sf::RenderTexture* t) {
 	texture = t;
 	rocket = std::make_unique<Rocket>(texture, Vector2(0, 0));
 	std::shared_ptr<RocketPartsManager>rktMan = std::make_shared<RocketPartsManager>();
-	rktMan->addPart(std::make_shared<Engine>(texture, Vector2(0, 0), 0));
-	rktMan->addPart(std::make_shared<FuelTank>(texture, Vector2(3.2, 3.2)));
+	rktMan->addPart(std::make_shared<Engine>(texture, Vector2(0, 0)));
+	//rktMan->addPart(std::make_shared<Engine>(texture, Vector2(0, 0)));
+	rktMan->addPart(std::make_shared<FuelTank>(texture, Vector2(0, -3.2)));
 	
 	/*std::shared_ptr<RocketPartsManager>rktMan2 = std::make_shared<RocketPartsManager>();
 	rktMan2->addPart(std::make_shared<Engine>(texture, Vector2(50, 0), 0));

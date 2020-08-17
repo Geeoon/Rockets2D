@@ -48,7 +48,7 @@ Engine::Engine(sf::RenderTexture* t, const Vector2& rPos, long double rOri) : En
 
 Vector2 Engine::update() {
 	gimbalAmount = -((long double)(steering / 50) * maxSteering);
-	return Vector2::constructFromPolar(thrust * throttle, -orientation + relativeOrientation + gimbalAmount + 0.78539816339 * 2);
+	return Vector2::constructFromPolar(thrust * throttle, -orientation - relativeOrientation + gimbalAmount + 0.78539816339 * 2);
 }
 
 void Engine::draw() {
