@@ -1,6 +1,5 @@
 #pragma once
 #include <SFML/Graphics.hpp>
-#include <Box2D/box2d.h>
 #include <iostream>
 #include "FreeBody.h"
 

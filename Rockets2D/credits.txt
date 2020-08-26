@@ -1,4 +1,3 @@
 Created by Geeoon Chung
 UI Sounds provided by Octave http://raisedbeaches.com/octave/
 Graphics library provided by SFML https://www.sfml-dev.org/
-Physics engine provided by Box2D https://box2d.org/
