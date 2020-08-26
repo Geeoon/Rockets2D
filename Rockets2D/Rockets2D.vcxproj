@@ -144,6 +144,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\classes\scene\Misc\Arrow.cpp" />
+    <ClCompile Include="src\classes\scene\GameElements\FreeBodyDiagram.cpp" />
     <ClCompile Include="src\classes\game\ObjectBasic.cpp" />
     <ClCompile Include="src\classes\game\Rocket\RocketPartsManager.cpp" />
     <ClCompile Include="src\classes\game\Rocket\RocketParts\RocketPart.cpp" />
@@ -174,6 +176,8 @@
     <ClCompile Include="src\classes\scene\UIElements\UIElement.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\classes\scene\Misc\Arrow.h" />
+    <ClInclude Include="src\classes\scene\GameElements\FreeBodyDiagram.h" />
     <ClInclude Include="src\classes\game\ForcePosition.h" />
     <ClInclude Include="src\classes\game\ObjectBasic.h" />
     <ClInclude Include="src\classes\game\Rocket\RocketPartsManager.h" />

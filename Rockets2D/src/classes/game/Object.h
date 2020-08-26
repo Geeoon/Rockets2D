@@ -14,7 +14,7 @@ public:
 	void applyForceRel(Vector2 v); //applies force relative to the object's orientation
 	void applyTorque(long double t); //facing back (same direction as eyes are facing when looking at a monitor
 	virtual void update();
-	FreeBody& getFB();
+	FreeBody* getFBPtr();
 	Vector2 getPosition();
 	long double getOrientation();
 	long double getMass();

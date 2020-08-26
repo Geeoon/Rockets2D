@@ -37,6 +37,10 @@ void UIElementManagerGroup::addSlider(int page, int xP, int yP, int len, long do
 	pages[page].addSlider(xP, yP, len, oVal);
 }
 
+void UIElementManagerGroup::addFBD(int page, int xP, int yP, int s, FreeBody* fb) {
+	pages[page].addFBD(xP, yP, s, fb);
+}
+
 void UIElementManagerGroup::setActive(bool active) {
 	isActive = active;
 	for (int i = 0; i < pages.size(); i++) {

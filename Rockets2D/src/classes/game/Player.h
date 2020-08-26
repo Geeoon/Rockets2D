@@ -13,9 +13,10 @@ public:
 	void draw();
 	long double* getThrottlePtr();
 	long double* getSteeringPtr();
+	std::shared_ptr<Rocket> getRocketPtr();
 private:
 	sf::Clock clock;
-	std::unique_ptr<Rocket> rocket;
+	std::shared_ptr<Rocket> rocket;
 	long double throttle = 0;
 	long double steering = 0;
 	void manageControls();

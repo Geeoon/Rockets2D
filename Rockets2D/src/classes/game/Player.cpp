@@ -2,7 +2,7 @@
 
 Player::Player(sf::RenderTexture* t) {
 	texture = t;
-	rocket = std::make_unique<Rocket>(texture, Vector2(0, 0));
+	rocket = std::make_shared<Rocket>(texture, Vector2(0, 0));
 	std::shared_ptr<RocketPartsManager>rktMan = std::make_shared<RocketPartsManager>();
 	rktMan->addPart(std::make_shared<Engine>(texture, Vector2(0, 0)));
 	//rktMan->addPart(std::make_shared<Engine>(texture, Vector2(0, 0)));
@@ -32,6 +32,10 @@ long double* Player::getThrottlePtr() {
 
 long double* Player::getSteeringPtr() {
 	return &steering;
+}
+
+std::shared_ptr<Rocket> Player::getRocketPtr() {
+	return rocket;
 }
 
 void Player::manageControls() {

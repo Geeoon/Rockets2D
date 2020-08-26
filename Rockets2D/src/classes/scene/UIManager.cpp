@@ -58,7 +58,6 @@ UIManager::UIManager() {
 	gameUI->addUIString(0, "Velocity: m/s relative to [selected object]", 0, uiTexture.getSize().y - 20, 15, UIString::UIString_alignment::left, UIString::UIString_alignment::bottom);
 	gameUI->addUIString(0, "Acceleration: m/s^2 relative to [selected object]", 0, uiTexture.getSize().y, 15, UIString::UIString_alignment::left, UIString::UIString_alignment::bottom);
 	gameUI->addButton(0, "Pause", 5, 5, 15, [&] {gameUI->setActivePage(1); game->setPause(true); });
-	
 	gameUI->addBackground(0, uiTexture.getSize().x / 2, uiTexture.getSize().x - 80, uiTexture.getSize().x + 20, 200);
 
 	gameUI->addPage(); //pause menu
@@ -79,6 +78,7 @@ void UIManager::setGame(std::shared_ptr<Game> g) {
 	//slider controls here because the game needs to be set first.
 	gameUI->addSlider(0, 100, uiTexture.getSize().y - 140, 250, game->getPlayer()->getThrottlePtr());
 	gameUI->addSlider(0, 100, uiTexture.getSize().y - 90, 250, game->getPlayer()->getSteeringPtr());
+	gameUI->addFBD(0, uiTexture.getSize().x - 100, uiTexture.getSize().y - 100, 100, game->getPlayer()->getRocketPtr()->getFBPtr());
 	gameUI->addUIString(0, "Throttle:", 10, uiTexture.getSize().y - 140, 15, UIString::UIString_alignment::left, UIString::UIString_alignment::middle);
 	gameUI->addUIString(0, "Steering:", 10, uiTexture.getSize().y - 90, 15, UIString::UIString_alignment::left, UIString::UIString_alignment::middle);
 }

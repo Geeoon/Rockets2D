@@ -44,8 +44,8 @@ void Object::update() {
 	torque = 0;
 }
 
-FreeBody& Object::getFB() {
-	return body;
+FreeBody* Object::getFBPtr() {
+	return &body;
 }
 
 Vector2 Object::getPosition() {
