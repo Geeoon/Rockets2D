@@ -19,7 +19,7 @@ public:
 	void addUIString(int page, std::string v, int xP, int yP, int s, UIString::UIString_alignment a, UIString::UIString_alignment a2);
 	void addBackground(int page, int xP, int yP, int wid, int hei);
 	void addSlider(int page, int xP, int yP, int len, long double* oVal);
-	void addFBD(int page, int xP, int yP, int s, FreeBody* fb);
+	void addFBD(int page, int xP, int yP, int s, FreeBody* fb, bool* canD);
 	void setActive(bool active);
 	void update();
 	void synchronousUpdate();

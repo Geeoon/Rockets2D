@@ -24,7 +24,7 @@ public:
 	void addButton(std::string v, int xP, int yP, int s, const std::function<void()>& m);
 	void addBackground(int xP, int yP, int wid, int hei);
 	void addSlider(int xP, int yP, int len, long double* oVal);
-	void addFBD(int xP, int yP, int s, FreeBody* fb);
+	void addFBD(int xP, int yP, int s, FreeBody* fb, bool* canD);
 private:
 	bool active = false;
 	std::vector<std::shared_ptr<UIElement>> elements;

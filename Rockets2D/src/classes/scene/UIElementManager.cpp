@@ -53,6 +53,6 @@ void UIElementManager::addSlider(int xP, int yP, int len, long double* oVal) {
 	elements.push_back(std::make_shared<UISlider>(texture, window, xP, yP, len, oVal, click, unClick));
 }
 
-void UIElementManager::addFBD(int xP, int yP, int s, FreeBody* fb) {
-	elements.push_back(std::make_shared<FreeBodyDiagram>(texture, window, xP, yP, s, fb));
+void UIElementManager::addFBD(int xP, int yP, int s, FreeBody* fb, bool* canD) {
+	elements.push_back(std::make_shared<FreeBodyDiagram>(texture, window, xP, yP, s, fb, canD));
 }

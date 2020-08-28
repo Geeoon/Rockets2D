@@ -86,7 +86,7 @@ void UIManager::setGame(std::shared_ptr<Game> g) {
 	//slider controls here because the game needs to be set first.
 	gameUI->addSlider(0, 100, uiTexture.getSize().y - 140, 250, game->getPlayer()->getThrottlePtr());
 	gameUI->addSlider(0, 100, uiTexture.getSize().y - 90, 250, game->getPlayer()->getSteeringPtr());
-	gameUI->addFBD(0, uiTexture.getSize().x - 100, uiTexture.getSize().y - 100, 100, game->getPlayer()->getRocketPtr()->getFBPtr());
+	gameUI->addFBD(0, uiTexture.getSize().x - 100, uiTexture.getSize().y - 100, 100, game->getPlayer()->getRocketPtr()->getFBPtr(), &canDraw);
 	gameUI->addUIString(0, "Throttle:", 10, uiTexture.getSize().y - 140, 15, UIString::UIString_alignment::left, UIString::UIString_alignment::middle);
 	gameUI->addUIString(0, "Steering:", 10, uiTexture.getSize().y - 90, 15, UIString::UIString_alignment::left, UIString::UIString_alignment::middle);
 }
@@ -101,14 +101,16 @@ void UIManager::update() {
 	if (isUIVisible) {
 		updateUI();
 	}
+	canDraw = true;
 	pollEvent();
 	manageControls();
 	game->draw(); //draw onto the renderTexture
 	window.draw(sf::Sprite(gameTexture.getTexture())); //first the game,
-
 	if (isUIVisible) {
+
 		window.draw(sf::Sprite(uiTexture.getTexture())); //then the ui; this keeps the UI always on top no matter what.
 	}
+	canDraw = false;
 	window.display();
 }
 
