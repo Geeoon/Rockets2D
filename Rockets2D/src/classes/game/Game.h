@@ -1,6 +1,7 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include <math.h>
+#include <functional>
 #include "SpaceObject.h"
 #include "Player.h"
 #include "ObjectManager.h"
@@ -18,11 +19,14 @@ public:
 	void update();
 	void setPause(bool p);
 	void draw();
+	void addToSync(const std::function<void()>& f);
 	Player* getPlayer();
 private:
+	void syncronousUpdate(); //for updating things syncronously with the game thread.
 	bool hasStarted = false;
 	bool isPaused = false;
 	bool isQuit = false;
+	std::vector<std::function<void()>> syncFuncs;
 	std::unique_ptr<SpaceObject> testObject;
 	std::unique_ptr<SpaceObject> testObject2;
 	std::unique_ptr<Player> player;

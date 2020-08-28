@@ -10,3 +10,7 @@ UIElement::UIElement(sf::RenderTexture* t, sf::RenderWindow* w, int xP, int yP) 
 void UIElement::update() {
 
 }
+
+void UIElement::synchronousUpdate() {
+
+}

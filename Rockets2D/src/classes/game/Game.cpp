@@ -27,6 +27,7 @@ void Game::update() {
 	while (!isQuit) {
 		if (hasStarted && !isPaused) {
 			player->update();
+			syncronousUpdate();
 			objMan->update();
 			//testObject->update();
 			//testObject2->update();
@@ -38,7 +39,7 @@ void Game::setPause(bool p) {
 	isPaused = p;
 }
 
-void Game::draw() { //this is called from another thread; don't rely on it for syncronous actions.
+void Game::draw() { //this is called from another thread; don't rely on it for synchronous actions.
 	if (hasStarted) {
 		if (!isPaused) {
 			texture->clear(sf::Color::Transparent);
@@ -53,6 +54,16 @@ void Game::draw() { //this is called from another thread; don't rely on it for s
 	}
 }
 
+void Game::addToSync(const std::function<void()>& f) {
+	syncFuncs.push_back(f);
+}
+
 Player* Game::getPlayer() {
 	return player.get();
+}
+
+void Game::syncronousUpdate() {
+	for (const std::function<void()>& f : syncFuncs) {
+		f();
+	}
 }

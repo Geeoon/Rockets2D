@@ -29,4 +29,3 @@ private:
 	sf::Sound* click;
 	sf::Sound* unClick;
 };
-

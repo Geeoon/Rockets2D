@@ -14,6 +14,7 @@ public:
 	sf::RenderTexture* getFBTexture();
 	bool isOpen();
 	void setGame(std::shared_ptr<Game> g);
+	const std::function<void()>& getSyncFuncs();
 private:
 	const double moveSpeed = 5000;
 	sf::Clock clock;
@@ -35,6 +36,7 @@ private:
 	sf::Sound click;
 	sf::Sound unClick;
 	sf::View gameView;
+	std::function<void()> syncFuncs = [] {}; //this function is ran syncronously with the game thread.
 	void updateUI();
 	void pollEvent();
 	void manageControls();

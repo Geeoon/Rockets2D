@@ -6,6 +6,7 @@ class UIElement
 public:
 	UIElement(sf::RenderTexture* t, sf::RenderWindow* w, int xP, int yP);
 	virtual void update();
+	virtual void synchronousUpdate();
 
 protected:
 	int x = 0;

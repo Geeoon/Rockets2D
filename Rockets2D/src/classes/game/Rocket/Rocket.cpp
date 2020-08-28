@@ -37,8 +37,6 @@ void Rocket::update() {
 		applyTorque(calculatedTorque);
 	}
 
-	std::cout << "Angle of Position: " << FP.force.getAngle() << "  Angle of Force: " << FP.force.getAngle() << std::endl;
-
 	Object::update();
 }
 

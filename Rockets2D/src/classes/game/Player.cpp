@@ -18,8 +18,8 @@ Player::Player(sf::RenderTexture* t) {
 
 void Player::update() {
 	manageControls();
-	rocket->update();
 	clock.restart();
+	rocket->update();
 }
 
 void Player::draw() {

@@ -22,6 +22,7 @@ public:
 	void addFBD(int page, int xP, int yP, int s, FreeBody* fb);
 	void setActive(bool active);
 	void update();
+	void synchronousUpdate();
 	void setActivePage(int page);
 private:
 	bool isActive = false;

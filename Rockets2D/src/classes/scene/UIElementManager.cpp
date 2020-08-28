@@ -17,6 +17,14 @@ void UIElementManager::update() {
 	}
 }
 
+void UIElementManager::synchronousUpdate() {
+	if (active) {
+		for (std::shared_ptr<UIElement> element : elements) {
+			element->synchronousUpdate();
+		}
+	}
+}
+
 void UIElementManager::setActive(bool a) {
 	active = a;
 }

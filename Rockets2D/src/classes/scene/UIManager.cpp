@@ -35,7 +35,6 @@ UIManager::UIManager() {
 	Created by Geeoon Chung \n\
 	UI Sounds provided by Octave http://raisedbeaches.com/octave/ \n\
 	Graphics library provided by SFML https://www.sfml-dev.org/ \n\
-	Physics engine provided by Box2D https://box2d.org/\
 	", 25, 100, 15);
 	mainMenu->addButton(1, "<- Back", 25, 25, 20, [&] {mainMenu->setActivePage(0); });
 	
@@ -43,10 +42,16 @@ UIManager::UIManager() {
 	mainMenu->addUIString(2, "Rockets2D", uiTexture.getSize().x / 2, 25, 30, UIString::UIString_alignment::center);
 	mainMenu->addUIString(2, "Controls", uiTexture.getSize().x / 2, 60, 20, UIString::UIString_alignment::center);
 	mainMenu->addUIString(2, "\
-	Scroll wheel up: Zoom In\n\
-	Scroll whell down: Zoom Out\n\
-	Middle Mouse Button: Pan\n\
-	Directional Keys: Move Screen\
+	Map Controls:\n\
+	Zoom In: Scroll Wheel Up\n\
+	Zoom Out: Scroll Wheel Down\n\
+	Pan: Middle Mouse Button\n\
+	Move Screen: Directional Keys\n\n\
+	Player Controls:\n\
+	Throttle Up: W\n\
+	Throttle Down: D\n\
+	Roll Left: A\n\
+	Roll Right: D\n\
 	", 25, 100, 15);
 	mainMenu->addButton(2, "<- Back", 25, 25, 20, [&] {mainMenu->setActivePage(0); });
 	mainMenu->setActive(true);
@@ -71,6 +76,7 @@ UIManager::UIManager() {
 	clock.restart();
 	gameView.zoom(1);
 	//gameView.setSize(2.07544 * pow(10, 8), 2.07544 * pow(10, 8));
+	syncFuncs = [&] {gameUI->synchronousUpdate(); mainMenu->synchronousUpdate(); };
 }
 
 void UIManager::setGame(std::shared_ptr<Game> g) {
@@ -81,6 +87,10 @@ void UIManager::setGame(std::shared_ptr<Game> g) {
 	gameUI->addFBD(0, uiTexture.getSize().x - 100, uiTexture.getSize().y - 100, 100, game->getPlayer()->getRocketPtr()->getFBPtr());
 	gameUI->addUIString(0, "Throttle:", 10, uiTexture.getSize().y - 140, 15, UIString::UIString_alignment::left, UIString::UIString_alignment::middle);
 	gameUI->addUIString(0, "Steering:", 10, uiTexture.getSize().y - 90, 15, UIString::UIString_alignment::left, UIString::UIString_alignment::middle);
+}
+
+const std::function<void()>& UIManager::getSyncFuncs() {
+	return syncFuncs;
 }
 
 void UIManager::update() {

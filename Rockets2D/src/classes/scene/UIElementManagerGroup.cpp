@@ -60,6 +60,14 @@ void UIElementManagerGroup::update() {
 	}
 }
 
+void UIElementManagerGroup::synchronousUpdate() {
+	if (isActive) {
+		for (UIElementManager& page : pages) {
+			page.synchronousUpdate();
+		}
+	}
+}
+
 void UIElementManagerGroup::setActivePage(int page) {
 	if (page < pages.size()) {
 		for (int i = 0; i < pages.size(); i++) {

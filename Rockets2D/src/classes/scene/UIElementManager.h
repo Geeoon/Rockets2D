@@ -16,6 +16,7 @@ class UIElementManager
 public:
 	UIElementManager(sf::RenderTexture* t, sf::RenderWindow* w, sf::Font* f, sf::Sound* ho, sf::Sound* cl, sf::Sound* uCl);
 	void update();
+	void synchronousUpdate();
 	void setActive(bool a);
 	void addUIString(std::string v, int xP, int yP, int s);
 	void addUIString(std::string v, int xP, int yP, int s, UIString::UIString_alignment a);

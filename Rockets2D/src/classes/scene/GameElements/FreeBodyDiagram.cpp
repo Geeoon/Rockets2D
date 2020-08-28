@@ -21,6 +21,10 @@ void FreeBodyDiagram::update() {
 	
 }
 
+void FreeBodyDiagram::synchronousUpdate() { 
+	forceToArrow();
+}
+
 void FreeBodyDiagram::forceToArrow() {
 	arrows.clear();
 	long double maxForce = 0;

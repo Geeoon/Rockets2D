@@ -3,6 +3,7 @@
 Scene::Scene() {
 	game = std::make_shared<Game>(ui.getGameTexture());
 	ui.setGame(game);
+	game->addToSync(ui.getSyncFuncs());
 }
 
 void Scene::start() {
