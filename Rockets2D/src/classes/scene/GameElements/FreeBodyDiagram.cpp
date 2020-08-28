@@ -18,7 +18,6 @@ void FreeBodyDiagram::update() {
 	for (Arrow arrow : arrows) {
 		arrow.draw(texture);
 	}
-	
 }
 
 void FreeBodyDiagram::synchronousUpdate() { 
@@ -26,7 +25,6 @@ void FreeBodyDiagram::synchronousUpdate() {
 }
 
 void FreeBodyDiagram::forceToArrow() {
-	arrows.clear();
 	long double maxForce = 0;
 	
 	for (Vector2 force : fbdPtr->getForces()) {
@@ -35,8 +33,10 @@ void FreeBodyDiagram::forceToArrow() {
 		}
 	}
 
-	for (Vector2 force : fbdPtr->getForces()) {
-		arrows.push_back(Arrow(force.getMagnitude() / maxForce * ((long double)size - (long double)10), 10, x, y, (-force.getAngle() * 180 / M_PI) - 90));
+	if (true) {
+		arrows.clear();
+		for (Vector2 force : fbdPtr->getForces()) {
+			arrows.push_back(Arrow(force.getMagnitude() / maxForce * ((long double)size - (long double)10), 10, x, y, (-force.getAngle() * 180 / M_PI) - 90));
+		}
 	}
-	
 }

@@ -36,8 +36,6 @@ void Rocket::update() {
 		long double calculatedTorque = FP.force.getMagnitude() * (FP.position - centerOfMass).getMagnitude() * sinl(angleBetween);
 		applyTorque(calculatedTorque);
 	}
-
-	Object::update();
 }
 
 void Rocket::draw() {

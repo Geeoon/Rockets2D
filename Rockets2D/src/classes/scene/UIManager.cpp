@@ -42,6 +42,8 @@ UIManager::UIManager() {
 	mainMenu->addUIString(2, "Rockets2D", uiTexture.getSize().x / 2, 25, 30, UIString::UIString_alignment::center);
 	mainMenu->addUIString(2, "Controls", uiTexture.getSize().x / 2, 60, 20, UIString::UIString_alignment::center);
 	mainMenu->addUIString(2, "\
+	General Controls: \n\
+	Toggle UI: F6\n\n\
 	Map Controls:\n\
 	Zoom In: Scroll Wheel Up\n\
 	Zoom Out: Scroll Wheel Down\n\
@@ -132,7 +134,6 @@ void UIManager::pollEvent() {
 		switch (event.type) {
 		case sf::Event::Closed:
 			quit();
-			window.close();
 			break;
 
 		case sf::Event::MouseWheelScrolled:

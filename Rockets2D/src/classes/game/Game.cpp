@@ -8,6 +8,7 @@ Game::Game(sf::RenderTexture* t) {
 	//objMan->addObject(testObject->getObject());
 	//objMan->addObject(testObject2->getObject());
 	player = std::make_unique<Player>(t);
+	player->setSyncUpdates(&syncFuncs);
 }
 
 void Game::start() {
@@ -27,7 +28,6 @@ void Game::update() {
 	while (!isQuit) {
 		if (hasStarted && !isPaused) {
 			player->update();
-			syncronousUpdate();
 			objMan->update();
 			//testObject->update();
 			//testObject2->update();

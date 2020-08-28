@@ -20,10 +20,18 @@ void Player::update() {
 	manageControls();
 	clock.restart();
 	rocket->update();
+	for (std::function<void()>& sf : *syncUpdateVect) {
+		sf();
+	}
+	rocket->Object::update();
 }
 
 void Player::draw() {
 	rocket->draw();
+}
+
+void Player::setSyncUpdates(std::vector<std::function<void()>>* fv) {
+	syncUpdateVect = fv;
 }
 
 long double* Player::getThrottlePtr() {
@@ -40,11 +48,11 @@ std::shared_ptr<Rocket> Player::getRocketPtr() {
 
 void Player::manageControls() {
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) {
-		throttle += (long double)(clock.getElapsedTime().asSeconds()) * 1500;
+		throttle += (long double)(clock.getElapsedTime().asSeconds()) * 100;
 	}
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) {
-		throttle -= (long double)(clock.getElapsedTime().asSeconds()) * 1500;
+		throttle -= (long double)(clock.getElapsedTime().asSeconds()) * 100;
 	}
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
