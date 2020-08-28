@@ -19,6 +19,7 @@ private:
 	const double moveSpeed = 5000;
 	sf::Clock clock;
 	bool isPanning = false;
+	bool isUIVisible = true;
 	std::shared_ptr<Game> game;
 	sf::Vector2f lastPos;
 	sf::RenderWindow window; //for texture and ui elements to be rendered together

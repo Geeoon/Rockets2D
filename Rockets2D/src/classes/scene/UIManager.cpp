@@ -98,13 +98,17 @@ const std::function<void()>& UIManager::getSyncFuncs() {
 void UIManager::update() {
 	clock.restart();
 	window.clear(sf::Color::Black);
-	updateUI();
+	if (isUIVisible) {
+		updateUI();
+	}
 	pollEvent();
 	manageControls();
 	game->draw(); //draw onto the renderTexture
 	window.draw(sf::Sprite(gameTexture.getTexture())); //first the game,
 
-	window.draw(sf::Sprite(uiTexture.getTexture())); //then the ui; this keeps the UI always on top no matter what.
+	if (isUIVisible) {
+		window.draw(sf::Sprite(uiTexture.getTexture())); //then the ui; this keeps the UI always on top no matter what.
+	}
 	window.display();
 }
 
@@ -148,11 +152,16 @@ void UIManager::pollEvent() {
 			}
 			break;
 
-		case sf::Event::MouseButtonReleased :
+		case sf::Event::MouseButtonReleased:
 			if (event.mouseButton.button == sf::Mouse::Button::Middle) {
 				isPanning = false;
 			}
 			break;
+		
+		case sf::Event::KeyPressed:
+			if (event.key.code == sf::Keyboard::F6) {
+				isUIVisible = !isUIVisible;
+			}
 
 		case sf::Event::MouseMoved:
 			if (isPanning) {
@@ -184,6 +193,7 @@ void UIManager::manageControls() {
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) {
 		translationVector += sf::Vector2f(0, (float)moveSpeed);
 	}
+
 	gameView.move(translationVector * (gameView.getSize().x / (gameTexture.getSize().x)) * clock.getElapsedTime().asSeconds());
 	gameTexture.setView(gameView);
 }
