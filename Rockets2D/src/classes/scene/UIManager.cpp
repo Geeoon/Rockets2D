@@ -24,9 +24,10 @@ UIManager::UIManager() {
 	mainMenu->addPage(); //main menu page 0
 	mainMenu->addUIString(0, "Rockets2D", uiTexture.getSize().x / 2, 25, 30, UIString::UIString_alignment::center);
 	mainMenu->addButton(0, "Start", 25, 75, 20, [&] {play(); });
-	mainMenu->addButton(0, "Controls", 25, 125, 20, [&] {controls(); });
-	mainMenu->addButton(0, "Credits", 25, 175, 20, [&] {credits(); });
-	mainMenu->addButton(0, "Quit", 25, 225, 20, [&] {quit(); });
+	mainMenu->addButton(0, "Settings", 25, 125, 20, [&] {settings(); });
+	mainMenu->addButton(0, "Controls", 25, 175, 20, [&] {controls(); });
+	mainMenu->addButton(0, "Credits", 25, 225, 20, [&] {credits(); });
+	mainMenu->addButton(0, "Quit", 25, 275, 20, [&] {quit(); });
 	
 	mainMenu->addPage(); //credits page 1
 	mainMenu->addUIString(1, "Rockets2D", uiTexture.getSize().x / 2, 25, 30, UIString::UIString_alignment::center);
@@ -56,6 +57,15 @@ UIManager::UIManager() {
 	Roll Right: D\n\
 	", 25, 100, 15);
 	mainMenu->addButton(2, "<- Back", 25, 25, 20, [&] {mainMenu->setActivePage(0); });
+
+	mainMenu->addPage(); //settings page 3
+	mainMenu->addUIString(3, "Rockets2D", uiTexture.getSize().x / 2, 25, 30, UIString::UIString_alignment::center);
+	mainMenu->addUIString(3, "Settings", uiTexture.getSize().x / 2, 60, 20, UIString::UIString_alignment::center);
+	mainMenu->addButton(3, "<- Back", 25, 25, 20, [&] {mainMenu->setActivePage(0); });
+	mainMenu->addUIString(3, "Anti-Aliasing Level: ", 25, 125, 14);
+	mainMenu->addRadioList(3, 50, 125, 14, new std::string[4]{ "Off", "2x", "4x", "8x" }); //possible memory leak
+	mainMenu->addUIString(3, "FreeBody Diagram Orientation: ", 25, 150, 14);//relative to sceen, relative to object, relative to self
+
 	mainMenu->setActive(true);
 
 	gameUI = std::make_unique<UIElementManagerGroup>(&uiTexture, &window, &font, &hover, &click, &unClick);
@@ -208,6 +218,10 @@ void UIManager::play() {
 
 void UIManager::controls() {
 	mainMenu->setActivePage(2);
+}
+
+void UIManager::settings() {
+	mainMenu->setActivePage(3);
 }
 
 void UIManager::credits() {

@@ -41,9 +41,13 @@ void UIElementManagerGroup::addFBD(int page, int xP, int yP, int s, FreeBody* fb
 	pages[page].addFBD(xP, yP, s, fb, canD);
 }
 
+void UIElementManagerGroup::addRadioList(int page, int xP, int yP, int s, std::string args[]) {
+	pages[page].addRadioList(xP, yP, s, args);
+}
+
 void UIElementManagerGroup::setActive(bool active) {
 	isActive = active;
-	for (int i = 0; i < pages.size(); i++) {
+	for (size_t i = 0; i < pages.size(); i++) {
 		if (i == 0) {
 			pages[i].setActive(true);
 		} else {
@@ -68,9 +72,9 @@ void UIElementManagerGroup::synchronousUpdate() {
 	}
 }
 
-void UIElementManagerGroup::setActivePage(int page) {
+void UIElementManagerGroup::setActivePage(size_t page) {
 	if (page < pages.size()) {
-		for (int i = 0; i < pages.size(); i++) {
+		for (size_t i = 0; i < pages.size(); i++) {
 			if (page == i) {
 				pages[i].setActive(true);
 			} else {

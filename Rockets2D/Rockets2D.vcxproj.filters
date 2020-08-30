@@ -105,6 +105,15 @@
     <ClCompile Include="src\classes\scene\Misc\Arrow.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\classes\game\Rocket\RocketParts\Tanks\Tank.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\classes\scene\UIElements\UIRadio.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\classes\scene\UIElements\UIRadioList.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\classes\scene\UIManager.h">
@@ -195,6 +204,15 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\classes\scene\Misc\Arrow.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\classes\game\Rocket\RocketParts\Tanks\Tank.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\classes\scene\UIElements\UIRadio.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\classes\scene\UIElements\UIRadioList.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -174,6 +174,9 @@
     <ClCompile Include="src\classes\scene\UIElements\UISlider.cpp" />
     <ClCompile Include="src\classes\scene\UIElements\UIBackground.cpp" />
     <ClCompile Include="src\classes\scene\UIElements\UIElement.cpp" />
+    <ClCompile Include="src\classes\game\Rocket\RocketParts\Tanks\Tank.cpp" />
+    <ClCompile Include="src\classes\scene\UIElements\UIRadio.cpp" />
+    <ClCompile Include="src\classes\scene\UIElements\UIRadioList.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\classes\scene\Misc\Arrow.h" />
@@ -206,6 +209,9 @@
     <ClInclude Include="src\classes\scene\UIElements\UISlider.h" />
     <ClInclude Include="src\classes\scene\UIElements\UIBackground.h" />
     <ClInclude Include="src\classes\scene\UIElements\UIElement.h" />
+    <ClInclude Include="src\classes\game\Rocket\RocketParts\Tanks\Tank.h" />
+    <ClInclude Include="src\classes\scene\UIElements\UIRadio.h" />
+    <ClInclude Include="src\classes\scene\UIElements\UIRadioList.h" />
   </ItemGroup>
   <ItemGroup>
     <Font Include="fonts\SourceCodePro.ttf" />

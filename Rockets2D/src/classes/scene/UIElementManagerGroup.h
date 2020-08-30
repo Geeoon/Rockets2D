@@ -20,10 +20,11 @@ public:
 	void addBackground(int page, int xP, int yP, int wid, int hei);
 	void addSlider(int page, int xP, int yP, int len, long double* oVal);
 	void addFBD(int page, int xP, int yP, int s, FreeBody* fb, bool* canD);
+	void addRadioList(int page, int xP, int yP, int s, std::string args[]);
 	void setActive(bool active);
 	void update();
 	void synchronousUpdate();
-	void setActivePage(int page);
+	void setActivePage(size_t page);
 private:
 	bool isActive = false;
 	sf::RenderTexture* texture;

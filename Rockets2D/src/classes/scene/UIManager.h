@@ -44,6 +44,7 @@ private:
 	void manageControls();
 	void play();
 	void controls();
+	void settings();
 	void credits();
 	void quit();
 	void quitGame();

@@ -6,6 +6,7 @@
 #include "../game/FreeBody.h"
 #include "GameElements/FreeBodyDiagram.h"
 #include "UIElements/UIBackground.h"
+#include "UIElements/UIRadioList.h"
 #include "UIElements/UIElement.h"
 #include "UIElements/UIString.h"
 #include "UIElements/UISlider.h"
@@ -25,6 +26,7 @@ public:
 	void addBackground(int xP, int yP, int wid, int hei);
 	void addSlider(int xP, int yP, int len, long double* oVal);
 	void addFBD(int xP, int yP, int s, FreeBody* fb, bool* canD);
+	void addRadioList(int xP, int yP, int s, std::string args[]);
 private:
 	bool active = false;
 	std::vector<std::shared_ptr<UIElement>> elements;
