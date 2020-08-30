@@ -63,8 +63,9 @@ UIManager::UIManager() {
 	mainMenu->addUIString(3, "Settings", uiTexture.getSize().x / 2, 60, 20, UIString::UIString_alignment::center);
 	mainMenu->addButton(3, "<- Back", 25, 25, 20, [&] {mainMenu->setActivePage(0); });
 	mainMenu->addUIString(3, "Anti-Aliasing Level: ", 25, 125, 14);
-	mainMenu->addRadioList(3, 50, 125, 14, new std::string[4]{ "Off", "2x", "4x", "8x" }); //possible memory leak
+	mainMenu->addRadioList(3, 195, 125, 14, new std::string[4]{ "Off", "MSAA 2x", "MSAA 4x", "MSAA 8x" }, 4, 0); //possible memory leak
 	mainMenu->addUIString(3, "FreeBody Diagram Orientation: ", 25, 150, 14);//relative to sceen, relative to object, relative to self
+	mainMenu->addRadioList(3, 268, 150, 14, new std::string[3]{ "Relative to Screen", "Relative to Object", "Relative to Player" }, 3, 0); //possible memory leak
 
 	mainMenu->setActive(true);
 

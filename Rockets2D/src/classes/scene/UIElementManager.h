@@ -26,7 +26,8 @@ public:
 	void addBackground(int xP, int yP, int wid, int hei);
 	void addSlider(int xP, int yP, int len, long double* oVal);
 	void addFBD(int xP, int yP, int s, FreeBody* fb, bool* canD);
-	void addRadioList(int xP, int yP, int s, std::string args[]);
+	void addRadioList(int xP, int yP, int s, std::string args[], size_t num);
+	void addRadioList(int xP, int yP, int s, std::string args[], size_t num, int def);
 private:
 	bool active = false;
 	std::vector<std::shared_ptr<UIElement>> elements;

@@ -20,7 +20,8 @@ public:
 	void addBackground(int page, int xP, int yP, int wid, int hei);
 	void addSlider(int page, int xP, int yP, int len, long double* oVal);
 	void addFBD(int page, int xP, int yP, int s, FreeBody* fb, bool* canD);
-	void addRadioList(int page, int xP, int yP, int s, std::string args[]);
+	void addRadioList(int page, int xP, int yP, int s, std::string args[], size_t num);
+	void addRadioList(int page, int xP, int yP, int s, std::string args[], size_t num, int def);
 	void setActive(bool active);
 	void update();
 	void synchronousUpdate();

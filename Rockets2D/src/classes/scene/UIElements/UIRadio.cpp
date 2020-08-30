@@ -5,10 +5,17 @@ UIRadio::UIRadio(sf::RenderTexture* t, sf::RenderWindow* w, int xP, int yP, std:
 	outer.setOutlineColor(sf::Color(0, 255, 65));
 	outer.setOutlineThickness(2);
 	outer.setFillColor(sf::Color::Transparent);
-	inner.setRadius((float)s / 2);
-	outer.setRadius(3 * (float)s / 8);
-	outer.setPosition(xP, yP);
-	inner.setPosition(xP, yP);
+	outer.setRadius((float)s / 2);
+	inner.setRadius(3 * (float)s / 8);
+	outer.setOrigin(outer.getRadius(), outer.getRadius());
+	inner.setOrigin(inner.getRadius(), inner.getRadius());
+	outer.setPosition((float)xP, (float)yP + outer.getRadius());
+	inner.setPosition((float)xP, (float)yP + outer.getRadius());
+	text.setFillColor(sf::Color(0, 255, 65));
+	text.setFont(*f);
+	text.setPosition((float)xP + (float)s, (float)yP);
+	text.setCharacterSize(s);
+	text.setString(v);
 }
 
 void UIRadio::update() {
@@ -19,10 +26,10 @@ void UIRadio::update() {
 	}
 
 	texture->draw(outer);
-
 	if (isOn) {
 		texture->draw(inner);
 	}
+	texture->draw(text);
 }
 
 bool* UIRadio::getIsOnPtr() {

@@ -41,8 +41,12 @@ void UIElementManagerGroup::addFBD(int page, int xP, int yP, int s, FreeBody* fb
 	pages[page].addFBD(xP, yP, s, fb, canD);
 }
 
-void UIElementManagerGroup::addRadioList(int page, int xP, int yP, int s, std::string args[]) {
-	pages[page].addRadioList(xP, yP, s, args);
+void UIElementManagerGroup::addRadioList(int page, int xP, int yP, int s, std::string args[], size_t num) {
+	pages[page].addRadioList(xP, yP, s, args, num);
+}
+
+void UIElementManagerGroup::addRadioList(int page, int xP, int yP, int s, std::string args[], size_t num, int def) {
+	pages[page].addRadioList(xP, yP, s, args, num, def);
 }
 
 void UIElementManagerGroup::setActive(bool active) {

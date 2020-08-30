@@ -57,6 +57,10 @@ void UIElementManager::addFBD(int xP, int yP, int s, FreeBody* fb, bool* canD) {
 	elements.push_back(std::make_shared<FreeBodyDiagram>(texture, window, xP, yP, s, fb, canD));
 }
 
-void UIElementManager::addRadioList(int xP, int yP, int s, std::string args[]) {
-	elements.push_back(std::make_shared<UIRadioList>(UIRadioList::type::vertical, texture, window, xP, yP, font, s, args));
+void UIElementManager::addRadioList(int xP, int yP, int s, std::string args[], size_t num) {
+	elements.push_back(std::make_shared<UIRadioList>(UIRadioList::type::vertical, texture, window, xP, yP, font, s, args, num));
+}
+
+void UIElementManager::addRadioList(int xP, int yP, int s, std::string args[], size_t num, int def) {
+	elements.push_back(std::make_shared<UIRadioList>(UIRadioList::type::vertical, texture, window, xP, yP, font, s, args, num, def));
 }

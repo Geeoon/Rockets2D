@@ -12,6 +12,7 @@ public:
 
 private:
 	bool isOn = false;
+	sf::Text text;
 	sf::CircleShape outer;
 	sf::CircleShape inner;
 };
