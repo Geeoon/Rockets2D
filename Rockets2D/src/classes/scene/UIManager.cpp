@@ -44,6 +44,7 @@ UIManager::UIManager() {
 	mainMenu->addUIString(2, "Controls", uiTexture.getSize().x / 2, 60, 20, UIString::UIString_alignment::center);
 	mainMenu->addUIString(2, "\
 	General Controls: \n\
+	Pause Game: Escape\n\
 	Toggle UI: F6\n\n\
 	Map Controls:\n\
 	Zoom In: Scroll Wheel Up\n\
@@ -172,10 +173,17 @@ void UIManager::pollEvent() {
 			break;
 		
 		case sf::Event::KeyPressed:
-			if (event.key.code == sf::Keyboard::F6) {
-				isUIVisible = !isUIVisible;
-			}
 
+			switch (event.key.code) {
+			case sf::Keyboard::F6:
+				isUIVisible = !isUIVisible;
+				break;
+			case sf::Keyboard::Escape:
+				gameUI->setActivePage(1);
+				game->setPause(true);
+				break;
+			}
+			break;
 		case sf::Event::MouseMoved:
 			if (isPanning) {
 				const sf::Vector2f currentPos = window.mapPixelToCoords(sf::Mouse::getPosition(window));
