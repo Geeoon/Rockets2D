@@ -224,6 +224,9 @@
     <Media Include="sounds\ui\hover.wav" />
     <Media Include="sounds\ui\unClick.wav" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="openal32.dll" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

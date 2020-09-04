@@ -233,4 +233,7 @@
       <Filter>Resource Files</Filter>
     </Media>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="openal32.dll" />
+  </ItemGroup>
 </Project>
