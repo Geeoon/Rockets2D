@@ -26,8 +26,10 @@ void Game::quit() {
 
 void Game::update() {
 	while (!isQuit) {
+		if (hasStarted) {
+			player->update(isPaused);
+		}
 		if (hasStarted && !isPaused) {
-			player->update();
 			objMan->update();
 			//testObject->update();
 			//testObject2->update();

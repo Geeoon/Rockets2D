@@ -17,6 +17,7 @@ public:
 	Vector2 getPosition();
 	long double getOrientation();
 	long double getMass();
+	void resetTime();
 
 protected:
 	sf::Clock clock;

@@ -10,7 +10,7 @@ class Player
 {
 public:
 	Player(sf::RenderTexture* t);
-	void update();
+	void update(bool p);
 	void draw();
 	void setSyncUpdates(std::vector<std::function<void()>>* fv);
 	long double* getThrottlePtr();
@@ -18,6 +18,7 @@ public:
 	std::shared_ptr<Rocket> getRocketPtr();
 private:
 	sf::Clock clock;
+	sf::Time elapsedTime;
 	std::shared_ptr<Rocket> rocket;
 	std::vector<std::function<void()>>* syncUpdateVect;
 	long double throttle = 0;

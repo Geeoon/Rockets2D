@@ -32,8 +32,7 @@ void Object::applyTorque(long double t) {
 }
 
 void Object::update() {
-	elapsedTime = clock.getElapsedTime();
-	clock.restart();
+	resetTime();
 	angularAcceleration = torque / momentOfInertia;
 	angularVelocity += angularAcceleration * elapsedTime.asSeconds() * timescale;
 	orientation += angularVelocity * elapsedTime.asSeconds() * timescale;
@@ -58,4 +57,9 @@ long double Object::getOrientation() {
 
 long double Object::getMass() {
 	return mass;
+}
+
+void Object::resetTime() {
+	elapsedTime = clock.getElapsedTime();
+	clock.restart();
 }

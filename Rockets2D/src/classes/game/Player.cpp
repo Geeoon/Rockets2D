@@ -16,14 +16,22 @@ Player::Player(sf::RenderTexture* t) {
 	clock.restart();
 }
 
-void Player::update() {
-	manageControls();
-	clock.restart();
-	rocket->update();
-	for (std::function<void()>& sf : *syncUpdateVect) {
-		sf();
+void Player::update(bool p) {
+	if (!p) {
+		manageControls();
+		rocket->update();
+		for (std::function<void()>& sf : *syncUpdateVect) {
+			sf();
+		}
+		rocket->Object::update();
+
+	} else {
+		rocket->resetTime();
 	}
-	rocket->Object::update();
+
+	std::cout << rocket->getPosition().getX() << std::endl;
+	elapsedTime = clock.getElapsedTime();
+	clock.restart();
 }
 
 void Player::draw() {
@@ -48,11 +56,11 @@ std::shared_ptr<Rocket> Player::getRocketPtr() {
 
 void Player::manageControls() {
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) {
-		throttle += (long double)(clock.getElapsedTime().asSeconds()) * 100;
+		throttle += (long double)(elapsedTime.asSeconds()) * 100;
 	}
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) {
-		throttle -= (long double)(clock.getElapsedTime().asSeconds()) * 100;
+		throttle -= (long double)(elapsedTime.asSeconds()) * 100;
 	}
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {

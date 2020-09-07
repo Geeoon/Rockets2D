@@ -26,6 +26,7 @@ private:
 	bool hasStarted = false;
 	bool isPaused = false;
 	bool isQuit = false;
+	//sf::Clock gameClock;
 	std::vector<std::function<void()>> syncFuncs;
 	std::unique_ptr<SpaceObject> testObject;
 	std::unique_ptr<SpaceObject> testObject2;
