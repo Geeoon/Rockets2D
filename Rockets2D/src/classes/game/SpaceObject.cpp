@@ -5,7 +5,7 @@ SpaceObject::SpaceObject(sf::RenderTexture* t, const Vector2& pos, long double m
 	texture = t;
 	radius = r;
 	obj = std::make_unique<Object>(pos, m);
-	shape.setRadius(r);
+	shape.setRadius((float)r);
 	borderColor = sf::Color(0, 255, 65);
 	innerColor = sf::Color(0, 0, 255, 0);
 	shape.setPointCount(500);
@@ -20,7 +20,7 @@ SpaceObject::SpaceObject(sf::RenderTexture* t, const Vector2& pos, long double m
 	texture = t;
 	obj = std::make_unique<Object>(pos, m, vel);
 	radius = r;
-	shape.setRadius(r);
+	shape.setRadius((float)r);
 	borderColor = sf::Color(0, 255, 65);
 	innerColor = sf::Color(0, 0, 255, 0);
 	shape.setPointCount(500);

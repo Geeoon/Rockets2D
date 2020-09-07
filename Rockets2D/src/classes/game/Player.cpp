@@ -17,6 +17,8 @@ Player::Player(sf::RenderTexture* t) {
 }
 
 void Player::update(bool p) {
+	elapsedTime = clock.getElapsedTime();
+	clock.restart();
 	if (!p) {
 		manageControls();
 		rocket->update();
@@ -28,10 +30,7 @@ void Player::update(bool p) {
 	} else {
 		rocket->resetTime();
 	}
-
-	std::cout << rocket->getPosition().getX() << std::endl;
-	elapsedTime = clock.getElapsedTime();
-	clock.restart();
+	
 }
 
 void Player::draw() {

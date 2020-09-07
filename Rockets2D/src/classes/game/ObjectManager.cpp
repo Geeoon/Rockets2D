@@ -5,8 +5,8 @@ ObjectManager::ObjectManager(sf::RenderTexture* t) {
 }
 
 void ObjectManager::update() {
-	for (int i = 0; i < objects.size(); i++) {
-		for (int j = i + 1; j < objects.size(); j++) {
+	for (size_t i = 0; i < objects.size(); i++) {
+		for (size_t j = i + 1; j < objects.size(); j++) {
 			calcNApplyGravity(objects[i], objects[j]);
 		}
 	}
