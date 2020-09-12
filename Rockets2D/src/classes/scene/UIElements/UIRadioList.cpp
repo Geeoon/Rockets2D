@@ -43,3 +43,11 @@ void UIRadioList::update() {
 void UIRadioList::addRadio(std::string v) {
 	radios.push_back(UIRadio(texture, window, x, y, v, font, textSize));
 }
+
+std::vector<bool*> UIRadioList::getBoolPtrArr() {
+	std::vector<bool*> bArray;
+	for (UIRadio& radio : radios) {
+		bArray.push_back(radio.getIsOnPtr());
+	}
+	return bArray;
+}

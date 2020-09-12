@@ -10,6 +10,7 @@ public:
 	UIRadioList(type typ, sf::RenderTexture* t, sf::RenderWindow* w, int xP, int yP, sf::Font* f, int s, std::string args[], size_t num, int def);
 	void update() override;
 	void addRadio(std::string v);
+	std::vector<bool*> getBoolPtrArr();
 
 private:
 	sf::Font* font = nullptr;
@@ -17,4 +18,3 @@ private:
 	bool* currentOn = nullptr;
 	std::vector<UIRadio> radios;
 };
-
