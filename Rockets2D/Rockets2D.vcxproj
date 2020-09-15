@@ -225,6 +225,7 @@
     <Media Include="sounds\ui\unClick.wav" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="data\user\rockets\default.rkt" />
     <None Include="openal32.dll" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
