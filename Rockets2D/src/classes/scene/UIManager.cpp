@@ -27,7 +27,7 @@ UIManager::UIManager() {
 	mainMenu->addButton(0, "Settings", 25, 125, 20, [&] {settings(); });
 	mainMenu->addButton(0, "Controls", 25, 175, 20, [&] {controls(); });
 	mainMenu->addButton(0, "Credits", 25, 225, 20, [&] {credits(); });
-	mainMenu->addButton(0, "Quit", 25, 275, 20, [&] {quit(); });
+	mainMenu->addButton(0, "Quit to Desktop", 25, 275, 20, [&] {quit(); });
 	
 	mainMenu->addPage(); //credits page 1
 	mainMenu->addUIString(1, "Rockets2D", uiTexture.getSize().x / 2, 25, 30, UIString::UIString_alignment::center);
@@ -62,7 +62,8 @@ UIManager::UIManager() {
 	mainMenu->addPage(); //settings page 3
 	mainMenu->addUIString(3, "Rockets2D", uiTexture.getSize().x / 2, 25, 30, UIString::UIString_alignment::center);
 	mainMenu->addUIString(3, "Settings", uiTexture.getSize().x / 2, 60, 20, UIString::UIString_alignment::center);
-	mainMenu->addButton(3, "<- Back", 25, 25, 20, [&] {mainMenu->setActivePage(0); });
+	//mainMenu->addButton(3, "<- Back", 25, 25, 20, [&] {mainMenu->setActivePage(0); });
+	mainMenu->addButton(3, "Save Settings", 25, uiTexture.getSize().y - 55, 20, [&] {saveUserConfigs(); });
 	mainMenu->addUIString(3, "Anti-Aliasing Level: ", 25, 125, 14);
 	mainMenu->addRadioList(3, 195, 125, 14, new std::string[4]{ "Off", "MSAA 2x", "MSAA 4x", "MSAA 8x" }, 4, 0); //possible memory leak
 	mainMenu->addUIString(3, "FreeBody Diagram Orientation: ", 25, 150, 14);//relative to sceen, relative to object, relative to self
@@ -84,8 +85,8 @@ UIManager::UIManager() {
 	gameUI->addUIString(1, "Paused", uiTexture.getSize().x / 2, 75, 25, UIString::UIString_alignment::center);
 	gameUI->addButton(1, "Resume", 50, 150, 20, [&] {gameUI->setActivePage(0); game->setPause(false); });
 	gameUI->addButton(1, "Open Console", 50, 200, 20, [&] {});
-	gameUI->addButton(1, "Back to Main Menu", 50, 250, 20, [&] {quitGame(); });
-	gameUI->addButton(1, "Quit", 50, 300, 20, [&] {quit(); });
+	gameUI->addButton(1, "Quit to Main Menu", 50, 250, 20, [&] {quitGame(); });
+	gameUI->addButton(1, "Quit to Desktop", 50, 300, 20, [&] {quit(); });
 	gameUI->setActive(false);
 	clock.restart();
 	gameView.zoom(1);
@@ -247,4 +248,8 @@ void UIManager::quitGame() {
 	game->stop();
 	gameUI->setActive(false);
 	mainMenu->setActive(true);
+}
+
+void UIManager::saveUserConfigs() {
+
 }

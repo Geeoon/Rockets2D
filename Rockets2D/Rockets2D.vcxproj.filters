@@ -236,5 +236,6 @@
   <ItemGroup>
     <None Include="openal32.dll" />
     <None Include="data\user\rockets\default.rkt" />
+    <None Include="data\user\config.cfg" />
   </ItemGroup>
 </Project>

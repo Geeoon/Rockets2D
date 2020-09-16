@@ -48,5 +48,6 @@ private:
 	void credits();
 	void quit();
 	void quitGame();
+	void saveUserConfigs();
 };
 
