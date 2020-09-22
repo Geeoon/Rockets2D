@@ -4,7 +4,7 @@
 class FileParser
 {
 public:
-	FileParser();
+	FileParser(std::string path, std::string file);
 	std::string parseChunk();
 	void writeFile();
 

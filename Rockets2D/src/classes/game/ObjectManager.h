@@ -9,6 +9,7 @@ class ObjectManager
 public:
 	ObjectManager(sf::RenderTexture* t);
 	void update();
+	void draw();
 	void addObject(const Vector2& pos, double m);
 	void addObject(const Vector2& pos, double m, const Vector2& vel);
 	void addObject(std::shared_ptr<Object> obj);

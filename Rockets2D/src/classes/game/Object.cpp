@@ -63,3 +63,7 @@ void Object::resetTime() {
 	elapsedTime = clock.getElapsedTime();
 	clock.restart();
 }
+
+void Object::draw() {
+
+}

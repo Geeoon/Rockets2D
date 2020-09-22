@@ -17,6 +17,12 @@ void ObjectManager::update() {
 	}
 }
 
+void ObjectManager::draw() {
+	for (std::shared_ptr<Object> obj : objects) {
+		obj->draw();
+	}
+}
+
 void ObjectManager::addObject(const Vector2& pos, double m) {
 	objects.push_back(std::make_shared<Object>(pos, m));
 }

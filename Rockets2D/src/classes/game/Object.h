@@ -18,6 +18,7 @@ public:
 	long double getOrientation();
 	long double getMass();
 	void resetTime();
+	virtual void draw();
 
 protected:
 	sf::Clock clock;
