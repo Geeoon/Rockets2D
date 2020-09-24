@@ -23,9 +23,9 @@ Arrow::Arrow(int l, int w, int xP, int yP, long double a) {
 
 void Arrow::setLength(int l) {
 	length = l;
-	arrowHead.setOrigin(0, length);
+	arrowHead.setOrigin(arrowHead.getLocalBounds().width / 2, length);
 	body.setSize(sf::Vector2f(2, length));
-	body.setOrigin(0, length);
+	body.setOrigin(body.getLocalBounds().width / 2, length);
 }
 
 void Arrow::setAngle(int a) {
@@ -38,4 +38,13 @@ void Arrow::draw(sf::RenderTexture* rt) {
 	rt->draw(body);
 	rt->draw(arrowHead);
 
+}
+
+void Arrow::setDirection(bool d) {
+	if (!d) {
+		arrowHead.setOrigin(-arrowHead.getLocalBounds().width / 4 - 2, arrowHead.getRadius());
+		arrowHead.setRadius(-arrowHead.getRadius());
+	} else {
+		arrowHead.setOrigin(arrowHead.getLocalBounds().width / 2 - 2, length);
+	}
 }

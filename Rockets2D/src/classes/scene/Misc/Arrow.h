@@ -4,13 +4,10 @@ class Arrow
 {
 public:
 	Arrow(int l, int w, int xP, int yP, long double a);
-
 	void setLength(int l);
-
 	void setAngle(int a);
-
 	void draw(sf::RenderTexture* rt);
-
+	void setDirection(bool d);
 private:
 	sf::CircleShape arrowHead;
 	sf::RectangleShape body;

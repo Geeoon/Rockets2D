@@ -37,7 +37,10 @@ void FreeBodyDiagram::forceToArrow() {
 	if (*canDraw) {
 		arrows.clear();
 		for (Vector2 force : fbdPtr->getForces()) {
-			arrows.push_back(Arrow(force.getMagnitude() / maxForce * ((long double)size - (long double)10), 10, x, y, (-force.getAngle() * 180 / M_PI) - 90));
+			if (force.getMagnitude() > 0) {
+				arrows.push_back(Arrow(force.getMagnitude() / maxForce * ((long double)size - (long double)10), 10, x, y, (-force.getAngle() * 180 / M_PI) - 90));
+				arrows.back().setDirection(force.getIsPush());
+			}
 		}
 	}
 	
