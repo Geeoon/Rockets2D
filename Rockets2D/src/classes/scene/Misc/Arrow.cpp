@@ -41,10 +41,11 @@ void Arrow::draw(sf::RenderTexture* rt) {
 }
 
 void Arrow::setDirection(bool d) {
-	if (!d) {
+	if (d) {
 		arrowHead.setOrigin(-arrowHead.getLocalBounds().width / 4 - 2, arrowHead.getRadius());
 		arrowHead.setRadius(-arrowHead.getRadius());
 	} else {
 		arrowHead.setOrigin(arrowHead.getLocalBounds().width / 2 - 2, length);
+		setAngle(angle+180);
 	}
 }

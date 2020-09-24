@@ -5,6 +5,12 @@ Vector2::Vector2(long double xP, long double yP) {
 	y = yP;
 }
 
+Vector2::Vector2(long double xP, long double yP, bool push) {
+	x = xP;
+	y = yP;
+	isPush = push;
+}
+
 void Vector2::normalize() {
 	x = (*this / this->getMagnitude()).x;
 	y = (*this / this->getMagnitude()).y;
@@ -26,8 +32,8 @@ long double Vector2::getAngle() const {
 	return atan2(y, x);
 }
 
-bool Vector2::getIsPush() const {
-	return false;
+bool Vector2::getIsPush() {
+	return isPush;
 }
 
 Vector2 Vector2::operator+=(const Vector2& v) {

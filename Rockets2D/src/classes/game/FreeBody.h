@@ -2,6 +2,7 @@
 #include <vector>
 #include <SFML/Graphics.hpp>
 #include "Vector2.h"
+#include <iostream>
 
 class FreeBody
 {

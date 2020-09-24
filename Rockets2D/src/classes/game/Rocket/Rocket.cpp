@@ -30,7 +30,7 @@ void Rocket::update() {
 		momentOfInertia += partManager->getMass() * powl((partManager->getCenterOfMass() + partManager->getRelativePosition()).getMagnitude(), 2);
 	}
 	centerOfMass = centerOfMass / mass;
-	applyForce(FP.force);
+	applyForce(Vector2(FP.force.getX(), FP.force.getY(), true));
 	if (FP.force.getMagnitude() != 0) {
 		long double angleBetween = -(FP.position - centerOfMass).getAngle() - (FP.force.getAngle() + orientation);
 		long double calculatedTorque = FP.force.getMagnitude() * (FP.position - centerOfMass).getMagnitude() * sinl(angleBetween);

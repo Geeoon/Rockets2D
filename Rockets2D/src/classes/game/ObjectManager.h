@@ -3,6 +3,8 @@
 #include <vector>
 #include <iostream>
 #include "Object.h"
+#include "Force.h"
+
 #define G 0.00000000006673L
 class ObjectManager
 {

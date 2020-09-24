@@ -4,6 +4,7 @@
 #include "../Object.h"
 #include "RocketPartsManager.h"
 #include "../ForcePosition.h"
+#include "../Force.h"
 
 class Rocket : public Object
 {

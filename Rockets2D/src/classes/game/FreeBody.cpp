@@ -6,6 +6,7 @@ FreeBody::FreeBody() {
 
 void FreeBody::addForce(Vector2 v) {
 	forces.push_back(v);
+	std::cout << v.getIsPush();
 	netForce += v;
 }
 
