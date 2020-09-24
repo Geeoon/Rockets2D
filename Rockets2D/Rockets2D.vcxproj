@@ -144,6 +144,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\classes\game\Force.cpp" />
     <ClCompile Include="src\classes\scene\FileParser.cpp" />
     <ClCompile Include="src\classes\scene\Misc\Arrow.cpp" />
     <ClCompile Include="src\classes\scene\GameElements\FreeBodyDiagram.cpp" />
@@ -180,6 +181,7 @@
     <ClCompile Include="src\classes\scene\UIElements\UIRadioList.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\classes\game\Force.h" />
     <ClInclude Include="src\classes\scene\FileParser.h" />
     <ClInclude Include="src\classes\scene\Misc\Arrow.h" />
     <ClInclude Include="src\classes\scene\GameElements\FreeBodyDiagram.h" />
