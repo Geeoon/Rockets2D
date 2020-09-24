@@ -5,7 +5,7 @@ class Force : public Vector2
 {
 public:
 	Force(long double xP, long double yP, bool push);
-	bool getIsPush();
+	bool getIsPush() const override;
 private:
 	bool isPush = false;
 };

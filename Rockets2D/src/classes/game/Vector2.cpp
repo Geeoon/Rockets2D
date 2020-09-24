@@ -22,8 +22,12 @@ long double Vector2::getMagnitude() const {
 	return sqrt(x * x + y * y);
 }
 
-long double Vector2::getAngle() const{
+long double Vector2::getAngle() const {
 	return atan2(y, x);
+}
+
+bool Vector2::getIsPush() const {
+	return false;
 }
 
 Vector2 Vector2::operator+=(const Vector2& v) {

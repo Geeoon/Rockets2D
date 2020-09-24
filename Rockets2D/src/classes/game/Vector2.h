@@ -14,6 +14,7 @@ public:
 	long double getY() const;
 	long double getMagnitude() const;
 	long double getAngle() const;
+	virtual bool getIsPush() const;
 	Vector2 operator+=(const Vector2& v);
 	Vector2 operator-=(const Vector2& v);
 	Vector2 operator*=(long double multiplier);
