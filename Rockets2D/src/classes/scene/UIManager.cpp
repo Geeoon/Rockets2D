@@ -216,6 +216,11 @@ void UIManager::manageControls() {
 		translationVector += sf::Vector2f(0, (float)moveSpeed);
 	}
 
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
+		std::cout << sf::Vector2f(game->getPlayer()->getRocketPtr()->getPosition().getX(), game->getPlayer()->getRocketPtr()->getPosition().getY()).y << std::endl;
+		gameView.setCenter(sf::Vector2f(game->getPlayer()->getRocketPtr()->getPosition().getX(), -game->getPlayer()->getRocketPtr()->getPosition().getY()));
+	}
+
 	gameView.move(translationVector * (gameView.getSize().x / (gameTexture.getSize().x)) * clock.getElapsedTime().asSeconds());
 	gameTexture.setView(gameView);
 }
