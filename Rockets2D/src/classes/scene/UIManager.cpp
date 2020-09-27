@@ -5,13 +5,19 @@ UIManager::UIManager() {
 	window.create(sf::VideoMode(800, 800), "Rockets2D", sf::Style::Close, videoSettings);
 	window.setFramerateLimit(300);
 	freeBodyTexture.create(150, 150);
-	if (!(uiTexture.create(window.getSize().x, window.getSize().y, videoSettings) && gameTexture.create(window.getSize().x, window.getSize().y, videoSettings))) {
+	if (!(uiTexture.create(window.getSize().x, window.getSize().y, videoSettings) && gameTexture.create(window.getSize().x, window.getSize().y, videoSettings) && mapTexture.create(window.getSize().x, window.getSize().y, videoSettings))) {
 		//check for if there is an error creating the gameTexture or the uiTexture
 	}
 	gameView = gameTexture.getView();
 	gameView.setCenter((float)gameTexture.getSize().x / 2, (float)gameTexture.getSize().y / 2);
 	gameView.move(-((float)gameTexture.getSize().x / 2), -((float)gameTexture.getSize().y / 2));
 	gameTexture.setView(gameView);
+
+	mapView = mapTexture.getView();
+	mapView.setCenter((float)mapTexture.getSize().x / 2, (float)mapTexture.getSize().y / 2);
+	mapView.move(-((float)mapTexture.getSize().x / 2), -((float)mapTexture.getSize().y / 2));
+	mapTexture.setView(mapView);
+
 	font.loadFromFile("fonts/SourceCodePro.ttf");
 	hoverB.loadFromFile("sounds/ui/hover.wav");
 	clickB.loadFromFile("sounds/ui/click.wav");
@@ -111,6 +117,7 @@ const std::function<void()>& UIManager::getSyncFuncs() {
 void UIManager::update() {
 	clock.restart();
 	window.clear(sf::Color::Black);
+	viewManager();
 	if (isUIVisible) {
 		updateUI();
 	}
@@ -118,10 +125,13 @@ void UIManager::update() {
 	pollEvent();
 	manageControls();
 	game->draw(); //draw onto the renderTexture
-	window.draw(sf::Sprite(gameTexture.getTexture())); //first the game,
-	if (isUIVisible) {
-
-		window.draw(sf::Sprite(uiTexture.getTexture())); //then the ui; this keeps the UI always on top no matter what.
+	if (currentView != 2) {
+		window.draw(sf::Sprite(gameTexture.getTexture())); //first the game,
+		if (isUIVisible) {
+			window.draw(sf::Sprite(uiTexture.getTexture())); //then the ui; this keeps the UI always on top no matter what.
+		}
+	} else {
+		window.draw(sf::Sprite(mapTexture.getTexture())); //draw the map when needed
 	}
 	canDraw = false;
 	window.display();
@@ -149,7 +159,7 @@ void UIManager::updateUI() {
 void UIManager::pollEvent() {
 	sf::Event event;
 	while (window.pollEvent(event)) {
-
+		game->getPlayer()->manageEvents(event);
 		switch (event.type) {
 		case sf::Event::Closed:
 			quit();
@@ -163,8 +173,8 @@ void UIManager::pollEvent() {
 		case sf::Event::MouseButtonPressed:
 			if (event.mouseButton.button == sf::Mouse::Button::Middle) {
 				isPanning = true;
-				lastPos = window.mapPixelToCoords(sf::Mouse::getPosition(window));
 			}
+			lastPos = window.mapPixelToCoords(sf::Mouse::getPosition(window));
 			break;
 
 		case sf::Event::MouseButtonReleased:
@@ -174,7 +184,6 @@ void UIManager::pollEvent() {
 			break;
 		
 		case sf::Event::KeyPressed:
-
 			switch (event.key.code) {
 			case sf::Keyboard::F6:
 				isUIVisible = !isUIVisible;
@@ -183,10 +192,13 @@ void UIManager::pollEvent() {
 				gameUI->setActivePage(1);
 				game->setPause(true);
 				break;
+			case sf::Keyboard::Space:
+				swapView();
+				break;
 			}
 			break;
 		case sf::Event::MouseMoved:
-			if (isPanning) {
+			if (isPanning && currentView != 0) {
 				const sf::Vector2f currentPos = window.mapPixelToCoords(sf::Mouse::getPosition(window));
 				const sf::Vector2f deltaPos = lastPos - currentPos;
 				gameView.move(deltaPos * (gameView.getSize().x / (gameTexture.getSize().x)));
@@ -199,6 +211,7 @@ void UIManager::pollEvent() {
 }
 
 void UIManager::manageControls() {
+	game->getPlayer()->manageControls();
 	sf::Vector2f translationVector(0, 0);
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
 		translationVector += sf::Vector2f((float)moveSpeed, 0);
@@ -214,11 +227,6 @@ void UIManager::manageControls() {
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) {
 		translationVector += sf::Vector2f(0, (float)moveSpeed);
-	}
-
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
-		std::cout << sf::Vector2f(game->getPlayer()->getRocketPtr()->getPosition().getX(), game->getPlayer()->getRocketPtr()->getPosition().getY()).y << std::endl;
-		gameView.setCenter(sf::Vector2f(game->getPlayer()->getRocketPtr()->getPosition().getX(), -game->getPlayer()->getRocketPtr()->getPosition().getY()));
 	}
 
 	gameView.move(translationVector * (gameView.getSize().x / (gameTexture.getSize().x)) * clock.getElapsedTime().asSeconds());
@@ -257,4 +265,22 @@ void UIManager::quitGame() {
 
 void UIManager::saveUserConfigs() {
 	
+}
+
+void UIManager::swapView() {
+	currentView++;
+	lastPos = window.mapPixelToCoords(sf::Mouse::getPosition(window));
+	if (currentView > 2) {
+		currentView = 0;
+	}
+}
+
+void UIManager::viewManager() {
+	if (currentView == 0) { //gameView; center
+		gameView.setCenter(sf::Vector2f(game->getPlayer()->getRocketPtr()->getPosition().getX(), -game->getPlayer()->getRocketPtr()->getPosition().getY()));
+	} else if (currentView == 1) { //mapView
+		
+	} else if (currentView == 2) {//gameView; player controlled
+
+	}
 }

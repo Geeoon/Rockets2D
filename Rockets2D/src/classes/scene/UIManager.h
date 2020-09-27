@@ -16,6 +16,7 @@ public:
 	void setGame(std::shared_ptr<Game> g);
 	const std::function<void()>& getSyncFuncs();
 private:
+	int currentView;
 	const double moveSpeed = 5000;
 	sf::Clock clock;
 	bool isPanning = false;
@@ -25,6 +26,7 @@ private:
 	sf::Vector2f lastPos;
 	sf::RenderWindow window; //for texture and ui elements to be rendered together
 	sf::RenderTexture uiTexture; //for the UI itself
+	sf::RenderTexture mapTexture;
 	sf::RenderTexture gameTexture; //for the scene itself only.
 	sf::RenderTexture freeBodyTexture; //for the free body diagram
 	sf::ContextSettings videoSettings;
@@ -38,6 +40,7 @@ private:
 	sf::Sound click;
 	sf::Sound unClick;
 	sf::View gameView;
+	sf::View mapView;
 	std::function<void()> syncFuncs = [] {}; //this function is ran syncronously with the game thread.
 	void updateUI();
 	void pollEvent();
@@ -49,5 +52,7 @@ private:
 	void quit();
 	void quitGame();
 	void saveUserConfigs();
+	void swapView();
+	void viewManager();
 };
 

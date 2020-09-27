@@ -16,13 +16,16 @@ public:
 	long double* getThrottlePtr();
 	long double* getSteeringPtr();
 	std::shared_ptr<Rocket> getRocketPtr();
+	void manageControls();
+	void manageEvents(sf::Event e);
+
 private:
 	sf::Clock clock;
 	sf::Time elapsedTime;
 	std::shared_ptr<Rocket> rocket;
 	std::vector<std::function<void()>>* syncUpdateVect;
 	long double throttle = 0;
-	long double steering = 0;
-	void manageControls();
+	long double steering = 50;
 	sf::RenderTexture* texture = nullptr;
+	bool gamePause = true;
 };

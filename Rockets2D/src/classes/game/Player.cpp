@@ -5,22 +5,14 @@ Player::Player(sf::RenderTexture* t) {
 	rocket = std::make_shared<Rocket>(texture, Vector2(0, 0));
 	std::shared_ptr<RocketPartsManager>rktMan = std::make_shared<RocketPartsManager>();
 	rktMan->addPart(std::make_shared<Engine>(texture, Vector2(0, 0)));
-	//rktMan->addPart(std::make_shared<Engine>(texture, Vector2(0, 0)));
 	rktMan->addPart(std::make_shared<FuelTank>(texture, Vector2(0, -3.2)));
-	
-	/*std::shared_ptr<RocketPartsManager>rktMan2 = std::make_shared<RocketPartsManager>();
-	rktMan2->addPart(std::make_shared<Engine>(texture, Vector2(50, 0), 0));
-	rktMan2->addPart(std::make_shared<Engine>(texture, Vector2(-50, 0)));*/
 	rocket->addPartManager(rktMan, Vector2(0, 0));
-	//rocket->addPartManager(rktMan2, Vector2(0, 0));
 	clock.restart();
 }
 
 void Player::update(bool p) {
-	elapsedTime = clock.getElapsedTime();
-	clock.restart();
+	gamePause = p;
 	if (!p) {
-		manageControls();
 		rocket->update();
 		for (std::function<void()>& sf : *syncUpdateVect) {
 			sf();
@@ -53,34 +45,58 @@ std::shared_ptr<Rocket> Player::getRocketPtr() {
 	return rocket;
 }
 
-void Player::manageControls() {
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) {
-		throttle += (long double)(elapsedTime.asSeconds()) * 100;
-	}
+void Player::manageControls() { //gets called in the UIManager class.
+	elapsedTime = clock.getElapsedTime();
+	clock.restart();
+	if (!gamePause) {
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) {
+			throttle += (long double)(elapsedTime.asSeconds()) * 100;
 
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) {
-		throttle -= (long double)(elapsedTime.asSeconds()) * 100;
+		}
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) {
+			throttle -= (long double)(elapsedTime.asSeconds()) * 100;
+		}
+		if (throttle > 100) {
+			throttle = 100;
+		} else if (throttle < 0) {
+			throttle = 0;
+		}
+		rocket->setThrottle(throttle);
 	}
+}
 
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
-		steering = 0;
-	} else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
-		steering = 100;
-	} else {
-		steering = 50; //50 is neutral; no steering; strait.
-	}
+void Player::manageEvents(sf::Event e) { //gets called in the UIManager class.
+	if (!gamePause) {
+		switch (e.type) {
+		case sf::Event::KeyPressed:
+			switch (e.key.code) {
+			case sf::Keyboard::A:
+				steering = 0;
+				break;
+			case sf::Keyboard::D:
+				steering = 100;
+				break;
+			}
+			break;
 
-	if (throttle > 100) {
-		throttle = 100;
-	} else if (throttle < 0) {
-		throttle = 0;
-	}
+		case sf::Event::KeyReleased:
+			switch (e.key.code) {
+			case sf::Keyboard::A:
+				steering = 50;
+				break;
+			case sf::Keyboard::D:
+				steering = 50;
+				break;
+			}
+			break;
+		}
 
-	if (steering > 100) {
-		steering = 100;
-	} else if (steering < 0) {
-		steering = 0;
+		if (steering > 100) {
+			steering = 100;
+		} else if (steering < 0) {
+			steering = 0;
+		}
+
+		rocket->setSteering(steering);
 	}
-	rocket->setThrottle(throttle);
-	rocket->setSteering(steering);
 }

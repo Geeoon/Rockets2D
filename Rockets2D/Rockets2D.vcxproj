@@ -179,6 +179,7 @@
     <ClCompile Include="src\classes\game\Rocket\RocketParts\Tanks\Tank.cpp" />
     <ClCompile Include="src\classes\scene\UIElements\UIRadio.cpp" />
     <ClCompile Include="src\classes\scene\UIElements\UIRadioList.cpp" />
+    <ClCompile Include="src\classes\scene\UIElements\UIEmblem.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\classes\game\Force.h" />
@@ -216,6 +217,7 @@
     <ClInclude Include="src\classes\game\Rocket\RocketParts\Tanks\Tank.h" />
     <ClInclude Include="src\classes\scene\UIElements\UIRadio.h" />
     <ClInclude Include="src\classes\scene\UIElements\UIRadioList.h" />
+    <ClInclude Include="src\classes\scene\UIElements\UIEmblem.h" />
   </ItemGroup>
   <ItemGroup>
     <Font Include="fonts\SourceCodePro.ttf" />

@@ -4,10 +4,6 @@ Game::Game(sf::RenderTexture* t) {
 	texture = t;
 	objMan = std::make_unique<ObjectManager>(t);
 	objMan->addObject(std::make_unique<SpaceObject>(texture, Vector2(1738.1L * 1000L, 0), 7.346L * powl(10, 22), 1738.1L * 1000L));
-	//testObject = std::make_unique<SpaceObject>(texture, Vector2(0, 0), 5.973L * pow(10, 24), 6.371L * pow(10, 7));
-	//testObject2 = std::make_unique<SpaceObject>(texture, Vector2(5.971L * pow(10, 7) + 3.82L * pow(10, 8), 0), 7.64767309L * pow(10, 22), 1.7371 * pow(10, 7), Vector2(0, 950.0150896));
-	//objMan->addObject(testObject->getObject());
-	//objMan->addObject(testObject2->getObject());
 	player = std::make_unique<Player>(t);
 	player->setSyncUpdates(&syncFuncs);
 	objMan->addObject(player->getRocketPtr());
