@@ -17,6 +17,7 @@ public:
 	void addPartManager(std::shared_ptr<RocketPartsManager> pM, const Vector2& relPos);
 	void setThrottle(long double t);
 	void setSteering(long double s);
+	Vector2 getPosition() override;
 
 private:
 	long double throttle = 100;

@@ -14,7 +14,7 @@ public:
 	void applyTorque(long double t); //facing back (same direction as eyes are facing when looking at a monitor
 	virtual void update();
 	FreeBody* getFBPtr();
-	Vector2 getPosition();
+	virtual Vector2 getPosition();
 	long double getOrientation();
 	long double getMass();
 	void resetTime();

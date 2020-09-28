@@ -97,7 +97,7 @@ UIManager::UIManager() {
 	clock.restart();
 	gameView.zoom(1);
 	//gameView.setSize(2.07544 * pow(10, 8), 2.07544 * pow(10, 8));
-	syncFuncs = [&] {gameUI->synchronousUpdate(); mainMenu->synchronousUpdate(); };
+	syncFuncs = [&] {gameUI->synchronousUpdate(); mainMenu->synchronousUpdate(); synchronousUpdate(); };
 }
 
 void UIManager::setGame(std::shared_ptr<Game> g) {
@@ -276,11 +276,15 @@ void UIManager::swapView() {
 }
 
 void UIManager::viewManager() {
-	if (currentView == 0) { //gameView; center
-		gameView.setCenter(sf::Vector2f(game->getPlayer()->getRocketPtr()->getPosition().getX(), -game->getPlayer()->getRocketPtr()->getPosition().getY()));
-	} else if (currentView == 1) { //mapView
+	if (currentView == 1) { //mapView
 		
 	} else if (currentView == 2) {//gameView; player controlled
 
+	}
+}
+
+void UIManager::synchronousUpdate() {
+	if (currentView == 0) { //gameView; center
+		gameView.setCenter((game->getPlayer()->getRocketPtr()->getPosition()).toDrawSFV());
 	}
 }

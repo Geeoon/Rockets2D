@@ -54,5 +54,6 @@ private:
 	void saveUserConfigs();
 	void swapView();
 	void viewManager();
+	void synchronousUpdate();
 };
 
