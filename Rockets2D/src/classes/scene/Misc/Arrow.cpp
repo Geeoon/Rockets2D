@@ -45,7 +45,7 @@ void Arrow::setDirection(bool d) {
 		arrowHead.setOrigin(-arrowHead.getLocalBounds().width / 4 - 2, arrowHead.getRadius());
 		arrowHead.setRadius(-arrowHead.getRadius());
 	} else {
-		arrowHead.setOrigin(arrowHead.getLocalBounds().width / 2 - 2, length);
+		arrowHead.setOrigin(arrowHead.getLocalBounds().width / 2 - 2, length - arrowHead.getRadius());
 		setAngle(angle+180);
 	}
 }
