@@ -58,5 +58,5 @@ void Rocket::setSteering(long double s) {
 }
 
 Vector2 Rocket::getPosition() {
-	return position + centerOfMass;
+	return position;
 }
