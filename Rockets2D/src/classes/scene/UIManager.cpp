@@ -117,7 +117,6 @@ const std::function<void()>& UIManager::getSyncFuncs() {
 void UIManager::update() {
 	clock.restart();
 	window.clear(sf::Color::Black);
-	viewManager();
 	if (isUIVisible) {
 		updateUI();
 	}
@@ -125,6 +124,7 @@ void UIManager::update() {
 	pollEvent();
 	manageControls();
 	game->draw(); //draw onto the renderTexture
+	viewManager();
 	if (currentView != 2) {
 		window.draw(sf::Sprite(gameTexture.getTexture())); //first the game,
 		if (isUIVisible) {
@@ -276,15 +276,15 @@ void UIManager::swapView() {
 }
 
 void UIManager::viewManager() {
-	if (currentView == 1) { //mapView
+	if (currentView == 0) { //gameView; center
+		gameView.setCenter((game->getPlayer()->getRocketPtr()->getPosition()).toDrawSFV());
+	} else if (currentView == 1) { //gameView; player controlled
 		
-	} else if (currentView == 2) {//gameView; player controlled
+	} else if (currentView == 2) {//mapView
 
 	}
 }
 
 void UIManager::synchronousUpdate() {
-	if (currentView == 0) { //gameView; center
-		gameView.setCenter((game->getPlayer()->getRocketPtr()->getPosition()).toDrawSFV());
-	}
+	
 }

@@ -42,7 +42,6 @@ void Game::draw() { //this is called from another thread; don't rely on it for s
 		if (!isPaused) {
 			texture->clear(sf::Color::Transparent);
 			objMan->draw();
-			//player->draw(); //player is already drawn in objMan class, so no need to redraw
 			texture->display();
 		}
 	} else {

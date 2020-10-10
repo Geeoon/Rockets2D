@@ -18,6 +18,7 @@ public:
 	Vector2 getRelativePosition();
 	virtual Vector2 update();
 	virtual void draw();
+	virtual void drawAtPNR(const Vector2& p, long double r);
 
 protected:
 	std::string name = "Generic Part";

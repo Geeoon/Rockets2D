@@ -40,7 +40,13 @@ void Rocket::update() {
 
 void Rocket::draw() {
 	for (std::shared_ptr<RocketPartsManager> partManager : partManagers) {
-		partManager->draw();
+		partManager->drawAtPNR(position, orientation);
+	}
+}
+
+void Rocket::drawAtPNR(const Vector2& p, long double r) {
+	for (std::shared_ptr<RocketPartsManager> partManager : partManagers) {
+		partManager->drawAtPNR(p ,r);
 	}
 }
 

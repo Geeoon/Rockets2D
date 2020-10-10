@@ -13,15 +13,16 @@ public:
 	Rocket(sf::RenderTexture* t, const Vector2& pos, long double ori);
 	Rocket(sf::RenderTexture* t, const Vector2& pos, long double ori, const Vector2& vel);
 	void update() override;
-	void draw();
+	void draw() override;
+	void drawAtPNR(const Vector2& p, long double r);
 	void addPartManager(std::shared_ptr<RocketPartsManager> pM, const Vector2& relPos);
 	void setThrottle(long double t);
 	void setSteering(long double s);
 	Vector2 getPosition() override;
 
 private:
-	long double throttle = 100;
-	long double steering = 0;
+	long double throttle = 0;
+	long double steering = 50;
 	sf::RenderTexture* texture = nullptr;
 	std::vector<std::shared_ptr<RocketPartsManager>> partManagers;
 };

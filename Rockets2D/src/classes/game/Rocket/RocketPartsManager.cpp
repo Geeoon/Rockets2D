@@ -45,6 +45,12 @@ void RocketPartsManager::draw() {
 	}
 }
 
+void RocketPartsManager::drawAtPNR(const Vector2& p, long double r) {
+	for (std::shared_ptr<RocketPart> part : parts) {
+		part->drawAtPNR(p, r);
+	}
+}
+
 void RocketPartsManager::addPart(std::shared_ptr<RocketPart> part) {
 	parts.push_back(part);
 

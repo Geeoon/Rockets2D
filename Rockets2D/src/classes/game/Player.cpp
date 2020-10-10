@@ -76,6 +76,9 @@ void Player::manageEvents(sf::Event e) { //gets called in the UIManager class.
 			case sf::Keyboard::D:
 				steering = 100;
 				break;
+			case sf::Keyboard::LShift:
+				steering = 50;
+				break;
 			}
 			break;
 

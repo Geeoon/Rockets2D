@@ -43,3 +43,7 @@ Vector2 RocketPart::update() {
 void RocketPart::draw() {
 	outputPosition = Vector2((float)(position.getX() + relativePosition.getX() * cosl(orientation) - relativePosition.getY() * sinl(orientation)), (float)(position.getY() - (relativePosition.getX() * sinl(orientation) + relativePosition.getY() * cosl(orientation))));
 }
+
+void RocketPart::drawAtPNR(const Vector2& p, long double r) {
+	outputPosition = Vector2((float)(p.getX() + relativePosition.getX() * cosl(r) - relativePosition.getY() * sinl(r)), (float)(p.getY() - (relativePosition.getX() * sinl(r) + relativePosition.getY() * cosl(r))));
+}
