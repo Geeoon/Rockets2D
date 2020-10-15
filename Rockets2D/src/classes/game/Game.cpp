@@ -27,6 +27,7 @@ void Game::update() {
 		if (hasStarted) {
 			player->update(isPaused);
 		}
+
 		if (hasStarted && !isPaused) {
 			objMan->update();
 		}
