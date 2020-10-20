@@ -96,7 +96,7 @@ UIManager::UIManager() {
 	gameUI->setActive(false);
 	clock.restart();
 	gameView.zoom(1);
-	//gameView.setSize(2.07544 * pow(10, 8), 2.07544 * pow(10, 8));
+	gameView.setSize(2.07544 * pow(10, 10), 2.07544 * pow(10, 10));
 	syncFuncs = [&] {gameUI->synchronousUpdate(); mainMenu->synchronousUpdate(); synchronousUpdate(); };
 }
 
@@ -276,9 +276,9 @@ void UIManager::swapView() {
 }
 
 void UIManager::viewManager() {
-	if (currentView == 0) { //gameView; center
+	if (currentView == 1) { //gameView; center
 		gameView.setCenter((game->getPlayer()->getRocketPtr()->getPosition()).toDrawSFV());
-	} else if (currentView == 1) { //gameView; player controlled
+	} else if (currentView == 0) { //gameView; player controlled
 		
 	} else if (currentView == 2) {//mapView
 

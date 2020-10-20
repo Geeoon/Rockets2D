@@ -18,6 +18,7 @@ public:
 	std::shared_ptr<Rocket> getRocketPtr();
 	void manageControls();
 	void manageEvents(sf::Event e);
+	void setPosition(const Vector2& pos);
 
 private:
 	sf::Clock clock;

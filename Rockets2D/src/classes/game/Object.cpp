@@ -67,3 +67,7 @@ void Object::resetTime() {
 void Object::draw() {
 
 }
+
+void Object::setPosition(const Vector2& pos) {
+	position = pos;
+}
