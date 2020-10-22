@@ -49,6 +49,10 @@ void UIElementManagerGroup::addRadioList(int page, int xP, int yP, int s, std::s
 	pages[page].addRadioList(xP, yP, s, args, num, def);
 }
 
+void UIElementManagerGroup::addEmblem(int page, int xP, int yP, std::string titl, std::string d) {
+	pages[page].addEmblem(xP, yP, titl, d);
+}
+
 void UIElementManagerGroup::setActive(bool active) {
 	isActive = active;
 	for (size_t i = 0; i < pages.size(); i++) {

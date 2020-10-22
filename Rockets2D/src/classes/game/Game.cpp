@@ -66,3 +66,7 @@ void Game::syncronousUpdate() {
 		f();
 	}
 }
+
+ObjectManager* Game::getObjMan() {
+	return objMan.get();
+}

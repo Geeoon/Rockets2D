@@ -1,6 +1,7 @@
 #include "UIManager.h"
 
 UIManager::UIManager() {
+	currentView = 1;
 	videoSettings.antialiasingLevel = 8;
 	window.create(sf::VideoMode(800, 800), "Rockets2D", sf::Style::Close, videoSettings);
 	window.setFramerateLimit(300);
@@ -94,9 +95,15 @@ UIManager::UIManager() {
 	gameUI->addButton(1, "Quit to Main Menu", 50, 250, 20, [&] {quitGame(); });
 	gameUI->addButton(1, "Quit to Desktop", 50, 300, 20, [&] {quit(); });
 	gameUI->setActive(false);
+
+	map = std::make_unique<UIElementManagerGroup>(&mapTexture, &window, &font, &hover, &click, &unClick);
+	map->addPage(); //main map
+
 	clock.restart();
 	gameView.zoom(1);
 	gameView.setSize(2.07544 * pow(10, 10), 2.07544 * pow(10, 10));
+	mapView.zoom(1);
+	//mapView.setSize(gameView.getSize());
 	syncFuncs = [&] {gameUI->synchronousUpdate(); mainMenu->synchronousUpdate(); synchronousUpdate(); };
 }
 
@@ -108,6 +115,10 @@ void UIManager::setGame(std::shared_ptr<Game> g) {
 	gameUI->addFBD(0, uiTexture.getSize().x - 85, uiTexture.getSize().y - 87, 80, game->getPlayer()->getRocketPtr()->getFBPtr(), &canDraw);
 	gameUI->addUIString(0, "Throttle:", 10, uiTexture.getSize().y - 140, 15, UIString::UIString_alignment::left, UIString::UIString_alignment::middle);
 	gameUI->addUIString(0, "Steering:", 10, uiTexture.getSize().y - 90, 15, UIString::UIString_alignment::left, UIString::UIString_alignment::middle);
+
+	for (std::shared_ptr<Object> obj : *(game->getObjMan()->getObjects())) {
+		map->addEmblem(0, 300, 300, "Test", "description");
+	}
 }
 
 const std::function<void()>& UIManager::getSyncFuncs() {
@@ -153,6 +164,7 @@ void UIManager::updateUI() {
 	uiTexture.clear(sf::Color::Transparent);
 	mainMenu->update();
 	gameUI->update();
+	map->update();
 	uiTexture.display();
 }
 
@@ -236,6 +248,8 @@ void UIManager::manageControls() {
 void UIManager::play() {
 	mainMenu->setActive(false);
 	gameUI->setActive(true);
+	map->setActive(true);
+	map->setActivePage(0);
 	game->start();
 }
 
@@ -261,6 +275,7 @@ void UIManager::quitGame() {
 	game->stop();
 	gameUI->setActive(false);
 	mainMenu->setActive(true);
+	map->setActive(false);
 }
 
 void UIManager::saveUserConfigs() {
@@ -276,9 +291,9 @@ void UIManager::swapView() {
 }
 
 void UIManager::viewManager() {
-	if (currentView == 1) { //gameView; center
+	if (currentView == 0) { //gameView; center
 		gameView.setCenter((game->getPlayer()->getRocketPtr()->getPosition()).toDrawSFV());
-	} else if (currentView == 0) { //gameView; player controlled
+	} else if (currentView == 1) { //gameView; player controlled
 		
 	} else if (currentView == 2) {//mapView
 

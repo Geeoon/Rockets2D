@@ -30,7 +30,7 @@ protected:
 	Vector2 acceleration = Vector2(0, 0);
 	Vector2 centerOfMass = Vector2(0, 0);
 	long double momentOfInertia = 1;
-	long double timescale = 10000;
+	long double timescale = 100000;
 	long double angularAcceleration = 0; //radians / second ^ 2
 	long double angularVelocity = 0; //radians/second
 	long double mass = 0; //kg

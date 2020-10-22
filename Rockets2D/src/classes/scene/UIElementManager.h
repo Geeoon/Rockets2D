@@ -8,6 +8,7 @@
 #include "UIElements/UIBackground.h"
 #include "UIElements/UIRadioList.h"
 #include "UIElements/UIElement.h"
+#include "UIElements/UIEmblem.h"
 #include "UIElements/UIString.h"
 #include "UIElements/UISlider.h"
 #include "UIElements/Button.h"
@@ -28,11 +29,10 @@ public:
 	void addFBD(int xP, int yP, int s, FreeBody* fb, bool* canD);
 	void addRadioList(int xP, int yP, int s, std::string args[], size_t num);
 	void addRadioList(int xP, int yP, int s, std::string args[], size_t num, int def);
+	void addEmblem(int xP, int yP, std::string titl, std::string d);
 private:
 	bool active = false;
 	std::vector<std::shared_ptr<UIElement>> elements;
-	std::vector<Button> buttons;
-	std::vector<UIString> strings;
 	sf::Font* font;
 	sf::RenderTexture* texture;
 	sf::RenderWindow* window;

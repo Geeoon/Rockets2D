@@ -32,6 +32,7 @@ private:
 	sf::ContextSettings videoSettings;
 	std::unique_ptr<UIElementManagerGroup> mainMenu;
 	std::unique_ptr<UIElementManagerGroup> gameUI;
+	std::unique_ptr<UIElementManagerGroup> map;
 	sf::Font font;
 	sf::SoundBuffer hoverB;
 	sf::SoundBuffer clickB;

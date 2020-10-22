@@ -64,3 +64,7 @@ void UIElementManager::addRadioList(int xP, int yP, int s, std::string args[], s
 void UIElementManager::addRadioList(int xP, int yP, int s, std::string args[], size_t num, int def) {
 	elements.push_back(std::make_shared<UIRadioList>(UIRadioList::type::vertical, texture, window, xP, yP, font, s, args, num, def));
 }
+
+void UIElementManager::addEmblem(int xP, int yP, std::string titl, std::string d) {
+	elements.push_back(std::make_shared<UIEmblem>(texture, window, xP, yP, titl, d, font));
+}

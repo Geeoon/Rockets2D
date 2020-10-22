@@ -21,6 +21,7 @@ public:
 	void draw();
 	void addToSync(const std::function<void()>& f);
 	Player* getPlayer();
+	ObjectManager* getObjMan();
 private:
 	void syncronousUpdate(); //for updating things syncronously with the game thread.
 	bool hasStarted = false;
