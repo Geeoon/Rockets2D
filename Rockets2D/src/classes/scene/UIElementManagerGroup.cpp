@@ -10,7 +10,7 @@ UIElementManagerGroup::UIElementManagerGroup(sf::RenderTexture* t, sf::RenderWin
 }
 
 void UIElementManagerGroup::addPage() {
-	pages.push_back(UIElementManager(texture, window, font, hover, click, unClick));
+	pages.push_back(UIElementManager(texture, window, font, hover, click, unClick)); //this line doesn't work on my desktop but works on my laptop.
 }
 
 void UIElementManagerGroup::addButton(int page, std::string v, int xP, int yP, int s, const std::function<void()>& m) {
