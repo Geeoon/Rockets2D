@@ -35,5 +35,5 @@ private:
 	sf::Sound* hover;
 	sf::Sound* click;
 	sf::Sound* unClick;
-	std::vector<UIElementManager> pages;
+	std::vector<std::unique_ptr<UIElementManager>> pages;
 };
