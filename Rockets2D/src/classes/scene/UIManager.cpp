@@ -6,18 +6,13 @@ UIManager::UIManager() {
 	window.create(sf::VideoMode(800, 800), "Rockets2D", sf::Style::Close, videoSettings);
 	window.setFramerateLimit(300);
 	freeBodyTexture.create(150, 150);
-	if (!(uiTexture.create(window.getSize().x, window.getSize().y, videoSettings) && gameTexture.create(window.getSize().x, window.getSize().y, videoSettings) && mapTexture.create(window.getSize().x, window.getSize().y, videoSettings))) {
+	if (!(uiTexture.create(window.getSize().x, window.getSize().y, videoSettings) && gameTexture.create(window.getSize().x, window.getSize().y, videoSettings))) {
 		//check for if there is an error creating the gameTexture or the uiTexture
 	}
 	gameView = gameTexture.getView();
 	gameView.setCenter((float)gameTexture.getSize().x / 2, (float)gameTexture.getSize().y / 2);
 	gameView.move(-((float)gameTexture.getSize().x / 2), -((float)gameTexture.getSize().y / 2));
 	gameTexture.setView(gameView);
-
-	mapView = mapTexture.getView();
-	mapView.setCenter((float)mapTexture.getSize().x / 2, (float)mapTexture.getSize().y / 2);
-	mapView.move(-((float)mapTexture.getSize().x / 2), -((float)mapTexture.getSize().y / 2));
-	mapTexture.setView(mapView);
 
 	font.loadFromFile("fonts/SourceCodePro.ttf");
 	hoverB.loadFromFile("sounds/ui/hover.wav");
@@ -96,13 +91,9 @@ UIManager::UIManager() {
 	gameUI->addButton(1, "Quit to Desktop", 50, 300, 20, [&] {quit(); });
 	gameUI->setActive(false);
 
-	map = std::make_unique<UIElementManagerGroup>(&mapTexture, &window, &font, &hover, &click, &unClick);
-	map->addPage(); //main map
-
 	clock.restart();
 	gameView.zoom(1);
 	gameView.setSize(2.07544 * pow(10, 10), 2.07544 * pow(10, 10));
-	mapView.zoom(1);
 	//mapView.setSize(gameView.getSize());
 	syncFuncs = [&] {gameUI->synchronousUpdate(); mainMenu->synchronousUpdate(); synchronousUpdate(); };
 }
@@ -116,7 +107,7 @@ void UIManager::setGame(std::shared_ptr<Game> g) {
 	gameUI->addUIString(0, "Throttle:", 10, uiTexture.getSize().y - 140, 15, UIString::UIString_alignment::left, UIString::UIString_alignment::middle);
 	gameUI->addUIString(0, "Steering:", 10, uiTexture.getSize().y - 90, 15, UIString::UIString_alignment::left, UIString::UIString_alignment::middle);
 	//gameUI->addEmblem(0, 300, 300, "test", "test");
-	map->addUIString(0, "TEST STRING", 10, uiTexture.getSize().y - 140, 15, UIString::UIString_alignment::left, UIString::UIString_alignment::middle);
+	//map->addUIString(0, "TEST STRING", 10, uiTexture.getSize().y - 140, 15, UIString::UIString_alignment::left, UIString::UIString_alignment::middle);
 	for (std::shared_ptr<Object> obj : *(game->getObjMan()->getObjects())) {
 		gameUI->addEmblem(0, 300, 300, "Test", "description");
 		std::cout << "test";
@@ -144,7 +135,7 @@ void UIManager::update() {
 			window.draw(sf::Sprite(uiTexture.getTexture())); //then the ui; this keeps the UI always on top no matter what.
 		}
 	} else {
-		window.draw(sf::Sprite(mapTexture.getTexture())); //draw the map when needed
+		//window.draw(sf::Sprite(mapTexture.getTexture())); //draw the map when needed
 	}
 	canDraw = false;
 	window.display();
@@ -166,9 +157,7 @@ void UIManager::updateUI() {
 	uiTexture.clear(sf::Color::Transparent);
 	mainMenu->update();
 	gameUI->update();
-	map->update();
 	uiTexture.display();
-	mapTexture.display();
 }
 
 void UIManager::pollEvent() {
@@ -251,8 +240,6 @@ void UIManager::manageControls() {
 void UIManager::play() {
 	mainMenu->setActive(false);
 	gameUI->setActive(true);
-	map->setActive(true);
-	map->setActivePage(0);
 	game->start();
 }
 
@@ -278,7 +265,6 @@ void UIManager::quitGame() {
 	game->stop();
 	gameUI->setActive(false);
 	mainMenu->setActive(true);
-	map->setActive(false);
 }
 
 void UIManager::saveUserConfigs() {
