@@ -9,6 +9,7 @@ class UIManager
 {
 public:
 	UIManager();
+	~UIManager();
 	void update();
 	sf::RenderTexture* getGameTexture();
 	sf::RenderTexture* getFBTexture();

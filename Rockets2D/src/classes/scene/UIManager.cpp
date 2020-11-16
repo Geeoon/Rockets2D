@@ -93,9 +93,18 @@ UIManager::UIManager() {
 
 	clock.restart();
 	gameView.zoom(1);
-	gameView.setSize(2.07544 * pow(10, 10), 2.07544 * pow(10, 10));
+	gameView.setSize((float)(2.07544 * pow(10, 10)), (float)(2.07544 * pow(10, 10)));
 	//mapView.setSize(gameView.getSize());
 	syncFuncs = [&] {gameUI->synchronousUpdate(); mainMenu->synchronousUpdate(); synchronousUpdate(); };
+}
+
+UIManager::~UIManager() {
+	hoverB.~SoundBuffer();
+	clickB.~SoundBuffer();
+	unClickB.~SoundBuffer();
+	hover.~Sound();
+	click.~Sound();
+	unClick.~Sound();
 }
 
 void UIManager::setGame(std::shared_ptr<Game> g) {

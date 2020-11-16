@@ -1,8 +1,9 @@
 #pragma once
-#include "UIElement.h";
-#include "UIString.h";
+#include "UIElement.h"
+#include "UIString.h"
 #include "UIBackground.h"
 #include "Button.h"
+
 class UIEmblem : public UIElement
 {
 public:
@@ -15,4 +16,3 @@ private:
 	std::unique_ptr<Button> focus;
 	std::unique_ptr<Button> unFocus;
 };
-
