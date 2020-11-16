@@ -6,6 +6,10 @@ Scene::Scene() {
 	game->addToSync(ui.getSyncFuncs());
 }
 
+Scene::~Scene() {
+	//delete& ui;
+}
+
 void Scene::start() {
 	std::thread gameThread(&Game::update, game.get());
 	gameThread.detach();

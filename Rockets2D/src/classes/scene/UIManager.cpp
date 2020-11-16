@@ -99,12 +99,12 @@ UIManager::UIManager() {
 }
 
 UIManager::~UIManager() {
-	hoverB.~SoundBuffer();
+	/*hoverB.~SoundBuffer();
 	clickB.~SoundBuffer();
 	unClickB.~SoundBuffer();
 	hover.~Sound();
 	click.~Sound();
-	unClick.~Sound();
+	unClick.~Sound();*/
 }
 
 void UIManager::setGame(std::shared_ptr<Game> g) {

@@ -7,6 +7,7 @@ class Scene
 {
 public:
 	Scene();
+	~Scene();
 	void start();
 
 private:
