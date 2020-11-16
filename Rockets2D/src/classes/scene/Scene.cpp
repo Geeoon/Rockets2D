@@ -7,7 +7,7 @@ Scene::Scene() {
 }
 
 Scene::~Scene() {
-	//delete& ui;
+
 }
 
 void Scene::start() {
