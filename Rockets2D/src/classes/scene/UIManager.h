@@ -28,10 +28,12 @@ private:
 	sf::RenderWindow window; //for texture and ui elements to be rendered together
 	sf::RenderTexture uiTexture; //for the UI itself
 	sf::RenderTexture gameTexture; //for the scene itself only.
+	sf::RenderTexture mapTexture;
 	sf::RenderTexture freeBodyTexture; //for the free body diagram
 	sf::ContextSettings videoSettings;
 	std::unique_ptr<UIElementManagerGroup> mainMenu;
 	std::unique_ptr<UIElementManagerGroup> gameUI;
+	std::unique_ptr<UIElementManagerGroup> map;
 	sf::Font font;
 	sf::SoundBuffer hoverB;
 	sf::SoundBuffer clickB;
@@ -40,6 +42,7 @@ private:
 	sf::Sound click;
 	sf::Sound unClick;
 	sf::View gameView;
+	sf::View mapView;
 	std::function<void()> syncFuncs = [] {}; //this function is ran syncronously with the game thread.
 	void updateUI();
 	void pollEvent();

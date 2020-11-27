@@ -6,13 +6,18 @@ UIManager::UIManager() {
 	window.create(sf::VideoMode(800, 800), "Rockets2D", sf::Style::Close, videoSettings);
 	window.setFramerateLimit(300);
 	freeBodyTexture.create(150, 150);
-	if (!(uiTexture.create(window.getSize().x, window.getSize().y, videoSettings) && gameTexture.create(window.getSize().x, window.getSize().y, videoSettings))) {
+	if (!(uiTexture.create(window.getSize().x, window.getSize().y, videoSettings) && gameTexture.create(window.getSize().x, window.getSize().y, videoSettings)) && (mapTexture.create(window.getSize().x, window.getSize().y, videoSettings))) {
 		//check for if there is an error creating the gameTexture or the uiTexture
 	}
 	gameView = gameTexture.getView();
 	gameView.setCenter((float)gameTexture.getSize().x / 2, (float)gameTexture.getSize().y / 2);
 	gameView.move(-((float)gameTexture.getSize().x / 2), -((float)gameTexture.getSize().y / 2));
 	gameTexture.setView(gameView);
+
+	mapView = mapTexture.getView();
+	mapView.setCenter((float)mapTexture.getSize().x / 2, (float)mapTexture.getSize().y / 2);
+	mapView.move(-((float)mapTexture.getSize().x / 2), -((float)mapTexture.getSize().y / 2));
+	mapTexture.setView(mapView);
 
 	font.loadFromFile("fonts/SourceCodePro.ttf");
 	hoverB.loadFromFile("sounds/ui/hover.wav");
@@ -91,11 +96,17 @@ UIManager::UIManager() {
 	gameUI->addButton(1, "Quit to Desktop", 50, 300, 20, [&] {quit(); });
 	gameUI->setActive(false);
 
+	map = std::make_unique<UIElementManagerGroup>(&mapTexture, &window, &font, &hover, &click, &unClick);
+	map->addPage();
+	map->addUIString(0, "Map", mapTexture.getSize().x / 2, 25, 30, UIString::UIString_alignment::center);
+
+	map->setActive(false);
+
 	clock.restart();
 	gameView.zoom(1);
 	gameView.setSize((float)(2.07544 * pow(10, 10)), (float)(2.07544 * pow(10, 10)));
 	//mapView.setSize(gameView.getSize());
-	syncFuncs = [&] {gameUI->synchronousUpdate(); mainMenu->synchronousUpdate(); synchronousUpdate(); };
+	syncFuncs = [&] {gameUI->synchronousUpdate(); mainMenu->synchronousUpdate(); map->synchronousUpdate(); synchronousUpdate(); };
 }
 
 UIManager::~UIManager() {
@@ -111,7 +122,7 @@ void UIManager::setGame(std::shared_ptr<Game> g) {
 	gameUI->addUIString(0, "Throttle:", 10, uiTexture.getSize().y - 140, 15, UIString::UIString_alignment::left, UIString::UIString_alignment::middle);
 	gameUI->addUIString(0, "Steering:", 10, uiTexture.getSize().y - 90, 15, UIString::UIString_alignment::left, UIString::UIString_alignment::middle);
 	for (std::shared_ptr<Object> obj : *(game->getObjMan()->getObjects())) {
-		gameUI->addEmblem(0, 300, 300, "Test", "description");
+		map->addEmblem(0, 300, 300, "Test", "description");
 	}
 }
 
@@ -136,7 +147,7 @@ void UIManager::update() {
 			window.draw(sf::Sprite(uiTexture.getTexture())); //then the ui; this keeps the UI always on top no matter what.
 		}
 	} else {
-		//window.draw(sf::Sprite(mapTexture.getTexture())); //draw the map when needed
+		window.draw(sf::Sprite(mapTexture.getTexture())); //draw the map when needed
 	}
 	canDraw = false;
 	window.display();
@@ -156,9 +167,12 @@ bool UIManager::isOpen() {
 
 void UIManager::updateUI() {
 	uiTexture.clear(sf::Color::Transparent);
+	mapTexture.clear(sf::Color::Transparent);
 	mainMenu->update();
 	gameUI->update();
+	map->update();
 	uiTexture.display();
+	mapTexture.display();
 }
 
 void UIManager::pollEvent() {
@@ -171,7 +185,21 @@ void UIManager::pollEvent() {
 			break;
 
 		case sf::Event::MouseWheelScrolled:
-			gameView.zoom(1 - event.mouseWheelScroll.delta / 10);
+			switch (currentView) {
+			case 0:
+				gameView.zoom(1 - event.mouseWheelScroll.delta / 10);
+				gameTexture.setView(gameView);
+				break;
+			case 1:
+				gameView.zoom(1 - event.mouseWheelScroll.delta / 10);
+				break;
+			case 2:
+				mapView.zoom(1 - event.mouseWheelScroll.delta / 10);
+				mapTexture.setView(mapView);
+				break;
+			default:
+				break;
+			}
 			gameTexture.setView(gameView);
 			break;
 
@@ -206,7 +234,20 @@ void UIManager::pollEvent() {
 			if (isPanning && currentView != 0) {
 				const sf::Vector2f currentPos = window.mapPixelToCoords(sf::Mouse::getPosition(window));
 				const sf::Vector2f deltaPos = lastPos - currentPos;
-				gameView.move(deltaPos * (gameView.getSize().x / (gameTexture.getSize().x)));
+				switch (currentView) {
+				case 0:
+					break;
+				case 1:
+					gameView.move(deltaPos * (gameView.getSize().x / (gameTexture.getSize().x)));
+					gameTexture.setView(gameView);
+					break;
+				case 2:
+					mapView.move(deltaPos * (mapView.getSize().x / (mapTexture.getSize().x)));
+					mapTexture.setView(mapView);
+					break;
+				default:
+					break;
+				}
 				gameTexture.setView(gameView);
 				lastPos = window.mapPixelToCoords(sf::Mouse::getPosition(window));
 			}
@@ -234,13 +275,27 @@ void UIManager::manageControls() {
 		translationVector += sf::Vector2f(0, (float)moveSpeed);
 	}
 
-	gameView.move(translationVector * (gameView.getSize().x / (gameTexture.getSize().x)) * clock.getElapsedTime().asSeconds());
+
+	switch (currentView) {
+	case 0:
+		break;
+	case 1:
+		gameView.move(translationVector * (gameView.getSize().x / (gameTexture.getSize().x)) * clock.getElapsedTime().asSeconds());
+		break;
+	case 2:
+		mapView.move(translationVector * (mapView.getSize().x / (mapView.getSize().x)) * clock.getElapsedTime().asSeconds());
+		break;
+	default:
+		break;
+	}
 	gameTexture.setView(gameView);
+	mapTexture.setView(mapView);
 }
 
 void UIManager::play() {
 	mainMenu->setActive(false);
 	gameUI->setActive(true);
+	map->setActive(true);
 	game->start();
 }
 
@@ -265,6 +320,7 @@ void UIManager::quit() {
 void UIManager::quitGame() {
 	game->stop();
 	gameUI->setActive(false);
+	map->setActive(false);
 	mainMenu->setActive(true);
 }
 
@@ -283,6 +339,7 @@ void UIManager::swapView() {
 void UIManager::viewManager() {
 	if (currentView == 0) { //gameView; center
 		gameView.setCenter((game->getPlayer()->getRocketPtr()->getPosition()).toDrawSFV());
+		
 	} else if (currentView == 1) { //gameView; player controlled
 		
 	} else if (currentView == 2) {//mapView
