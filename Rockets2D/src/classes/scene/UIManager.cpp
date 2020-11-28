@@ -147,7 +147,7 @@ void UIManager::update() {
 		}
 	} else {
 		window.draw(sf::Sprite(mapTexture.getTexture())); //draw the map when needed
-		window.draw(sf::Sprite(mapUITexture.getTexture(),));
+		window.draw(sf::Sprite(mapUITexture.getTexture()));
 	}
 	canDraw = false;
 	window.display();
