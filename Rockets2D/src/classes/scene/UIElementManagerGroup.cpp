@@ -49,7 +49,7 @@ void UIElementManagerGroup::addRadioList(int page, int xP, int yP, int s, std::s
 	pages[page]->addRadioList(xP, yP, s, args, num, def);
 }
 
-void UIElementManagerGroup::addEmblem(int page, int xP, int yP, std::string titl, std::string d) {
+void UIElementManagerGroup::addEmblem(int page, long double* xP, long double* yP, std::string titl, std::string d) {
 	pages[page]->addEmblem(xP, yP, titl, d);
 }
 

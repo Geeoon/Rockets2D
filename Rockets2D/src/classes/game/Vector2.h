@@ -13,6 +13,8 @@ public:
 	void normalize();
 	long double getX() const;
 	long double getY() const;
+	long double* getXPointer();
+	long double* getYPointer();
 	long double getMagnitude() const;
 	long double getAngle() const;
 	virtual bool getIsPush();

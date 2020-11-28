@@ -122,7 +122,9 @@ void UIManager::setGame(std::shared_ptr<Game> g) {
 	gameUI->addUIString(0, "Throttle:", 10, uiTexture.getSize().y - 140, 15, UIString::UIString_alignment::left, UIString::UIString_alignment::middle);
 	gameUI->addUIString(0, "Steering:", 10, uiTexture.getSize().y - 90, 15, UIString::UIString_alignment::left, UIString::UIString_alignment::middle);
 	for (std::shared_ptr<Object> obj : *(game->getObjMan()->getObjects())) {
-		map->addEmblem(0, 300, 300, "Test", "description");
+		long double* ptr = new long double;
+		*ptr = 300;
+		map->addEmblem(0, ptr, ptr, "Test", "description");
 	}
 }
 
@@ -283,7 +285,7 @@ void UIManager::manageControls() {
 		gameView.move(translationVector * (gameView.getSize().x / (gameTexture.getSize().x)) * clock.getElapsedTime().asSeconds());
 		break;
 	case 2:
-		mapView.move(translationVector * (mapView.getSize().x / (mapView.getSize().x)) * clock.getElapsedTime().asSeconds());
+		mapView.move(translationVector * (mapView.getSize().x / (mapTexture.getSize().x)) * clock.getElapsedTime().asSeconds());
 		break;
 	default:
 		break;

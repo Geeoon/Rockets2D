@@ -24,6 +24,14 @@ long double Vector2::getY() const {
 	return y;
 }
 
+long double* Vector2::getXPointer() {
+	return &x;
+}
+
+long double* Vector2::getYPointer() {
+	return &y;
+}
+
 long double Vector2::getMagnitude() const {
 	return sqrt(x * x + y * y);
 }
