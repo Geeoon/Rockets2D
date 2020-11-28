@@ -6,7 +6,7 @@ UIManager::UIManager() {
 	window.create(sf::VideoMode(800, 800), "Rockets2D", sf::Style::Close, videoSettings);
 	window.setFramerateLimit(300);
 	freeBodyTexture.create(150, 150);
-	if (!(uiTexture.create(window.getSize().x, window.getSize().y, videoSettings) && gameTexture.create(window.getSize().x, window.getSize().y, videoSettings)) && (mapTexture.create(window.getSize().x, window.getSize().y, videoSettings))) {
+	if (!(uiTexture.create(window.getSize().x, window.getSize().y, videoSettings) && gameTexture.create(window.getSize().x, window.getSize().y, videoSettings) && mapTexture.create(window.getSize().x, window.getSize().y, videoSettings))) {
 		//check for if there is an error creating the gameTexture or the uiTexture
 	}
 	gameView = gameTexture.getView();
