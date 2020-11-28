@@ -9,7 +9,7 @@ UIEmblem::UIEmblem(sf::RenderTexture* t, sf::RenderWindow* w, long double* xP, l
 	xPointer = xP;
 	yPointer = yP;
 	sprite.setPosition((float)*xP, (float)*yP);
-	//description = std::make_unique<UIString>(t, w, xP, yP);
+	//description = std::make_unique<UIString>(t, w, (int)*xP, (int)*yP);
 	//title = std::make_unique<UIString>(t, w, xP, yP);
 }
 
