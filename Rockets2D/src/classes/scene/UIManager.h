@@ -29,6 +29,7 @@ private:
 	sf::RenderTexture uiTexture; //for the UI itself
 	sf::RenderTexture gameTexture; //for the scene itself only.
 	sf::RenderTexture mapTexture;
+	sf::RenderTexture mapUITexture;
 	sf::RenderTexture freeBodyTexture; //for the free body diagram
 	sf::ContextSettings videoSettings;
 	std::unique_ptr<UIElementManagerGroup> mainMenu;

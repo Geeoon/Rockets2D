@@ -6,7 +6,7 @@ UIManager::UIManager() {
 	window.create(sf::VideoMode(800, 800), "Rockets2D", sf::Style::Close, videoSettings);
 	window.setFramerateLimit(300);
 	freeBodyTexture.create(150, 150);
-	if (!(uiTexture.create(window.getSize().x, window.getSize().y, videoSettings) && gameTexture.create(window.getSize().x, window.getSize().y, videoSettings) && mapTexture.create(window.getSize().x, window.getSize().y, videoSettings))) {
+	if (!(uiTexture.create(window.getSize().x, window.getSize().y, videoSettings) && gameTexture.create(window.getSize().x, window.getSize().y, videoSettings) && mapTexture.create(window.getSize().x, window.getSize().y, videoSettings) && mapUITexture.create(window.getSize().x, window.getSize().y, videoSettings))) {
 		//check for if there is an error creating the gameTexture or the uiTexture
 	}
 	gameView = gameTexture.getView();
@@ -121,7 +121,7 @@ void UIManager::setGame(std::shared_ptr<Game> g) {
 	gameUI->addUIString(0, "Throttle:", 10, uiTexture.getSize().y - 140, 15, UIString::UIString_alignment::left, UIString::UIString_alignment::middle);
 	gameUI->addUIString(0, "Steering:", 10, uiTexture.getSize().y - 90, 15, UIString::UIString_alignment::left, UIString::UIString_alignment::middle);
 	for (std::shared_ptr<Object> obj : *(game->getObjMan()->getObjects())) {
-		map->addEmblem(0, obj->getPosition().getXPointer(), obj->getPosition().getYPointer(), "Test", "description");
+		map->addEmblem(0, &mapUITexture, obj->getPosition().getXPointer(), obj->getPosition().getYPointer(), "Test", "description");
 	}
 }
 
@@ -147,6 +147,7 @@ void UIManager::update() {
 		}
 	} else {
 		window.draw(sf::Sprite(mapTexture.getTexture())); //draw the map when needed
+		window.draw(sf::Sprite(mapUITexture.getTexture(),));
 	}
 	canDraw = false;
 	window.display();
@@ -167,9 +168,11 @@ bool UIManager::isOpen() {
 void UIManager::updateUI() {
 	uiTexture.clear(sf::Color::Transparent);
 	mapTexture.clear(sf::Color::Transparent);
+	mapUITexture.clear(sf::Color::Transparent);
 	mainMenu->update();
 	gameUI->update();
 	map->update();
+	mapUITexture.display();
 	uiTexture.display();
 	mapTexture.display();
 }

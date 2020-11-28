@@ -22,7 +22,7 @@ public:
 	void addFBD(int page, int xP, int yP, int s, FreeBody* fb, bool* canD);
 	void addRadioList(int page, int xP, int yP, int s, std::string args[], size_t num);
 	void addRadioList(int page, int xP, int yP, int s, std::string args[], size_t num, int def);
-	void addEmblem(int page, long double* xP, long double* yP, std::string titl, std::string d);
+	void addEmblem(int page, sf::RenderTexture* t2, long double* xP, long double* yP, std::string titl, std::string d);
 	void setActive(bool active);
 	void update();
 	void synchronousUpdate();
