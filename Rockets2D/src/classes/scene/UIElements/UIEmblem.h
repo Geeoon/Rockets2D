@@ -13,6 +13,7 @@ private:
 	long double* xPointer = nullptr;
 	long double* yPointer = nullptr;
 	sf::CircleShape sprite;
+	sf::RenderTexture* texture2 = nullptr;
 	std::unique_ptr<UIString> title;
 	std::unique_ptr<UIString> description;
 	std::unique_ptr<Button> focus;
