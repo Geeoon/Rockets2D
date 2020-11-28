@@ -13,7 +13,7 @@ void ObjectBasic::setPosition(const Vector2& pos) {
 	position = pos;
 }
 
-Vector2 ObjectBasic::getPosition() {
+Vector2& ObjectBasic::getPosition() {
 	return position;
 }
 

@@ -47,7 +47,7 @@ FreeBody* Object::getFBPtr() {
 	return &body;
 }
 
-Vector2 Object::getPosition() {
+Vector2& Object::getPosition() {
 	return position;
 }
 

@@ -98,14 +98,13 @@ UIManager::UIManager() {
 
 	map = std::make_unique<UIElementManagerGroup>(&mapTexture, &window, &font, &hover, &click, &unClick);
 	map->addPage();
-	map->addUIString(0, "Map", mapTexture.getSize().x / 2, 25, 30, UIString::UIString_alignment::center);
 
 	map->setActive(false);
 
 	clock.restart();
 	gameView.zoom(1);
 	gameView.setSize((float)(2.07544 * pow(10, 10)), (float)(2.07544 * pow(10, 10)));
-	//mapView.setSize(gameView.getSize());
+	mapView.setSize(gameView.getSize());
 	syncFuncs = [&] {gameUI->synchronousUpdate(); mainMenu->synchronousUpdate(); map->synchronousUpdate(); synchronousUpdate(); };
 }
 
@@ -122,9 +121,8 @@ void UIManager::setGame(std::shared_ptr<Game> g) {
 	gameUI->addUIString(0, "Throttle:", 10, uiTexture.getSize().y - 140, 15, UIString::UIString_alignment::left, UIString::UIString_alignment::middle);
 	gameUI->addUIString(0, "Steering:", 10, uiTexture.getSize().y - 90, 15, UIString::UIString_alignment::left, UIString::UIString_alignment::middle);
 	for (std::shared_ptr<Object> obj : *(game->getObjMan()->getObjects())) {
-		long double* ptr = new long double;
-		*ptr = 300;
-		map->addEmblem(0, ptr, ptr, "Test", "description");
+		std::cout << *(obj->getPosition().getXPointer()) << " - " << *(obj->getPosition().getYPointer()) << std::endl;
+		map->addEmblem(0, obj->getPosition().getXPointer(), obj->getPosition().getYPointer(), "Test", "description");
 	}
 }
 

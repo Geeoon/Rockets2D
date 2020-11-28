@@ -9,7 +9,7 @@ public:
 	ObjectBasic(const Vector2& pos, long double m);
 	virtual void setOrientation(long double ori);
 	void setPosition(const Vector2& pos);
-	Vector2 getPosition();
+	Vector2& getPosition();
 	void setCenterOfMass(const Vector2& com);
 	virtual long double getMass();
 	Vector2 getCenterOfMass();
