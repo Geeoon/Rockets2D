@@ -26,10 +26,7 @@ void Game::quit() {
 
 void Game::update() {
 	while (!isQuit) {
-		if (hasStarted) {
-			player->update(isPaused);
-		}
-
+		player->update((isPaused && hasStarted));
 		if (hasStarted && !isPaused) {
 			objMan->update();
 		}
@@ -40,13 +37,15 @@ void Game::setPause(bool p) {
 	isPaused = p;
 }
 
+bool Game::getIsPaused() {
+	return isPaused;
+}
+
 void Game::draw() { //this is called from another thread; don't rely on it for synchronous actions.
 	if (hasStarted) {
-		if (!isPaused) {
-			texture->clear(sf::Color::Transparent);
-			objMan->draw();
-			texture->display();
-		}
+		texture->clear(sf::Color::Transparent);
+		objMan->draw();
+		texture->display();
 	} else {
 		texture->clear();
 		texture->display();

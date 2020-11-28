@@ -140,7 +140,7 @@ void UIManager::update() {
 	manageControls();
 	game->draw(); //draw onto the renderTexture
 	viewManager();
-	if (currentView != 2) {
+	if (currentView != 2 || game->getIsPaused()) {
 		window.draw(sf::Sprite(gameTexture.getTexture())); //first the game,
 		if (isUIVisible) {
 			window.draw(sf::Sprite(uiTexture.getTexture())); //then the ui; this keeps the UI always on top no matter what.

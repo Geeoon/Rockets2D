@@ -18,6 +18,7 @@ public:
 	void quit();
 	void update();
 	void setPause(bool p);
+	bool getIsPaused();
 	void draw();
 	void addToSync(const std::function<void()>& f);
 	Player* getPlayer();
