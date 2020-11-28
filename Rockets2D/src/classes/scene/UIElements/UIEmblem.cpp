@@ -19,5 +19,7 @@ void UIEmblem::update() {
 	sprite.setOrigin((float)sprite.getLocalBounds().width / 2, (float)sprite.getLocalBounds().height / 2);
 	sprite.setOutlineThickness((3 * texture->getView().getSize().x / texture->getSize().x < 1) ? 1 : (3 * texture->getView().getSize().x / texture->getSize().x));
 	texture->draw(sprite);
-	std::cout << (float)*xPointer << std::endl;
+	if (sprite.getGlobalBounds().contains(texture->mapPixelToCoords(sf::Mouse::getPosition(*window)))) {
+		std::cout << texture->mapPixelToCoords(sf::Mouse::getPosition(*window)).x << std::endl;
+	}
 }
