@@ -57,12 +57,6 @@
     <ClCompile Include="src\classes\game\Rocket\RocketParts\Engines\Engine.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\classes\game\Rocket\RocketParts\Tanks\OxidizerTank.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\classes\game\Rocket\RocketParts\Tanks\FuelTank.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\classes\game\Rocket\RocketParts\NoseCones\NoseCone.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -105,9 +99,6 @@
     <ClCompile Include="src\classes\scene\Misc\Arrow.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\classes\game\Rocket\RocketParts\Tanks\Tank.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\classes\scene\UIElements\UIRadio.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -121,6 +112,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\classes\scene\UIElements\UIEmblem.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\classes\game\Rocket\RocketParts\FuelTank\FuelTank.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -162,12 +156,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\classes\game\Rocket\RocketParts\Engines\Engine.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\classes\game\Rocket\RocketParts\Tanks\OxidizerTank.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\classes\game\Rocket\RocketParts\Tanks\FuelTank.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\classes\game\Rocket\RocketParts\NoseCones\NoseCone.h">
@@ -215,9 +203,6 @@
     <ClInclude Include="src\classes\scene\Misc\Arrow.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\classes\game\Rocket\RocketParts\Tanks\Tank.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="src\classes\scene\UIElements\UIRadio.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -231,6 +216,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\classes\scene\UIElements\UIEmblem.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\classes\game\Rocket\RocketParts\FuelTank\FuelTank.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

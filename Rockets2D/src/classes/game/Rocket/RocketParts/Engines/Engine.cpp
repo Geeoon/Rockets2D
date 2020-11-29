@@ -3,7 +3,7 @@
 Engine::Engine(sf::RenderTexture* t, const Vector2& rPos) : RocketPart(t, Vector2(0, 0)) {//1 pixel = 1 meter for reference
 	name = "F-1 Engine";
 	description = "A classic engine used in the Saturn V rocket.";
-	mass = 8390;//dry mass AKA mass at 0 throttle.
+	mass = 8400;//dry mass AKA mass at 0 throttle.
 	relativePosition = rPos;
 	throttle = 0;
 	nozzle.setPointCount(3);

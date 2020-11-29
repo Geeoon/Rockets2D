@@ -11,7 +11,7 @@ public:
 	virtual void draw() override;
 
 protected:
-	long double thrust = 1000; //thrust coefficient in vacuum
+	long double thrust = 7770000; //thrust coefficient in vacuum
 	long double maxSteering = 0.523599;
 	long double gimbalAmount = 0; //-50 - 50
 	sf::ConvexShape nozzle;

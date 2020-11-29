@@ -2,7 +2,7 @@
 #include <SFML/Graphics.hpp>
 #include <functional>
 #include "Rocket/RocketParts/Engines/Engine.h"
-#include "Rocket/RocketParts/Tanks/FuelTank.h"
+#include "Rocket/RocketParts/FuelTank/FuelTank.h"
 #include "Rocket/Rocket.h"
 #include "Object.h"
 

@@ -156,8 +156,7 @@
     <ClCompile Include="src\classes\game\Rocket\RocketParts\NoseCones\NoseCone.cpp" />
     <ClCompile Include="src\classes\game\Rocket\RocketParts\Couplers\Coupler.cpp" />
     <ClCompile Include="src\classes\game\Rocket\RocketParts\ControlModules\ControlModule.cpp" />
-    <ClCompile Include="src\classes\game\Rocket\RocketParts\Tanks\OxidizerTank.cpp" />
-    <ClCompile Include="src\classes\game\Rocket\RocketParts\Tanks\FuelTank.cpp" />
+    <ClCompile Include="src\classes\game\Rocket\RocketParts\FuelTank\FuelTank.cpp" />
     <ClCompile Include="src\classes\game\Rocket\RocketParts\Engines\Engine.cpp" />
     <ClCompile Include="src\classes\game\Rocket\Rocket.cpp" />
     <ClCompile Include="src\classes\game\SpaceObject.cpp" />
@@ -177,7 +176,6 @@
     <ClCompile Include="src\classes\scene\UIElements\UISlider.cpp" />
     <ClCompile Include="src\classes\scene\UIElements\UIBackground.cpp" />
     <ClCompile Include="src\classes\scene\UIElements\UIElement.cpp" />
-    <ClCompile Include="src\classes\game\Rocket\RocketParts\Tanks\Tank.cpp" />
     <ClCompile Include="src\classes\scene\UIElements\UIRadio.cpp" />
     <ClCompile Include="src\classes\scene\UIElements\UIRadioList.cpp" />
     <ClCompile Include="src\classes\scene\UIElements\UIEmblem.cpp" />
@@ -195,8 +193,7 @@
     <ClInclude Include="src\classes\game\Rocket\RocketParts\NoseCones\NoseCone.h" />
     <ClInclude Include="src\classes\game\Rocket\RocketParts\Couplers\Coupler.h" />
     <ClInclude Include="src\classes\game\Rocket\RocketParts\ControlModules\ControlModule.h" />
-    <ClInclude Include="src\classes\game\Rocket\RocketParts\Tanks\OxidizerTank.h" />
-    <ClInclude Include="src\classes\game\Rocket\RocketParts\Tanks\FuelTank.h" />
+    <ClInclude Include="src\classes\game\Rocket\RocketParts\FuelTank\FuelTank.h" />
     <ClInclude Include="src\classes\game\Rocket\RocketParts\Engines\Engine.h" />
     <ClInclude Include="src\classes\game\Rocket\Rocket.h" />
     <ClInclude Include="src\classes\game\SpaceObject.h" />
@@ -215,7 +212,6 @@
     <ClInclude Include="src\classes\scene\UIElements\UISlider.h" />
     <ClInclude Include="src\classes\scene\UIElements\UIBackground.h" />
     <ClInclude Include="src\classes\scene\UIElements\UIElement.h" />
-    <ClInclude Include="src\classes\game\Rocket\RocketParts\Tanks\Tank.h" />
     <ClInclude Include="src\classes\scene\UIElements\UIRadio.h" />
     <ClInclude Include="src\classes\scene\UIElements\UIRadioList.h" />
     <ClInclude Include="src\classes\scene\UIElements\UIEmblem.h" />
