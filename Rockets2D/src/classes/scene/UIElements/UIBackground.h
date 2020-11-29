@@ -7,6 +7,8 @@ class UIBackground : public UIElement
 public:
 	UIBackground(sf::RenderTexture* t, sf::RenderWindow* w, int xP, int yP, int wi, int h);
 	void update() override;
+	void setPos(int xP, int yP);
+	void setCenter(int xP, int yP);
 
 private:
 	int width = 0;

@@ -16,3 +16,13 @@ UIBackground::UIBackground(sf::RenderTexture* t, sf::RenderWindow* w, int xP, in
 void UIBackground::update() {
 	texture->draw(sprite);
 }
+
+void UIBackground::setPos(int xP, int yP) {
+	x = xP;
+	y = yP;
+	sprite.setPosition(x, y);
+}
+
+void UIBackground::setCenter(int xP, int yP) {
+	sprite.setOrigin(xP, yP);
+}
