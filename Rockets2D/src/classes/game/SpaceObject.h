@@ -6,8 +6,8 @@
 class SpaceObject : public Object
 {
 public:
-	SpaceObject(sf::RenderTexture* t, const Vector2& pos, long double m, long double r);
-	SpaceObject(sf::RenderTexture* t, const Vector2& pos, long double m, long double r, const Vector2& vel);
+	SpaceObject(std::string ti, std::string d, sf::RenderTexture* t, const Vector2& pos, long double m, long double r);
+	SpaceObject(std::string ti, std::string d, sf::RenderTexture* t, const Vector2& pos, long double m, long double r, const Vector2& vel);
 	void draw() override;
 
 private:

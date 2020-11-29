@@ -6,8 +6,8 @@
 class Object
 {
 public:
-	Object(const Vector2& pos, long double m);
-	Object(const Vector2& pos, long double m, const Vector2& vel);
+	Object(std::string t, std::string d, const Vector2& pos, long double m);
+	Object(std::string t, std::string d, const Vector2& pos, long double m, const Vector2& vel);
 	void setMomentofInertia(long double moment);
 	void applyForce(const Vector2& v);
 	void applyForceRel(Vector2 v); //applies force relative to the object's orientation
@@ -20,9 +20,13 @@ public:
 	void resetTime();
 	virtual void draw();
 	virtual void setPosition(const Vector2& pos);
+	std::string getTitle();
+	std::string getDescription();
 
 protected:
 	sf::Clock clock;
+	std::string title;
+	std::string description;
 	sf::Time elapsedTime;
 	FreeBody body = FreeBody();
 	Vector2 position = Vector2(0, 0);

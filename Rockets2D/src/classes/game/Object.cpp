@@ -1,18 +1,22 @@
 #include "Object.h"
 
-Object::Object(const Vector2& pos, long double m) {
+Object::Object(std::string t, std::string d, const Vector2& pos, long double m) {
 	position = pos;
 	mass = m;
 	clock.restart();
 	elapsedTime = clock.getElapsedTime();
+	title = t;
+	description = d;
 }
 
-Object::Object(const Vector2& pos, long double m, const Vector2& vel) {
+Object::Object(std::string t, std::string d, const Vector2& pos, long double m, const Vector2& vel) {
 	position = pos;
 	mass = m;
 	velocity = vel;
 	clock.restart();
 	elapsedTime = clock.getElapsedTime();
+	title = t;
+	description = d;
 }
 
 void Object::setMomentofInertia(long double moment) {
@@ -70,4 +74,12 @@ void Object::draw() {
 
 void Object::setPosition(const Vector2& pos) {
 	position = pos;
+}
+
+std::string Object::getTitle() {
+	return title;
+}
+
+std::string Object::getDescription() {
+	return description;
 }

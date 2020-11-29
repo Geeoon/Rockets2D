@@ -3,8 +3,8 @@
 Game::Game(sf::RenderTexture* t) {
 	texture = t;
 	objMan = std::make_unique<ObjectManager>(t);
-	objMan->addObject(std::make_unique<SpaceObject>(texture, Vector2(385000.6 * powl(10, 3), 0), 7.346L * powl(10, 22), 1.7371L * powl(10, 6), Vector2(0, 1017.47))); //moon
-	objMan->addObject(std::make_unique<SpaceObject>(texture, Vector2(0, 0), 5.972L * powl(10, 24), 6.371L * powl(10, 6))); //earth
+	objMan->addObject(std::make_unique<SpaceObject>("Moon", "Earth's best friend.", texture, Vector2(385000.6 * powl(10, 3), 0), 7.346L * powl(10, 22), 1.7371L * powl(10, 6), Vector2(0, 1017.47))); //moon
+	objMan->addObject(std::make_unique<SpaceObject>("Earth", "Home", texture, Vector2(0, 0), 5.972L * powl(10, 24), 6.371L * powl(10, 6))); //earth
 	player = std::make_unique<Player>(t);
 	player->setSyncUpdates(&syncFuncs);
 	player->getRocketPtr()->setPosition(Vector2(6.371L * powl(10, 6), 0));

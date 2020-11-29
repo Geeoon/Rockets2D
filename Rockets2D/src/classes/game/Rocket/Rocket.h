@@ -9,9 +9,9 @@
 class Rocket : public Object
 {
 public:
-	Rocket(sf::RenderTexture* t, const Vector2& pos);
-	Rocket(sf::RenderTexture* t, const Vector2& pos, long double ori);
-	Rocket(sf::RenderTexture* t, const Vector2& pos, long double ori, const Vector2& vel);
+	Rocket(std::string ti, std::string d, sf::RenderTexture* t, const Vector2& pos);
+	Rocket(std::string ti, std::string d, sf::RenderTexture* t, const Vector2& pos, long double ori);
+	Rocket(std::string ti, std::string d, sf::RenderTexture* t, const Vector2& pos, long double ori, const Vector2& vel);
 	void update() override;
 	void draw() override;
 	void drawAtPNR(const Vector2& p, long double r);

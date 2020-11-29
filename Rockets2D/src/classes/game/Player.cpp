@@ -2,7 +2,7 @@
 
 Player::Player(sf::RenderTexture* t) {
 	texture = t;
-	rocket = std::make_shared<Rocket>(texture, Vector2(0, 0));
+	rocket = std::make_shared<Rocket>("You", "Yourself.", texture, Vector2(0, 0));
 	std::shared_ptr<RocketPartsManager>rktMan = std::make_shared<RocketPartsManager>();
 	rktMan->addPart(std::make_shared<Engine>(texture, Vector2(0, 0)));
 	rktMan->addPart(std::make_shared<FuelTank>(texture, Vector2(0, -3.2)));
