@@ -94,3 +94,7 @@ void UIString::setAlignment(UIString_alignment a) {
 		break;
 	}
 }
+
+sf::FloatRect UIString::getBounds() const {
+	return text.getLocalBounds();
+}

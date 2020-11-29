@@ -18,7 +18,7 @@ public:
 	void setColor(sf::Color c);
 	void reset();
 	void setAlignment(UIString_alignment a);
-
+	sf::FloatRect getBounds() const;
 private:
 	int size;
 	std::string value;
