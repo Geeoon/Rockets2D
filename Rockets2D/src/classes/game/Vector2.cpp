@@ -82,9 +82,9 @@ Vector2 Vector2::operator-() const {
 }
 
 sf::Vector2f Vector2::toSF2f() const {
-	return sf::Vector2f(x, y);
+	return sf::Vector2f((float)x, (float)y);
 }
 
 sf::Vector2f Vector2::toDrawSFV() const {
-	return sf::Vector2f(x, -y);
+	return sf::Vector2f((float)x, (float)-y);
 }

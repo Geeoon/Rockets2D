@@ -3,10 +3,10 @@
 UIRadioList::UIRadioList(type typ, sf::RenderTexture* t, sf::RenderWindow* w, int xP, int yP, sf::Font* f, int s, std::string args[], size_t num) : UIElement(t, w, xP, yP) {
 	font = f;
 	textSize = s;
-	for (int i = 0; i < num; i++) {
+	for (size_t i = 0; i < num; i++) {
 		int xOffset = 0;
 		for (int j = 0; j < i; j++) {
-			xOffset += f->getGlyph(65, s, false, 0).bounds.width * (args[j].length() + 4);
+			xOffset += (int)(f->getGlyph(65, s, false, 0).bounds.width * ((int)args[j].length() + 4));
 		}
 		radios.push_back(UIRadio(texture, window, x + xOffset, y, args[i], font, textSize));
 	}
@@ -15,10 +15,10 @@ UIRadioList::UIRadioList(type typ, sf::RenderTexture* t, sf::RenderWindow* w, in
 UIRadioList::UIRadioList(type typ, sf::RenderTexture* t, sf::RenderWindow* w, int xP, int yP, sf::Font* f, int s, std::string args[], size_t num, int def) : UIElement(t, w, xP, yP) {
 	font = f;
 	textSize = s;
-	for (int i = 0; i < num; i++) {
+	for (size_t i = 0; i < num; i++) {
 		int xOffset = 0;
 		for (int j = 0; j < i; j++) {
-			xOffset += f->getGlyph(65, s, false, 0).bounds.width * (args[j].length() + 4);
+			xOffset += (int)(f->getGlyph(65, s, false, 0).bounds.width * ((int)args[j].length() + 4));
 		}
 		radios.push_back(UIRadio(texture, window, x + xOffset, y, args[i], font, textSize));
 	}

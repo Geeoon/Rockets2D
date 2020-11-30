@@ -10,14 +10,14 @@ UISlider::UISlider(sf::RenderTexture* t, sf::RenderWindow* w, int xP, int yP, in
 	unClick = uCl;
 	slider.setFillColor(fillColor);
 	slider.setOutlineColor(accentColor);
-	slider.setOutlineThickness(2);
-	slider.setSize(sf::Vector2f(8, 20));
-	slider.setOrigin(sf::Vector2f(slider.getGlobalBounds().width / 2 - 2, slider.getGlobalBounds().height / 2 - 3));
-	slider.setPosition(x + *outputValue / sliderLength, y);
+	slider.setOutlineThickness(2.0f);
+	slider.setSize(sf::Vector2f(8.0f, 20.0f));
+	slider.setOrigin(sf::Vector2f((float)(slider.getGlobalBounds().width / 2 - 2), (float)(slider.getGlobalBounds().height / 2 - 3)));
+	slider.setPosition((float)(x + *outputValue / sliderLength), (float)y);
 	bar.setFillColor(accentColor);
-	bar.setSize(sf::Vector2f(sliderLength, 2));
-	bar.setOrigin(0, 0);
-	bar.setPosition(x, y);
+	bar.setSize(sf::Vector2f((float)sliderLength, 2.0f));
+	bar.setOrigin(0.0f, 0.0f);
+	bar.setPosition((float)x, (float)y);
 }
 
 void UISlider::update() {
@@ -40,7 +40,7 @@ void UISlider::update() {
 		}
 	}
 
-	slider.setPosition(x + *outputValue / 100 * sliderLength, y);
+	slider.setPosition((float)((long double)x + *outputValue / 100 * sliderLength), (float)y);
 	texture->draw(bar);
 	texture->draw(slider);
 }

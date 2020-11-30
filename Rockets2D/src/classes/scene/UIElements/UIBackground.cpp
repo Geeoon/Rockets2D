@@ -10,7 +10,7 @@ UIBackground::UIBackground(sf::RenderTexture* t, sf::RenderWindow* w, int xP, in
 	sprite.setOutlineColor(outlineColor);
 	sprite.setSize(sf::Vector2f(width - sprite.getOutlineThickness() * 2, height - sprite.getOutlineThickness() * 2));
 	sprite.setOrigin(sf::Vector2f(sprite.getLocalBounds().width / 2, sprite.getLocalBounds().height / 2));
-	sprite.setPosition(x, y);
+	sprite.setPosition((float)x, (float)y);
 }
 
 void UIBackground::update() {
@@ -20,9 +20,9 @@ void UIBackground::update() {
 void UIBackground::setPos(int xP, int yP) {
 	x = xP;
 	y = yP;
-	sprite.setPosition(x, y);
+	sprite.setPosition((float)x, (float)y);
 }
 
 void UIBackground::setCenter(int xP, int yP) {
-	sprite.setOrigin(xP, yP);
+	sprite.setOrigin((float)xP, (float)yP);
 }

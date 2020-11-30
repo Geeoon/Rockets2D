@@ -7,39 +7,39 @@ Engine::Engine(sf::RenderTexture* t, const Vector2& rPos) : RocketPart(t, Vector
 	relativePosition = rPos;
 	throttle = 0;
 	nozzle.setPointCount(3);
-	nozzle.setPoint(0, sf::Vector2f(0, 0));
-	nozzle.setPoint(1, sf::Vector2f(-1.859, 4.229));
-	nozzle.setPoint(2, sf::Vector2f(1.859, 4.229));
+	nozzle.setPoint(0, sf::Vector2f(0.0f, 0.0f));
+	nozzle.setPoint(1, sf::Vector2f(-1.859f, 4.229f));
+	nozzle.setPoint(2, sf::Vector2f(1.859f, 4.229f));
 	nozzle.setFillColor(fillColor);
 	nozzle.setOutlineColor(borderColor);
-	nozzle.setOutlineThickness(0.3);
-	nozzle.setOrigin(sf::Vector2f(0, -0.97));
-	nozzle.setPosition(sf::Vector2f(0, 0));
+	nozzle.setOutlineThickness(0.3f);
+	nozzle.setOrigin(sf::Vector2f(0.0f, -0.97f));
+	nozzle.setPosition(sf::Vector2f(0.0f, 0.0f));
 
 	flame.setPointCount(3);
-	flame.setPoint(0, sf::Vector2f(-1.859, 0));
-	flame.setPoint(1, sf::Vector2f(1.859, 0));
-	flame.setPoint(2, sf::Vector2f(0, 0));
+	flame.setPoint(0, sf::Vector2f(-1.859f, 0.0f));
+	flame.setPoint(1, sf::Vector2f(1.859f, 0.0f));
+	flame.setPoint(2, sf::Vector2f(0.0f, 0.0f));
 	flame.setFillColor(fillColor);
 	flame.setOutlineColor(borderColor);
-	flame.setOutlineThickness(0.3);
-	flame.setOrigin(sf::Vector2f(0, -5.5));
-	flame.setPosition(sf::Vector2f(0, 0));
+	flame.setOutlineThickness(0.3f);
+	flame.setOrigin(sf::Vector2f(0.0f, -5.5f));
+	flame.setPosition(sf::Vector2f(0.0f, 0.0f));
 
 	throat.setFillColor(fillColor);
 	throat.setOutlineColor(borderColor);
-	throat.setOutlineThickness(0.3);
-	throat.setSize(sf::Vector2f(0.5, 0.8));
-	throat.setOrigin((throat.getLocalBounds().width - 0.6) / 2, (throat.getLocalBounds().height - 0.6) / 2 - 1);
-	throat.setPosition(sf::Vector2f(0, 0));
+	throat.setOutlineThickness(0.3f);
+	throat.setSize(sf::Vector2f(0.5f, 0.8f));
+	throat.setOrigin((float)((throat.getLocalBounds().width - 0.6) / 2), (float)((throat.getLocalBounds().height - 0.6) / 2 - 1));
+	throat.setPosition(sf::Vector2f(0.0f, 0.0f));
 	
 
 	base.setFillColor(fillColor);
 	base.setOutlineColor(borderColor);
-	base.setOutlineThickness(0.3);
-	base.setSize(sf::Vector2f(3, 1));
-	base.setOrigin((base.getLocalBounds().width - 0.6) / 2, (base.getLocalBounds().height - 0.6) / 2);
-	base.setPosition(sf::Vector2f(0, 0));
+	base.setOutlineThickness(0.3f);
+	base.setSize(sf::Vector2f(3.0f, 1.0f));
+	base.setOrigin((float)(base.getLocalBounds().width - 0.6) / 2, (float)(base.getLocalBounds().height - 0.6) / 2);
+	base.setPosition(sf::Vector2f(0.0f, 0.0f));
 }
 
 Engine::Engine(sf::RenderTexture* t, const Vector2& rPos, long double rOri) : Engine(t, rPos) {//1 pixel = 1 meter for reference
@@ -54,7 +54,7 @@ Vector2 Engine::update() {
 
 void Engine::draw() {
 	RocketPart::draw();
-	flame.setPoint(2, sf::Vector2f(0, throttle / 5));
+	flame.setPoint(2, sf::Vector2f(0.0f, (float)throttle / 5));
 	nozzle.setRotation((float)((orientation + relativeOrientation - gimbalAmount) * 180 / M_PI));
 	throat.setRotation((float)((orientation + relativeOrientation - gimbalAmount) * 180 / M_PI));
 	base.setRotation((float)((orientation + relativeOrientation) * 180 / M_PI));

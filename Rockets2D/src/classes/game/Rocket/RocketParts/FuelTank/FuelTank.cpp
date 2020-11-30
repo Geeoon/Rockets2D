@@ -3,10 +3,10 @@
 FuelTank::FuelTank(sf::RenderTexture* t, const Vector2& rPos) : RocketPart(t, Vector2(0, 0)) {
 	relativePosition = rPos;
 	sprite.setOutlineColor(sf::Color(0, 255, 65));
-	sprite.setOutlineThickness(0.3);
+	sprite.setOutlineThickness(0.3f);
 	sprite.setFillColor(sf::Color::Black);
 	sprite.setSize(sf::Vector2f(3, 5));
-	sprite.setOrigin(sprite.getLocalBounds().width / 2 - 0.3, sprite.getLocalBounds().height / 2 - 0.3);
+	sprite.setOrigin((float)(sprite.getLocalBounds().width / 2 - 0.3), (float)(sprite.getLocalBounds().height / 2 - 0.3));
 	clock.restart();
 }
 

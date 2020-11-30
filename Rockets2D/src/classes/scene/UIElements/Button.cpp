@@ -19,7 +19,7 @@ Button::Button(sf::RenderTexture* t, sf::RenderWindow* w, int xP, int yP, const 
 	text.setPosition((float)x + font->getGlyph(65, textSize, false, 0).textureRect.width, (float)y);
 	text.setString(value);
 	text.setOrigin(0, 0);
-	button.setSize(sf::Vector2f(font->getGlyph(65, textSize, false, 0).textureRect.width * (text.getString().getSize() + 2), font->getLineSpacing(textSize) + 3));
+	button.setSize(sf::Vector2f((float)font->getGlyph(65, textSize, false, 0).textureRect.width * (text.getString().getSize() + 2), (float)(font->getLineSpacing(textSize) + 3)));
 	button.setPosition((float)x, (float)y);
 	button.setOutlineThickness(2);
 	button.setOutlineColor(borderColor);

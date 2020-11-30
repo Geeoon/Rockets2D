@@ -63,7 +63,7 @@ void UIString::reset() {
 	text.setFillColor(color);
 	text.setString(value);
 	text.setCharacterSize(size);
-	text.setPosition(x, y);
+	text.setPosition((float)x, (float)y);
 }
 
 void UIString::setAlignment(UIString_alignment a) {
