@@ -279,7 +279,7 @@ void UIManager::manageControls() {
 	case 0:
 		break;
 	case 1:
-		gameView.move(translationVector * (gameView.getSize().x / (float)gameTexture.getSize().x) * clock.getElapsedTime().asSeconds());
+		gameView.move(translationVector * (gameView.getSize().x / (float)gameTexture.getSize().x) * clock.getElapsedTime().asSeconds());  // if the x component's magnitude is not greater than 0.25, it won't move.
 		break;
 	case 2:
 		mapView.move(translationVector * (mapView.getSize().x / mapTexture.getSize().x) * clock.getElapsedTime().asSeconds());
