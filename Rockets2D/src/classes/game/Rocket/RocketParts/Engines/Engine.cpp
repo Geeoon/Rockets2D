@@ -47,18 +47,18 @@ Engine::Engine(sf::RenderTexture* t, const Vector2& rPos, long double rOri) : En
 }
 
 Vector2 Engine::update() {
-	gimbalAmount = -((long double)(steering / 50) * maxSteering);
-	Vector2 output = Vector2::constructFromPolar(thrust * throttle, -orientation - relativeOrientation + gimbalAmount + 0.78539816339 * 2);
+	gimbalAmount = -((long double)((long double)steering / (long double)50) * maxSteering);
+	Vector2 output = Vector2::constructFromPolar(thrust * throttle, -orientation - relativeOrientation + gimbalAmount + (long double)0.78539816339 * (long double)2);
 	return Vector2(output.getX(), output.getY(), true);
 }
 
 void Engine::draw() {
 	RocketPart::draw();
 	flame.setPoint(2, sf::Vector2f(0.0f, (float)throttle / 5));
-	nozzle.setRotation((float)((orientation + relativeOrientation - gimbalAmount) * 180 / M_PI));
-	throat.setRotation((float)((orientation + relativeOrientation - gimbalAmount) * 180 / M_PI));
-	base.setRotation((float)((orientation + relativeOrientation) * 180 / M_PI));
-	flame.setRotation((float)((orientation + relativeOrientation - gimbalAmount) * 180 / M_PI));
+	nozzle.setRotation((float)((orientation + relativeOrientation - gimbalAmount) * (long double)180 / (long double)M_PI));
+	throat.setRotation((float)((orientation + relativeOrientation - gimbalAmount) * (long double)180 / (long double)M_PI));
+	base.setRotation((float)((orientation + relativeOrientation) * (long double)180 / (long double)M_PI));
+	flame.setRotation((float)((orientation + relativeOrientation - gimbalAmount) * (long double)180 / (long double)M_PI));
 
 	nozzle.setPosition(outputPosition.toDrawSFV());
 	throat.setPosition(outputPosition.toDrawSFV());

@@ -1,7 +1,7 @@
 #include "UIManager.h"
 
 UIManager::UIManager() {
-	currentView = 1;
+	currentView = 0;
 	videoSettings.antialiasingLevel = 8;
 	window.create(sf::VideoMode(800, 800), "Rockets2D", sf::Style::Close, videoSettings);
 	window.setFramerateLimit(300);
@@ -103,7 +103,6 @@ UIManager::UIManager() {
 
 	clock.restart();
 	gameView.zoom(1);
-	gameView.setSize((float)(2.07544 * pow(10, 10)), (float)(2.07544 * pow(10, 10)));
 	mapView.setSize(gameView.getSize());
 	syncFuncs = [&] {gameUI->synchronousUpdate(); mainMenu->synchronousUpdate(); map->synchronousUpdate(); synchronousUpdate(); };
 }
@@ -202,7 +201,6 @@ void UIManager::pollEvent() {
 			default:
 				break;
 			}
-			gameTexture.setView(gameView);
 			break;
 
 		case sf::Event::MouseButtonPressed:
@@ -250,7 +248,6 @@ void UIManager::pollEvent() {
 				default:
 					break;
 				}
-				gameTexture.setView(gameView);
 				lastPos = window.mapPixelToCoords(sf::Mouse::getPosition(window));
 			}
 			break;
@@ -266,11 +263,11 @@ void UIManager::manageControls() {
 	}
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
-		translationVector += sf::Vector2f(-(float)moveSpeed, 0);
+		translationVector -= sf::Vector2f((float)moveSpeed, 0);
 	}
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
-		translationVector += sf::Vector2f(0, -(float)moveSpeed);
+		translationVector -= sf::Vector2f(0, (float)moveSpeed);
 	}
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) {
@@ -282,10 +279,10 @@ void UIManager::manageControls() {
 	case 0:
 		break;
 	case 1:
-		gameView.move(translationVector * (gameView.getSize().x / (gameTexture.getSize().x)) * clock.getElapsedTime().asSeconds());
+		gameView.move(translationVector * (gameView.getSize().x / (float)gameTexture.getSize().x) * clock.getElapsedTime().asSeconds());
 		break;
 	case 2:
-		mapView.move(translationVector * (mapView.getSize().x / (mapTexture.getSize().x)) * clock.getElapsedTime().asSeconds());
+		mapView.move(translationVector * (mapView.getSize().x / mapTexture.getSize().x) * clock.getElapsedTime().asSeconds());
 		break;
 	default:
 		break;
@@ -339,16 +336,19 @@ void UIManager::swapView() {
 }
 
 void UIManager::viewManager() {
-	if (currentView == 0) { //gameView; center
-		gameView.setCenter((game->getPlayer()->getRocketPtr()->getPosition()).toDrawSFV());
-		
-	} else if (currentView == 1) { //gameView; player controlled
-		
-	} else if (currentView == 2) {//mapView
-
-	}
+	
 }
 
 void UIManager::synchronousUpdate() {
-	
+	switch (currentView) {
+	case 0:
+		gameView.setCenter((game->getPlayer()->getRocketPtr()->getPosition()).toDrawSFV());
+		break;
+	case 1:
+		break;
+	case 2:
+		break;
+	default:
+		break;
+	}
 }
