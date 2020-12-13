@@ -145,9 +145,8 @@ void UIManager::update() {
 
 	const Vector2 rocketPosition = game->getPlayer()->getRocketPtr()->getPosition();
 	const long double rocketOrientation = game->getPlayer()->getRocketPtr()->getOrientation();
-	std::cout << rocketPosition.getX() << ", " << rocketPosition.getY() << "  " << rocketOrientation << std::endl;
-	game->draw(rocketPosition, rocketOrientation); //draw onto the renderTexture
 	viewManager(rocketPosition.toDrawSFV());
+	game->draw(rocketPosition, rocketOrientation); //draw onto the renderTexture
 
 	if (currentView != 2 || game->getIsPaused()) {
 		window.draw(sf::Sprite(gameTexture.getTexture())); //first the game,

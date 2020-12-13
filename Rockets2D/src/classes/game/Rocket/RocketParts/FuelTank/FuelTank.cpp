@@ -31,7 +31,7 @@ void FuelTank::draw() {
 
 void FuelTank::draw(const Vector2& pos, long double ori) {
 	RocketPart::draw(pos, ori);
-	sprite.setRotation((float)((orientation + relativeOrientation) * 180 / M_PI));
+	sprite.setRotation((float)((ori + relativeOrientation) * 180 / M_PI));
 	sprite.setPosition(outputPosition.toDrawSFV());
 	texture->draw(sprite);
 }
