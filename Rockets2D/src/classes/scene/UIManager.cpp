@@ -239,6 +239,7 @@ void UIManager::pollEvent() {
 					break;
 				case 1:
 					gameView.move(deltaPos * (gameView.getSize().x / (gameTexture.getSize().x)));
+					std::cout << gameView.getCenter().y << std::endl;
 					gameTexture.setView(gameView);
 					break;
 				case 2:
@@ -279,7 +280,7 @@ void UIManager::manageControls() {
 	case 0:
 		break;
 	case 1:
-		gameView.move(translationVector * (gameView.getSize().x / (float)gameTexture.getSize().x) * clock.getElapsedTime().asSeconds());  // if the x component's magnitude is not greater than 0.25, it won't move.
+		gameView.move(translationVector * (gameView.getSize().x / (float)gameTexture.getSize().x) * clock.getElapsedTime().asSeconds());  // if the x component's magnitude is not greater than 0.25, it won't move.  EDIT: this occurs only when the view's center is really far away from the center.  Occurs in the x-axis as well.
 		break;
 	case 2:
 		mapView.move(translationVector * (mapView.getSize().x / mapTexture.getSize().x) * clock.getElapsedTime().asSeconds());
