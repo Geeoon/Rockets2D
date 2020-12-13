@@ -45,9 +45,9 @@ void RocketPartsManager::draw() {
 	}
 }
 
-void RocketPartsManager::drawAtPNR(const Vector2& p, long double r) {
+void RocketPartsManager::draw(const Vector2& p, long double r) {
 	for (std::shared_ptr<RocketPart> part : parts) {
-		part->drawAtPNR(p, r);
+		part->draw(p, r);
 	}
 }
 

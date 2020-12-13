@@ -56,6 +56,6 @@ private:
 	void quitGame();
 	void saveUserConfigs();
 	void swapView();
-	void viewManager();
+	void viewManager(const sf::Vector2f& pos);
 	void synchronousUpdate();
 };

@@ -14,7 +14,7 @@ public:
 	void setRelativePosition(const Vector2& relPos);
 	Vector2 getRelativePosition();
 	void draw();
-	void drawAtPNR(const Vector2& p, long double r);
+	void draw(const Vector2& p, long double r);
 	void addPart(std::shared_ptr<RocketPart> part);
 	void setThrottle(long double t);
 	void setSteering(long double s);

@@ -20,6 +20,7 @@ public:
 	void setPause(bool p);
 	bool getIsPaused();
 	void draw();
+	void draw(const Vector2& pos, long double ori);
 	void addToSync(const std::function<void()>& f);
 	Player* getPlayer();
 	ObjectManager* getObjMan();

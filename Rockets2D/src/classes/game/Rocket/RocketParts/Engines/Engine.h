@@ -9,6 +9,7 @@ public:
 	Engine(sf::RenderTexture* t, const Vector2& rPos, long double rOri);
 	virtual Vector2 update() override;
 	virtual void draw() override;
+	virtual void draw(const Vector2& pos, long double ori) override;
 
 protected:
 	long double thrust = 7770000; //thrust coefficient in vacuum

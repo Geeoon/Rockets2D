@@ -137,8 +137,18 @@ void UIManager::update() {
 	canDraw = true;
 	pollEvent();
 	manageControls();
-	game->draw(); //draw onto the renderTexture
-	viewManager();
+	/*TODO:
+	* 1. Obtain the rocket's position and orientaiton.
+	* 2. Draw the parts at the position and orientation.
+	* 3. Set the center at the position and orientaiton.
+	*/
+
+	const Vector2 rocketPosition = game->getPlayer()->getRocketPtr()->getPosition();
+	const long double rocketOrientation = game->getPlayer()->getRocketPtr()->getOrientation();
+	std::cout << rocketPosition.getX() << ", " << rocketPosition.getY() << "  " << rocketOrientation << std::endl;
+	game->draw(rocketPosition, rocketOrientation); //draw onto the renderTexture
+	viewManager(rocketPosition.toDrawSFV());
+
 	if (currentView != 2 || game->getIsPaused()) {
 		window.draw(sf::Sprite(gameTexture.getTexture())); //first the game,
 		if (isUIVisible) {
@@ -336,11 +346,23 @@ void UIManager::swapView() {
 	}
 }
 
-void UIManager::viewManager() {
-	
+void UIManager::viewManager(const sf::Vector2f& pos) {
+	switch (currentView) {
+	case 0:
+		gameView.setCenter(pos);
+		gameTexture.setView(gameView);
+		break;
+	case 1:
+		break;
+	case 2:
+		break;
+	default:
+		break;
+	}
 }
 
 void UIManager::synchronousUpdate() {
+	/*
 	switch (currentView) {
 	case 0:
 		gameView.setCenter((game->getPlayer()->getRocketPtr()->getPosition()).toDrawSFV());
@@ -352,4 +374,5 @@ void UIManager::synchronousUpdate() {
 	default:
 		break;
 	}
+	*/
 }

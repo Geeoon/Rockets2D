@@ -69,3 +69,21 @@ void Engine::draw() {
 	texture->draw(base);
 	texture->draw(flame);
 }
+
+void Engine::draw(const Vector2& pos, long double ori) {
+	RocketPart::draw(pos, ori);
+	flame.setPoint(2, sf::Vector2f(0.0f, (float)throttle / 5));
+	nozzle.setRotation((float)((orientation + relativeOrientation - gimbalAmount) * (long double)180 / (long double)M_PI));
+	throat.setRotation((float)((orientation + relativeOrientation - gimbalAmount) * (long double)180 / (long double)M_PI));
+	base.setRotation((float)((orientation + relativeOrientation) * (long double)180 / (long double)M_PI));
+	flame.setRotation((float)((orientation + relativeOrientation - gimbalAmount) * (long double)180 / (long double)M_PI));
+
+	nozzle.setPosition(outputPosition.toDrawSFV());
+	throat.setPosition(outputPosition.toDrawSFV());
+	base.setPosition(outputPosition.toDrawSFV());
+	flame.setPosition(outputPosition.toDrawSFV());
+	texture->draw(nozzle);
+	texture->draw(throat);
+	texture->draw(base);
+	texture->draw(flame);
+}

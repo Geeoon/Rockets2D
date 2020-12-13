@@ -38,15 +38,17 @@ void Rocket::update() {
 	}
 }
 
-void Rocket::draw() {
+void Rocket::draw() { //this will be called by the object maanger, but we want to draw it using a different method.
+	/*
 	for (std::shared_ptr<RocketPartsManager> partManager : partManagers) {
 		partManager->draw();
 	}
+	*/
 }
 
-void Rocket::drawAtPNR(const Vector2& p, long double r) {
+void Rocket::draw(const Vector2& p, long double r) {
 	for (std::shared_ptr<RocketPartsManager> partManager : partManagers) {
-		partManager->drawAtPNR(p ,r);
+		partManager->draw(p, r);
 	}
 }
 

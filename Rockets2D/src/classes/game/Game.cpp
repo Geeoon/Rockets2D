@@ -52,6 +52,18 @@ void Game::draw() { //this is called from another thread; don't rely on it for s
 	}
 }
 
+void Game::draw(const Vector2& pos, long double ori) { //this is called from another thread; don't rely on it for synchronous actions.
+	if (hasStarted) {
+		texture->clear(sf::Color::Transparent);
+		objMan->draw();
+		player->getRocketPtr()->draw(pos, ori);
+		texture->display();
+	} else {
+		texture->clear();
+		texture->display();
+	}
+}
+
 void Game::addToSync(const std::function<void()>& f) {
 	syncFuncs.push_back(f);
 }
