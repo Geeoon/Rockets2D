@@ -48,7 +48,7 @@ void Rocket::draw() { //this will be called by the object maanger, but we want t
 
 void Rocket::draw(const Vector2& p, long double r) {
 	for (std::shared_ptr<RocketPartsManager> partManager : partManagers) {
-		partManager->draw(p, r);
+		partManager->draw(Vector2(0, 0), r);
 	}
 }
 

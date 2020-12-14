@@ -145,7 +145,7 @@ void UIManager::update() {
 
 	const Vector2 rocketPosition = game->getPlayer()->getRocketPtr()->getPosition();
 	const long double rocketOrientation = game->getPlayer()->getRocketPtr()->getOrientation();
-	viewManager(rocketPosition.toDrawSFV());
+	viewManager(sf::Vector2f(0, 0), rocketOrientation * (long double)180 / (long double)M_PI);
 	game->draw(rocketPosition, rocketOrientation); //draw onto the renderTexture
 
 	if (currentView != 2 || game->getIsPaused()) {
@@ -349,6 +349,23 @@ void UIManager::viewManager(const sf::Vector2f& pos) {
 	switch (currentView) {
 	case 0:
 		gameView.setCenter(pos);
+		gameView.setRotation(0);
+		gameTexture.setView(gameView);
+		break;
+	case 1:
+		break;
+	case 2:
+		break;
+	default:
+		break;
+	}
+}
+
+void UIManager::viewManager(const sf::Vector2f& pos, long double rot) {
+	switch (currentView) {
+	case 0:
+		gameView.setCenter(pos);
+		gameView.setRotation(rot);
 		gameTexture.setView(gameView);
 		break;
 	case 1:
@@ -361,17 +378,5 @@ void UIManager::viewManager(const sf::Vector2f& pos) {
 }
 
 void UIManager::synchronousUpdate() {
-	/*
-	switch (currentView) {
-	case 0:
-		gameView.setCenter((game->getPlayer()->getRocketPtr()->getPosition()).toDrawSFV());
-		break;
-	case 1:
-		break;
-	case 2:
-		break;
-	default:
-		break;
-	}
-	*/
+	
 }

@@ -19,6 +19,7 @@ public:
 	long double getMass();
 	void resetTime();
 	virtual void draw();
+	virtual void draw(const Vector2& p, long double r);
 	virtual void setPosition(const Vector2& pos);
 	std::string getTitle();
 	std::string getDescription();

@@ -12,7 +12,8 @@ public:
 	virtual void draw(const Vector2& pos, long double ori) override;
 
 protected:
-	long double thrust = 7770000; //thrust coefficient in vacuum
+	//long double thrust = 7770000; //thrust coefficient in vacuum
+	long double thrust = 10000; //test coeffiticient
 	long double maxSteering = 0.523599;
 	long double gimbalAmount = 0; //-50 - 50
 	sf::ConvexShape nozzle;

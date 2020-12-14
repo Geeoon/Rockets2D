@@ -57,5 +57,6 @@ private:
 	void saveUserConfigs();
 	void swapView();
 	void viewManager(const sf::Vector2f& pos);
+	void viewManager(const sf::Vector2f& pos, long double rot);
 	void synchronousUpdate();
 };

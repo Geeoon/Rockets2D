@@ -72,6 +72,10 @@ void Object::draw() {
 
 }
 
+void Object::draw(const Vector2& p, long double r) {
+
+}
+
 void Object::setPosition(const Vector2& pos) {
 	position = pos;
 }

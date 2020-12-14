@@ -34,3 +34,10 @@ void SpaceObject::draw() {
 	shape.setRotation((float)orientation);
 	texture->draw(shape);
 }
+
+void SpaceObject::draw(const Vector2& p, long double r) {
+	shape.setPosition((float)position.getX() - (float)p.getX(), -(float)position.getY() + (float)p.getY());
+	shape.setOutlineThickness((3 * texture->getView().getSize().x / texture->getSize().x < 1) ? 1 : (3 * texture->getView().getSize().x / texture->getSize().x));
+	shape.setRotation((float)orientation);
+	texture->draw(shape);
+}
