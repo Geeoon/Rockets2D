@@ -116,7 +116,7 @@ void UIManager::setGame(std::shared_ptr<Game> g) {
 	//slider controls here because the game needs to be set first.
 	gameUI->addSlider(0, 100, uiTexture.getSize().y - 140, 250, game->getPlayer()->getThrottlePtr());
 	gameUI->addSlider(0, 100, uiTexture.getSize().y - 90, 250, game->getPlayer()->getSteeringPtr());
-	gameUI->addFBD(0, uiTexture.getSize().x - 85, uiTexture.getSize().y - 87, 80, game->getPlayer()->getRocketPtr()->getFBPtr(), &canDraw);
+	gameUI->addFBD(0, uiTexture.getSize().x - 85, uiTexture.getSize().y - 87, 80, game->getPlayer()->getRocketPtr()->getFBPtr(), &canDraw, game->getPlayer()->getRocketPtr()->getOrientationPTR());
 	gameUI->addUIString(0, "Throttle:", 10, uiTexture.getSize().y - 140, 15, UIString::UIString_alignment::left, UIString::UIString_alignment::middle);
 	gameUI->addUIString(0, "Steering:", 10, uiTexture.getSize().y - 90, 15, UIString::UIString_alignment::left, UIString::UIString_alignment::middle);
 	for (std::shared_ptr<Object> obj : *(game->getObjMan()->getObjects())) {

@@ -1,8 +1,9 @@
 #include "FreeBodyDiagram.h"
 #define M_PI 3.14159265358979323846264338327950288
 
-FreeBodyDiagram::FreeBodyDiagram(sf::RenderTexture* t, sf::RenderWindow* w, int xP, int yP, int s, FreeBody* ptr, bool* canD) : UIElement(t, w, xP, yP) {
+FreeBodyDiagram::FreeBodyDiagram(sf::RenderTexture* t, sf::RenderWindow* w, int xP, int yP, int s, FreeBody* ptr, bool* canD, long double* o) : UIElement(t, w, xP, yP) {
 	fbdPtr = ptr;
+	orientation = o;
 	canDraw = canD;
 	size = s;
 	body.setRadius((float)size / 10);
@@ -28,7 +29,7 @@ void FreeBodyDiagram::synchronousUpdate() {
 void FreeBodyDiagram::forceToArrow() {
 	long double maxForce = 0;
 	
-	for (Vector2 force : fbdPtr->getForces()) {
+	for (const Vector2& force : fbdPtr->getForces()) {
 		if (maxForce < force.getMagnitude()) {
 			maxForce = force.getMagnitude();
 		}
@@ -36,10 +37,10 @@ void FreeBodyDiagram::forceToArrow() {
 
 	if (*canDraw) {
 		arrows.clear();
-		for (Vector2 force : fbdPtr->getForces()) {
+		for (const Vector2& force : fbdPtr->getForces()) {
 			if (force.getMagnitude() > 0) {
-				arrows.push_back(Arrow((int)(force.getMagnitude() / maxForce * ((long double)size - (long double)10)), 10, x, y, (-force.getAngle() * 180 / M_PI) - 90));
-				arrows.back().setDirection(force.getIsPush());
+				arrows.push_back(Arrow((int)(force.getMagnitude() / maxForce * ((long double)size - (long double)10)), 10, x, y, ((-(force.getAngle()) - *orientation)  * (long double)180 / (long double)M_PI) - (long double)90));
+				arrows.back().setDirection(false);
 			}
 		}
 	}

@@ -16,6 +16,7 @@ public:
 	FreeBody* getFBPtr();
 	virtual Vector2& getPosition();
 	long double getOrientation();
+	long double* getOrientationPTR();
 	long double getMass();
 	void resetTime();
 	virtual void draw();

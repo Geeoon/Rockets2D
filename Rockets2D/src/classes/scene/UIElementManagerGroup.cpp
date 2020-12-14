@@ -37,8 +37,8 @@ void UIElementManagerGroup::addSlider(int page, int xP, int yP, int len, long do
 	pages[page]->addSlider(xP, yP, len, oVal);
 }
 
-void UIElementManagerGroup::addFBD(int page, int xP, int yP, int s, FreeBody* fb, bool* canD) {
-	pages[page]->addFBD(xP, yP, s, fb, canD);
+void UIElementManagerGroup::addFBD(int page, int xP, int yP, int s, FreeBody* fb, bool* canD, long double* o) {
+	pages[page]->addFBD(xP, yP, s, fb, canD, o);
 }
 
 void UIElementManagerGroup::addRadioList(int page, int xP, int yP, int s, std::string args[], size_t num) {

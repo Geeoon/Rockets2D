@@ -59,6 +59,10 @@ long double Object::getOrientation() {
 	return orientation;
 }
 
+long double* Object::getOrientationPTR() {
+	return &orientation;
+}
+
 long double Object::getMass() {
 	return mass;
 }

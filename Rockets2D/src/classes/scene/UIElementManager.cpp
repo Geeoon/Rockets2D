@@ -53,8 +53,8 @@ void UIElementManager::addSlider(int xP, int yP, int len, long double* oVal) {
 	elements.push_back(std::make_shared<UISlider>(texture, window, xP, yP, len, oVal, click, unClick));
 }
 
-void UIElementManager::addFBD(int xP, int yP, int s, FreeBody* fb, bool* canD) {
-	elements.push_back(std::make_shared<FreeBodyDiagram>(texture, window, xP, yP, s, fb, canD));
+void UIElementManager::addFBD(int xP, int yP, int s, FreeBody* fb, bool* canD, long double* o) {
+	elements.push_back(std::make_shared<FreeBodyDiagram>(texture, window, xP, yP, s, fb, canD, o));
 }
 
 void UIElementManager::addRadioList(int xP, int yP, int s, std::string args[], size_t num) {
