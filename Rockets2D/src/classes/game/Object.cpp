@@ -91,3 +91,7 @@ std::string Object::getTitle() {
 std::string Object::getDescription() {
 	return description;
 }
+
+long double Object::getAngularVelocity() {
+	return angularVelocity;
+}

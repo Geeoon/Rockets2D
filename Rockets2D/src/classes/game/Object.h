@@ -24,6 +24,7 @@ public:
 	virtual void setPosition(const Vector2& pos);
 	std::string getTitle();
 	std::string getDescription();
+	long double getAngularVelocity();
 
 protected:
 	sf::Clock clock;

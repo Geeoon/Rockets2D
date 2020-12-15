@@ -24,6 +24,7 @@ private:
 	sf::Clock clock;
 	sf::Time elapsedTime;
 	std::shared_ptr<Rocket> rocket;
+	std::unique_ptr<PID> angularVelocityPID;
 	std::vector<std::function<void()>>* syncUpdateVect;
 	long double throttle = 0;
 	long double steering = 50;

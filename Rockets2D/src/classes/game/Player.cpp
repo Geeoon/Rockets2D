@@ -7,6 +7,7 @@ Player::Player(sf::RenderTexture* t) {
 	rktMan->addPart(std::make_shared<Engine>(texture, Vector2(0, 0)));
 	rktMan->addPart(std::make_shared<FuelTank>(texture, Vector2(0, -3.2)));
 	rocket->addPartManager(rktMan, Vector2(0, 0));
+	angularVelocityPID = std::make_unique<PID>(0, 10, 0, .1, 10);
 	clock.restart();
 }
 
@@ -62,6 +63,16 @@ void Player::manageControls() { //gets called in the UIManager class.
 			throttle = 0;
 		}
 		rocket->setThrottle(throttle);
+	}
+	if (!(sf::Keyboard::isKeyPressed(sf::Keyboard::A) || sf::Keyboard::isKeyPressed(sf::Keyboard::D))) {
+		steering = -angularVelocityPID->update(rocket->getAngularVelocity()) + 50;
+		if (steering > 100) {
+			steering = 100;
+		} else if (steering < 0) {
+			steering = 0;
+		}
+		std::cout << rocket->getAngularVelocity() << std::endl;
+		rocket->setSteering(steering);
 	}
 }
 

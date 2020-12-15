@@ -5,6 +5,7 @@
 #include "RocketPartsManager.h"
 #include "../ForcePosition.h"
 #include "../Force.h"
+#include "Navigation/PID.h"
 
 class Rocket : public Object
 {
