@@ -146,6 +146,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\classes\game\Force.cpp" />
+    <ClCompile Include="src\classes\game\Rocket\Navigation\PID.cpp" />
     <ClCompile Include="src\classes\scene\FileParser.cpp" />
     <ClCompile Include="src\classes\scene\Misc\Arrow.cpp" />
     <ClCompile Include="src\classes\scene\GameElements\FreeBodyDiagram.cpp" />
@@ -182,6 +183,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\classes\game\Force.h" />
+    <ClInclude Include="src\classes\game\Rocket\Navigation\PID.h" />
     <ClInclude Include="src\classes\scene\FileParser.h" />
     <ClInclude Include="src\classes\scene\Misc\Arrow.h" />
     <ClInclude Include="src\classes\scene\GameElements\FreeBodyDiagram.h" />
