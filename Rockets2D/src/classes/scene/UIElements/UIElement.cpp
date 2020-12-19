@@ -5,6 +5,9 @@ UIElement::UIElement(sf::RenderTexture* t, sf::RenderWindow* w, int xP, int yP) 
 	window = w;
 	x = xP;
 	y = yP;
+	if (!(t && w)) {
+		throw std::invalid_argument{ "nullptr exception" };
+	}
 }
 
 void UIElement::update() {

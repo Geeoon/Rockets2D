@@ -7,7 +7,7 @@ Player::Player(sf::RenderTexture* t) {
 	rktMan->addPart(std::make_shared<Engine>(texture, Vector2(0, 0)));
 	rktMan->addPart(std::make_shared<FuelTank>(texture, Vector2(0, -3.2)));
 	rocket->addPartManager(rktMan, Vector2(0, 0));
-	angularVelocityPID = std::make_unique<PID>(0, 10, 0, .1, 10);
+	angularVelocityPID = std::make_unique<PID>(0, 10, 0, .05, 10);
 	clock.restart();
 }
 
@@ -71,7 +71,6 @@ void Player::manageControls() { //gets called in the UIManager class.
 		} else if (steering < 0) {
 			steering = 0;
 		}
-		std::cout << rocket->getAngularVelocity() << std::endl;
 		rocket->setSteering(steering);
 	}
 }

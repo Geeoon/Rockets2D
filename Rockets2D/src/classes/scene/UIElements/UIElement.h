@@ -1,6 +1,8 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include <iostream>
+#define M_PI 3.14159265358979323851280895940618620443274267017841339111328125
+
 class UIElement
 {
 public:

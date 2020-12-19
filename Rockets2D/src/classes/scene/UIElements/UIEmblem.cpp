@@ -1,6 +1,9 @@
 #include "UIEmblem.h"
 
-UIEmblem::UIEmblem(sf::RenderTexture* t, sf::RenderTexture* t2, sf::RenderWindow* w, long double* xP, long double* yP, std::string titl, std::string d, sf::Font* f) : UIElement(t, w, *xP, *yP) {
+UIEmblem::UIEmblem(sf::RenderTexture* t, sf::RenderTexture* t2, sf::RenderWindow* w, long double* xP, long double* yP, std::string titl, std::string d, sf::Font* f, type shape, long double* aPtr) : UIElement(t, w, *xP, *yP) {
+	if (!(xP && yP && f)) {
+		throw std::invalid_argument{ "nullptr exception" };
+	}
 	sprite.setFillColor(sf::Color::Black);
 	sprite.setOutlineColor(sf::Color(0, 255, 65));
 	sprite.setOrigin((float)sprite.getLocalBounds().width / 2, (float)sprite.getLocalBounds().height / 2);
@@ -8,7 +11,22 @@ UIEmblem::UIEmblem(sf::RenderTexture* t, sf::RenderTexture* t2, sf::RenderWindow
 	sprite.setRadius(8);
 	xPointer = xP;
 	yPointer = yP;
+	anglePointer = aPtr;
 	sprite.setPosition((float)*xP, (float)*yP);
+	switch (shape) {
+		case (type::CIRCLE): {
+
+		} break;
+		case (type::SQUARE): {
+			sprite.setPointCount(4);
+		} break;
+		case (type::TRIANGLE): {
+			sprite.setPointCount(3);
+		} break;
+		default: {
+		
+		}
+	}
 	texture2 = t2;
 	title = std::make_unique<UIString>(texture2, w, (int)*xP, (int)*yP, titl, f, 20);
 	description = std::make_unique<UIString>(texture2, w, (int)*xP, (int)*yP, d, f, 10);
@@ -29,9 +47,11 @@ void UIEmblem::update() {
 	sprite.setRadius(10 * relSize);
 	sprite.setOrigin((float)sprite.getLocalBounds().width / 2, (float)sprite.getLocalBounds().height / 2);
 	sprite.setOutlineThickness((3 * relSize < 1) ? 1 : (3 * relSize));
+	if (anglePointer != nullptr) {
+		sprite.setRotation(*anglePointer * (long double)180 / (long double)M_PI);
+	}
 	texture->draw(sprite);
 	if (sprite.getGlobalBounds().contains(texture->mapPixelToCoords(sf::Mouse::getPosition(*window)))) {
-		//std::cout << texture->mapPixelToCoords(sf::Mouse::getPosition(*window)).x << std::endl;
 		sf::Vector2i temp = texture->mapCoordsToPixel(sf::Vector2f((float)*xPointer, (float)*yPointer));
 		title->setPos(temp.x + 10, temp.y + 10);
 		description->setPos(temp.x + 10, temp.y + 30);

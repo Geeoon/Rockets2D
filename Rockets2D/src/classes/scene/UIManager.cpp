@@ -103,7 +103,7 @@ UIManager::UIManager() {
 
 	clock.restart();
 	gameView.zoom(1);
-	mapView.setSize(gameView.getSize());
+	mapView.setSize(gameView.getSize().x * 100000, gameView.getSize().y * 100000);
 	syncFuncs = [&] {gameUI->synchronousUpdate(); mainMenu->synchronousUpdate(); map->synchronousUpdate(); synchronousUpdate(); };
 }
 
@@ -120,7 +120,12 @@ void UIManager::setGame(std::shared_ptr<Game> g) {
 	gameUI->addUIString(0, "Throttle:", 10, uiTexture.getSize().y - 140, 15, UIString::UIString_alignment::left, UIString::UIString_alignment::middle);
 	gameUI->addUIString(0, "Steering:", 10, uiTexture.getSize().y - 90, 15, UIString::UIString_alignment::left, UIString::UIString_alignment::middle);
 	for (std::shared_ptr<Object> obj : *(game->getObjMan()->getObjects())) {
-		map->addEmblem(0, &mapUITexture, obj->getPosition().getXPointer(), obj->getPosition().getYPointer(), obj->getTitle(), obj->getDescription());
+		if (obj == game->getPlayer()->getRocketPtr()) {
+			map->addEmblem(0, &mapUITexture, obj->getPosition().getXPointer(), obj->getPosition().getYPointer(), obj->getTitle(), obj->getDescription(), UIEmblem::type::TRIANGLE, game->getPlayer()->getRocketPtr()->getOrientationPTR());
+		} else {
+			map->addEmblem(0, &mapUITexture, obj->getPosition().getXPointer(), obj->getPosition().getYPointer(), obj->getTitle(), obj->getDescription(), UIEmblem::type::CIRCLE, nullptr);
+		}
+
 	}
 }
 
