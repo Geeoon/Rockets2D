@@ -44,19 +44,19 @@ bool Vector2::getIsPush() {
 	return isPush;
 }
 
-Vector2 Vector2::operator+=(const Vector2& v) {
+Vector2& Vector2::operator+=(const Vector2& v) {
 	x += v.x;
 	y += v.y;
 	return *this;
 }
 
-Vector2 Vector2::operator-=(const Vector2& v) {
+Vector2& Vector2::operator-=(const Vector2& v) {
 	x -= v.x;
 	y -= v.y;
 	return *this;
 }
 
-Vector2 Vector2::operator*=(const long double multiplier) {
+Vector2& Vector2::operator*=(const long double multiplier) {
 	x *= multiplier;
 	y *= multiplier;
 	return *this;

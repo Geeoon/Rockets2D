@@ -1,9 +1,8 @@
 #include "SpaceObject.h"
 
-SpaceObject::SpaceObject(std::string ti, std::string d, sf::RenderTexture* t, const Vector2& pos, long double m, long double r) : Object(ti, d, pos, m) {
+SpaceObject::SpaceObject(std::string ti, std::string d, sf::RenderTexture* t, const Vector2& pos, long double m, long double r) : Object(ti, d, pos, m, r) {
 	//texture, position, mass, radius
 	texture = t;
-	radius = r;
 	shape.setRadius((float)r);
 	borderColor = sf::Color(0, 255, 65);
 	innerColor = sf::Color(0, 255, 65, 50);
@@ -14,13 +13,12 @@ SpaceObject::SpaceObject(std::string ti, std::string d, sf::RenderTexture* t, co
 	shape.setOrigin(shape.getLocalBounds().width / 2, shape.getLocalBounds().height / 2);
 }
 
-SpaceObject::SpaceObject(std::string ti, std::string d, sf::RenderTexture* t, const Vector2& pos, long double m, long double r, const Vector2& vel) : Object(ti, d, pos, m, vel) {
+SpaceObject::SpaceObject(std::string ti, std::string d, sf::RenderTexture* t, const Vector2& pos, long double m, long double r, const Vector2& vel) : Object(ti, d, pos, m, r, vel) {
 	//texture, position, mass, radius, velocity
 	texture = t;
-	radius = r;
 	shape.setRadius((float)r);
 	borderColor = sf::Color(0, 255, 65);
-	innerColor = sf::Color(0, 0, 255, 0);
+	innerColor = sf::Color(0, 255, 65, 50);
 	shape.setPointCount(500);
 	shape.setFillColor(innerColor);
 	shape.setOutlineColor(borderColor);

@@ -6,8 +6,13 @@
 class Object
 {
 public:
-	Object(std::string t, std::string d, const Vector2& pos, long double m);
-	Object(std::string t, std::string d, const Vector2& pos, long double m, const Vector2& vel);
+	Object(std::string t, std::string d, const Vector2& pos, long double m, long double r);
+	Object(std::string t, std::string d, const Vector2& pos, long double m, long double r, const Vector2& vel);
+	~Object()								= default;
+	Object(const Object&)					= default;
+	Object& operator=(const Object&)		= default;
+	Object(Object&&)						= default;
+	Object& operator=(Object&&)				= default;
 	void setMomentofInertia(long double moment);
 	void applyForce(const Vector2& v);
 	void applyForceRel(Vector2 v); //applies force relative to the object's orientation
@@ -25,8 +30,10 @@ public:
 	std::string getTitle();
 	std::string getDescription();
 	long double getAngularVelocity();
+	long double getRadius();
 
 protected:
+	long double radius;
 	sf::Clock clock;
 	std::string title;
 	std::string description;

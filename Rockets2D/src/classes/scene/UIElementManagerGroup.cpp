@@ -49,8 +49,8 @@ void UIElementManagerGroup::addRadioList(int page, int xP, int yP, int s, std::s
 	pages[page]->addRadioList(xP, yP, s, args, num, def);
 }
 
-void UIElementManagerGroup::addEmblem(int page, sf::RenderTexture* t2, long double* xP, long double* yP, std::string titl, std::string d, UIEmblem::type shape, long double* aPtr) {
-	pages[page]->addEmblem(t2, xP, yP, titl, d, shape, aPtr);
+void UIElementManagerGroup::addEmblem(int page, sf::RenderTexture* t2, long double* xP, long double* yP, std::string titl, std::string d, UIEmblem::type shape, long double* aPtr, long double r) {
+	pages[page]->addEmblem(t2, xP, yP, titl, d, shape, aPtr, r);
 }
 
 void UIElementManagerGroup::setActive(bool active) {

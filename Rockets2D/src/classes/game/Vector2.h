@@ -18,9 +18,9 @@ public:
 	long double getMagnitude() const;
 	long double getAngle() const;
 	virtual bool getIsPush();
-	Vector2 operator+=(const Vector2& v);
-	Vector2 operator-=(const Vector2& v);
-	Vector2 operator*=(long double multiplier);
+	Vector2& operator+=(const Vector2& v);
+	Vector2& operator-=(const Vector2& v);
+	Vector2& operator*=(long double multiplier);
 	Vector2 operator+(const Vector2& right) const;
 	Vector2 operator-(const Vector2& right) const;
 	Vector2 operator*(const long double right) const;

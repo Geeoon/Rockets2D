@@ -1,15 +1,15 @@
 #include "Rocket.h"
 
-Rocket::Rocket(std::string ti, std::string d, sf::RenderTexture* t, const Vector2& pos) : Object(ti, d, pos, 0) {
+Rocket::Rocket(std::string ti, std::string d, sf::RenderTexture* t, const Vector2& pos) : Object(ti, d, pos, 0, 10) {
 	texture = t;
 }
 
-Rocket::Rocket(std::string ti, std::string d, sf::RenderTexture* t, const Vector2& pos, long double ori) : Object(ti, d, pos, 0) {
+Rocket::Rocket(std::string ti, std::string d, sf::RenderTexture* t, const Vector2& pos, long double ori) : Object(ti, d, pos, 0, 10) {
 	texture = t;
 	orientation = ori;
 }
 
-Rocket::Rocket(std::string ti, std::string d, sf::RenderTexture* t, const Vector2& pos, long double ori, const Vector2& vel) : Object(ti, d, pos, 0, vel) {
+Rocket::Rocket(std::string ti, std::string d, sf::RenderTexture* t, const Vector2& pos, long double ori, const Vector2& vel) : Object(ti, d, pos, 0, 10, vel) {
 	texture = t;
 	orientation = ori;
 }

@@ -37,7 +37,6 @@ private:
 	std::unique_ptr<Rocket> rocket;
 	std::shared_ptr<Object> focus;
 	sf::RenderTexture* texture = nullptr;
-	sf::RenderTexture* fbTexture = nullptr;
 	std::unique_ptr<ObjectManager> objMan;
 };
 

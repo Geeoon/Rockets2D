@@ -121,9 +121,9 @@ void UIManager::setGame(std::shared_ptr<Game> g) {
 	gameUI->addUIString(0, "Steering:", 10, uiTexture.getSize().y - 90, 15, UIString::UIString_alignment::left, UIString::UIString_alignment::middle);
 	for (std::shared_ptr<Object> obj : *(game->getObjMan()->getObjects())) {
 		if (obj == game->getPlayer()->getRocketPtr()) {
-			map->addEmblem(0, &mapUITexture, obj->getPosition().getXPointer(), obj->getPosition().getYPointer(), obj->getTitle(), obj->getDescription(), UIEmblem::type::TRIANGLE, game->getPlayer()->getRocketPtr()->getOrientationPTR());
+			map->addEmblem(0, &mapUITexture, obj->getPosition().getXPointer(), obj->getPosition().getYPointer(), obj->getTitle(), obj->getDescription(), UIEmblem::type::TRIANGLE, game->getPlayer()->getRocketPtr()->getOrientationPTR(), 10);
 		} else {
-			map->addEmblem(0, &mapUITexture, obj->getPosition().getXPointer(), obj->getPosition().getYPointer(), obj->getTitle(), obj->getDescription(), UIEmblem::type::CIRCLE, nullptr);
+			map->addEmblem(0, &mapUITexture, obj->getPosition().getXPointer(), obj->getPosition().getYPointer(), obj->getTitle(), obj->getDescription(), UIEmblem::type::CIRCLE, nullptr, obj->getRadius());
 		}
 
 	}
@@ -370,7 +370,7 @@ void UIManager::viewManager(const sf::Vector2f& pos, long double rot) {
 	switch (currentView) {
 	case 0:
 		gameView.setCenter(pos);
-		gameView.setRotation(rot);
+		gameView.setRotation((float)rot);
 		gameTexture.setView(gameView);
 		break;
 	case 1:

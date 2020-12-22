@@ -13,8 +13,8 @@ public:
 	void update();
 	void draw();
 	void draw(const Vector2& p, long double r);
-	void addObject(std::string ti, std::string d, const Vector2& pos, double m);
-	void addObject(std::string ti, std::string d, const Vector2& pos, double m, const Vector2& vel);
+	void addObject(std::string ti, std::string d, const Vector2& pos, double m, long double r);
+	void addObject(std::string ti, std::string d, const Vector2& pos, double m, long double r, const Vector2& vel);
 	void addObject(std::shared_ptr<Object> obj);
 	std::vector<std::shared_ptr<Object>>* getObjects();
 private:

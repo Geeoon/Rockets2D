@@ -12,7 +12,6 @@ public:
 	void draw(const Vector2& p, long double r) override;
 
 private:
-	long double radius;
 	bool collidable = true;
 	sf::RenderTexture* texture;
 	sf::CircleShape shape;

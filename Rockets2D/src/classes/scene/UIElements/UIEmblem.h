@@ -19,18 +19,19 @@ public:
 		BLUE
 	};
 
-	UIEmblem(sf::RenderTexture* t, sf::RenderTexture* t2, sf::RenderWindow* w, long double* xP, long double* yP, std::string titl, std::string d, sf::Font* f, type shape, long double* aPtr);
+	UIEmblem(sf::RenderTexture* t, sf::RenderTexture* t2, sf::RenderWindow* w, long double* xP, long double* yP, std::string titl, std::string d, sf::Font* f, type shape, long double* aPtr, long double r);
 	void update() override;
 
 private:
-	long double* xPointer = nullptr;
-	long double* yPointer = nullptr;
-	long double* anglePointer = nullptr;
-	sf::CircleShape sprite;
-	std::unique_ptr<UIBackground> background;
-	sf::RenderTexture* texture2 = nullptr;
-	std::unique_ptr<UIString> title;
-	std::unique_ptr<UIString> description;
-	std::unique_ptr<Button> focus;
-	std::unique_ptr<Button> unFocus;
+	long double* xPointer{};
+	long double* yPointer{};
+	long double* anglePointer{};
+	long double radius{};
+	sf::CircleShape sprite{};
+	std::unique_ptr<UIBackground> background{};
+	sf::RenderTexture* texture2{};
+	std::unique_ptr<UIString> title{};
+	std::unique_ptr<UIString> description{};
+	std::unique_ptr<Button> focus{};
+	std::unique_ptr<Button> unFocus{};
 };

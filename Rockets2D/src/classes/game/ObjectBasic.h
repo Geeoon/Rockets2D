@@ -7,6 +7,11 @@ class ObjectBasic
 {
 public:
 	ObjectBasic(const Vector2& pos, long double m);
+	~ObjectBasic()									= default;
+	ObjectBasic(const ObjectBasic&)					= default;
+	ObjectBasic& operator=(const ObjectBasic&)		= default;
+	ObjectBasic(ObjectBasic&&)						= default;
+	ObjectBasic& operator=(ObjectBasic&&)			= default;
 	virtual void setOrientation(long double ori);
 	void setPosition(const Vector2& pos);
 	Vector2& getPosition();

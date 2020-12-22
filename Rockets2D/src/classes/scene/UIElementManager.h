@@ -29,7 +29,7 @@ public:
 	void addFBD(int xP, int yP, int s, FreeBody* fb, bool* canD, long double* o);
 	void addRadioList(int xP, int yP, int s, std::string args[], size_t num);
 	void addRadioList(int xP, int yP, int s, std::string args[], size_t num, int def);
-	void addEmblem(sf::RenderTexture* t2, long double* xP, long double* yP, std::string titl, std::string d, UIEmblem::type shape, long double* aPtr);
+	void addEmblem(sf::RenderTexture* t2, long double* xP, long double* yP, std::string titl, std::string d, UIEmblem::type shape, long double* aPtr, long double r);
 private:
 	bool active = false;
 	std::vector<std::shared_ptr<UIElement>> elements;
