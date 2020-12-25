@@ -13,7 +13,9 @@ public:
 
 private:
 	bool collidable = true;
-	sf::RenderTexture* texture;
+	float offsetX{};
+	float offsetY{};
+	sf::RenderTexture* texture{};
 	sf::CircleShape shape;
 	sf::Color borderColor;
 	sf::Color innerColor;

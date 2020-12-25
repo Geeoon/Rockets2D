@@ -2,7 +2,7 @@
 
 UIManager::UIManager() {
 	currentView = 0;
-	videoSettings.antialiasingLevel = 8;
+	videoSettings.antialiasingLevel = 0;
 	window.create(sf::VideoMode(800, 800), "Rockets2D", sf::Style::Close, videoSettings);
 	window.setFramerateLimit(300);
 	freeBodyTexture.create(150, 150);
@@ -43,6 +43,7 @@ UIManager::UIManager() {
 	Created by Geeoon Chung \n\
 	UI Sounds provided by Octave http://raisedbeaches.com/octave/ \n\
 	Graphics library provided by SFML https://www.sfml-dev.org/ \n\
+	Font designed by Paul D. Hunt https://fonts.google.com/specimen/Source+Code+Pro \n\
 	", 25, 100, 15);
 	mainMenu->addButton(1, "<- Back", 25, 25, 20, [&] {mainMenu->setActivePage(0); });
 	
@@ -142,6 +143,7 @@ void UIManager::update() {
 	canDraw = true;
 	pollEvent();
 	manageControls();
+
 	/*TODO:
 	* 1. Obtain the rocket's position and orientaiton.
 	* 2. Draw the parts at the position and orientation.
@@ -289,12 +291,11 @@ void UIManager::manageControls() {
 		translationVector += sf::Vector2f(0, (float)moveSpeed);
 	}
 
-
 	switch (currentView) {
 	case 0:
 		break;
 	case 1:
-		gameView.move(translationVector * (gameView.getSize().x / (float)gameTexture.getSize().x) * clock.getElapsedTime().asSeconds());  // if the x component's magnitude is not greater than 0.25, it won't move.  EDIT: this occurs only when the view's center is really far away from the center.  Occurs in the x-axis as well.
+		gameView.move(translationVector * (gameView.getSize().x / (float)gameTexture.getSize().x) * clock.getElapsedTime().asSeconds());
 		break;
 	case 2:
 		mapView.move(translationVector * (mapView.getSize().x / mapTexture.getSize().x) * clock.getElapsedTime().asSeconds());
@@ -347,6 +348,9 @@ void UIManager::swapView() {
 	lastPos = window.mapPixelToCoords(sf::Mouse::getPosition(window));
 	if (currentView > 2) {
 		currentView = 0;
+	}
+	if (currentView == 1) {
+		currentView = 2;  // skip the user controlable view.
 	}
 }
 

@@ -11,6 +11,8 @@ SpaceObject::SpaceObject(std::string ti, std::string d, sf::RenderTexture* t, co
 	shape.setOutlineColor(borderColor);
 	shape.setOutlineThickness(3);
 	shape.setOrigin(shape.getLocalBounds().width / 2, shape.getLocalBounds().height / 2);
+	offsetX = shape.getLocalBounds().width / 2;
+	offsetY = shape.getLocalBounds().height / 2;
 }
 
 SpaceObject::SpaceObject(std::string ti, std::string d, sf::RenderTexture* t, const Vector2& pos, long double m, long double r, const Vector2& vel) : Object(ti, d, pos, m, r, vel) {
@@ -24,6 +26,8 @@ SpaceObject::SpaceObject(std::string ti, std::string d, sf::RenderTexture* t, co
 	shape.setOutlineColor(borderColor);
 	shape.setOutlineThickness(3);
 	shape.setOrigin(shape.getLocalBounds().width / 2, shape.getLocalBounds().height / 2);
+	offsetX = shape.getLocalBounds().width / 2;
+	offsetY = shape.getLocalBounds().height / 2;
 }
 
 void SpaceObject::draw() {
@@ -34,7 +38,8 @@ void SpaceObject::draw() {
 }
 
 void SpaceObject::draw(const Vector2& p, long double r) {
-	shape.setPosition((float)position.getX() - (float)p.getX(), -(float)position.getY() + (float)p.getY());
+	shape.setPosition(0, 0);
+	shape.setOrigin((float)(offsetX - position.getX() + p.getX()), (float)(offsetY - position.getY() - p.getY()));
 	shape.setOutlineThickness((3 * texture->getView().getSize().x / texture->getSize().x < 1) ? 1 : (3 * texture->getView().getSize().x / texture->getSize().x));
 	shape.setRotation((float)orientation);
 	texture->draw(shape);
