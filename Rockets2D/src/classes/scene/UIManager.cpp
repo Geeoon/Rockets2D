@@ -2,8 +2,8 @@
 
 UIManager::UIManager() {
 	currentView = 0;
-	videoSettings.antialiasingLevel = 0;
-	window.create(sf::VideoMode(800, 800), "Rockets2D", sf::Style::Close, videoSettings);
+	videoSettings.antialiasingLevel = 8;
+	window.create(sf::VideoMode::getFullscreenModes()[0], "Rockets2D", sf::Style::Fullscreen, videoSettings);
 	window.setFramerateLimit(300);
 	freeBodyTexture.create(150, 150);
 	if (!(uiTexture.create(window.getSize().x, window.getSize().y, videoSettings) && gameTexture.create(window.getSize().x, window.getSize().y, videoSettings) && mapTexture.create(window.getSize().x, window.getSize().y, videoSettings) && mapUITexture.create(window.getSize().x, window.getSize().y, videoSettings))) {
@@ -86,7 +86,7 @@ UIManager::UIManager() {
 	gameUI->addUIString(0, "Velocity: m/s relative to [selected object]", 0, uiTexture.getSize().y - 20, 15, UIString::UIString_alignment::left, UIString::UIString_alignment::bottom);
 	gameUI->addUIString(0, "Acceleration: m/s^2 relative to [selected object]", 0, uiTexture.getSize().y, 15, UIString::UIString_alignment::left, UIString::UIString_alignment::bottom);
 	gameUI->addButton(0, "Pause", 5, 5, 15, [&] {gameUI->setActivePage(1); game->setPause(true); });
-	gameUI->addBackground(0, uiTexture.getSize().x / 2, uiTexture.getSize().x - 80, uiTexture.getSize().x + 20, 200);
+	//gameUI->addBackground(0, uiTexture.getSize().x / 2, uiTexture.getSize().x - 80, uiTexture.getSize().x + 20, 200);
 
 	gameUI->addPage(); //pause menu
 	gameUI->addUIString(1, "Rockets2D", uiTexture.getSize().x / 2, 25, 30, UIString::UIString_alignment::center);
@@ -104,7 +104,7 @@ UIManager::UIManager() {
 
 	clock.restart();
 	gameView.zoom(1);
-	mapView.setSize(gameView.getSize().x * 100000, gameView.getSize().y * 100000);
+	mapView.setSize(gameView.getSize().x * 10, gameView.getSize().y * 10);
 	syncFuncs = [&] {gameUI->synchronousUpdate(); mainMenu->synchronousUpdate(); map->synchronousUpdate(); synchronousUpdate(); };
 }
 
@@ -118,8 +118,8 @@ void UIManager::setGame(std::shared_ptr<Game> g) {
 	gameUI->addSlider(0, 100, uiTexture.getSize().y - 140, 250, game->getPlayer()->getThrottlePtr());
 	gameUI->addSlider(0, 100, uiTexture.getSize().y - 90, 250, game->getPlayer()->getSteeringPtr());
 	gameUI->addFBD(0, uiTexture.getSize().x - 85, uiTexture.getSize().y - 87, 80, game->getPlayer()->getRocketPtr()->getFBPtr(), &canDraw, game->getPlayer()->getRocketPtr()->getOrientationPTR());
-	gameUI->addUIString(0, "Throttle:", 10, uiTexture.getSize().y - 140, 15, UIString::UIString_alignment::left, UIString::UIString_alignment::middle);
-	gameUI->addUIString(0, "Steering:", 10, uiTexture.getSize().y - 90, 15, UIString::UIString_alignment::left, UIString::UIString_alignment::middle);
+	gameUI->addUIString(0, "Throttle:", 10, uiTexture.getSize().y - 140, 14, UIString::UIString_alignment::left, UIString::UIString_alignment::middle);
+	gameUI->addUIString(0, "Steering:", 10, uiTexture.getSize().y - 90, 14, UIString::UIString_alignment::left, UIString::UIString_alignment::middle);
 	for (std::shared_ptr<Object> obj : *(game->getObjMan()->getObjects())) {
 		if (obj == game->getPlayer()->getRocketPtr()) {
 			map->addEmblem(0, &mapUITexture, obj->getPosition().getXPointer(), obj->getPosition().getYPointer(), obj->getTitle(), obj->getDescription(), UIEmblem::type::TRIANGLE, game->getPlayer()->getRocketPtr()->getOrientationPTR(), 10);
@@ -128,6 +128,7 @@ void UIManager::setGame(std::shared_ptr<Game> g) {
 		}
 
 	}
+	mapView.setCenter(game->getPlayer()->getRocketPtr()->getPosition().getX(), game->getPlayer()->getRocketPtr()->getPosition().getY());
 }
 
 const std::function<void()>& UIManager::getSyncFuncs() {

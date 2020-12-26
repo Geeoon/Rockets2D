@@ -56,10 +56,10 @@ void UIEmblem::update() {
 	}
 	texture->draw(sprite);
 	if (sprite.getGlobalBounds().contains(texture->mapPixelToCoords(sf::Mouse::getPosition(*window)))) {
-		sf::Vector2i temp = texture->mapCoordsToPixel(sf::Vector2f((float)*xPointer, -(float)*yPointer));
-		title->setPos(temp.x + 10, temp.y + 10);
-		description->setPos(temp.x + 10, temp.y + 30);
-		background->setPos(temp.x + 10, temp.y + 10);
+		sf::Vector2i temp = sf::Mouse::getPosition(*window);
+		title->setPos(temp.x + 20, temp.y + 20);
+		description->setPos(temp.x + 20, temp.y + 40);
+		background->setPos(temp.x + 20, temp.y + 20);
 		background->update();
 		title->update();
 		description->update();
