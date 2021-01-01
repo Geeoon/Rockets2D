@@ -3,8 +3,10 @@
 UIManager::UIManager() {
 	currentView = 0;
 	videoSettings.antialiasingLevel = 8;
-	window.create(sf::VideoMode::getFullscreenModes()[0], "Rockets2D", sf::Style::Fullscreen, videoSettings);
-	window.setFramerateLimit(300);
+	window.create(sf::VideoMode(800, 800), "Rockets2D", sf::Style::Close , videoSettings);
+	//window.create(sf::VideoMode::getFullscreenModes()[0], "Rockets2D", sf::Style::Fullscreen, videoSettings);
+	
+	window.setFramerateLimit(300); 
 	freeBodyTexture.create(150, 150);
 	if (!(uiTexture.create(window.getSize().x, window.getSize().y, videoSettings) && gameTexture.create(window.getSize().x, window.getSize().y, videoSettings) && mapTexture.create(window.getSize().x, window.getSize().y, videoSettings) && mapUITexture.create(window.getSize().x, window.getSize().y, videoSettings))) {
 		//check for if there is an error creating the gameTexture or the uiTexture
@@ -121,10 +123,10 @@ void UIManager::setGame(std::shared_ptr<Game> g) {
 	gameUI->addUIString(0, "Throttle:", 10, uiTexture.getSize().y - 140, 14, UIString::UIString_alignment::left, UIString::UIString_alignment::middle);
 	gameUI->addUIString(0, "Steering:", 10, uiTexture.getSize().y - 90, 14, UIString::UIString_alignment::left, UIString::UIString_alignment::middle);
 	for (std::shared_ptr<Object> obj : *(game->getObjMan()->getObjects())) {
-		if (obj == game->getPlayer()->getRocketPtr()) {
+		if (obj == game->getPlayer()->getRocketPtr()) {  // If object is player.
 			map->addEmblem(0, &mapUITexture, obj->getPosition().getXPointer(), obj->getPosition().getYPointer(), obj->getTitle(), obj->getDescription(), UIEmblem::type::TRIANGLE, game->getPlayer()->getRocketPtr()->getOrientationPTR(), 10);
 		} else {
-			map->addEmblem(0, &mapUITexture, obj->getPosition().getXPointer(), obj->getPosition().getYPointer(), obj->getTitle(), obj->getDescription(), UIEmblem::type::CIRCLE, nullptr, obj->getRadius());
+			map->addEmblem(0, &mapUITexture, obj->getPosition().getXPointer(), obj->getPosition().getYPointer(), obj->getTitle(), obj->getDescription() + "\nMass: " + std::to_string(obj->getMass()) + " kg\nRadius: " + std::to_string(obj->getRadius()) + " meters", UIEmblem::type::CIRCLE, nullptr, obj->getRadius());
 		}
 
 	}
